@@ -84,44 +84,34 @@
     </div>
 
 </div>
-<div class="users-container">
-    <div class="users-container-head">
-        <h1>İstifadəçilər</h1>
-        <div class="head-buttons">
-            <a href="" class="export_excel">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M6.75022 16.5C0.000222408 17.25 0.750222 9 6.75022 9.75C4.50022 1.5 17.2502 1.5 16.5002 7.5C24.0002 5.25 24.0002 17.25 17.2502 16.5M8.25022 19.5L12.0002 22.5M12.0002 22.5L15.7502 19.5M12.0002 22.5V12" stroke="#7B7676" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-                Export
-            </a>
-            <button class="addNewUsers addItem" type="button">
-                <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M18.5 12.998H13.5V17.998C13.5 18.2632 13.3946 18.5176 13.2071 18.7051C13.0196 18.8926 12.7652 18.998 12.5 18.998C12.2348 18.998 11.9804 18.8926 11.7929 18.7051C11.6054 18.5176 11.5 18.2632 11.5 17.998V12.998H6.5C6.23478 12.998 5.98043 12.8926 5.79289 12.7051C5.60536 12.5176 5.5 12.2632 5.5 11.998C5.5 11.7328 5.60536 11.4784 5.79289 11.2909C5.98043 11.1033 6.23478 10.998 6.5 10.998H11.5V5.99799C11.5 5.73277 11.6054 5.47842 11.7929 5.29088C11.9804 5.10334 12.2348 4.99799 12.5 4.99799C12.7652 4.99799 13.0196 5.10334 13.2071 5.29088C13.3946 5.47842 13.5 5.73277 13.5 5.99799V10.998H18.5C18.7652 10.998 19.0196 11.1033 19.2071 11.2909C19.3946 11.4784 19.5 11.7328 19.5 11.998C19.5 12.2632 19.3946 12.5176 19.2071 12.7051C19.0196 12.8926 18.7652 12.998 18.5 12.998Z" fill="white" />
-                </svg>
-                Əlavə et
-            </button>
-        </div>
-    </div>
-    <div class="users-body">
-        <div class="users-body-head">
-            <h2>Ümumi Məlumatlar</h2>
-            <form class="modul-search">
-                <button class="search_btn" type="submit">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M14.3853 15.446C13.0375 16.5229 11.3284 17.0429 9.60922 16.8991C7.88999 16.7552 6.29108 15.9586 5.14088 14.6727C3.99068 13.3869 3.3765 11.7094 3.42449 9.9848C3.47248 8.26024 4.17898 6.6195 5.39891 5.39958C6.61883 4.17965 8.25956 3.47315 9.98413 3.42516C11.7087 3.37717 13.3862 3.99135 14.6721 5.14155C15.9579 6.29175 16.7546 7.89066 16.8984 9.60989C17.0422 11.3291 16.5222 13.0382 15.4453 14.386L20.6013 19.541C20.675 19.6097 20.7341 19.6925 20.7751 19.7845C20.8161 19.8765 20.8381 19.9758 20.8399 20.0765C20.8417 20.1772 20.8232 20.2772 20.7855 20.3706C20.7477 20.464 20.6916 20.5488 20.6204 20.62C20.5492 20.6913 20.4643 20.7474 20.3709 20.7851C20.2775 20.8228 20.1775 20.8414 20.0768 20.8396C19.9761 20.8378 19.8768 20.8158 19.7848 20.7748C19.6928 20.7338 19.61 20.6747 19.5413 20.601L14.3853 15.446ZM6.45933 13.884C5.72537 13.15 5.22549 12.2148 5.02284 11.1968C4.8202 10.1787 4.92391 9.12344 5.32084 8.1643C5.71778 7.20517 6.39014 6.38523 7.25295 5.8081C8.11575 5.23098 9.13027 4.92258 10.1683 4.92189C11.2063 4.92119 12.2213 5.22822 13.0848 5.80418C13.9484 6.38014 14.6219 7.19917 15.0201 8.15778C15.4183 9.11638 15.5235 10.1715 15.3222 11.1898C15.1209 12.2082 14.6223 13.144 13.8893 13.879L13.8843 13.884L13.8793 13.888C12.8944 14.8706 11.5598 15.4221 10.1685 15.4214C8.77725 15.4206 7.44318 14.8677 6.45933 13.884Z" fill="#B3B3B3" />
-                    </svg>
-                </button>
-                <input type="text" placeholder="Search" class="datatable-search">
-            </form>
-        </div>
-        <div class="users-table">
 
-            <div id="custom-info" style="margin-bottom: 10px; font-weight: bold;"></div>
 
-            {!! $dataTable->table(['class' => 'table table-bordered']) !!}
+<div class="rolePermission-container">
+            <div class="rolePermission-container-head">
+                <h1>Rol İcazələri</h1>
+                <div class="head-buttons">
+                    <a href="" class="export_excel">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6.75022 16.5C0.000222408 17.25 0.750222 9 6.75022 9.75C4.50022 1.5 17.2502 1.5 16.5002 7.5C24.0002 5.25 24.0002 17.25 17.2502 16.5M8.25022 19.5L12.0002 22.5M12.0002 22.5L15.7502 19.5M12.0002 22.5V12" stroke="#7B7676" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                        Export
+                    </a>
+                    <a href="addRolePermisson.html" class="addNewRolePermission">
+                        <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18.5 12.998H13.5V17.998C13.5 18.2632 13.3946 18.5176 13.2071 18.7051C13.0196 18.8926 12.7652 18.998 12.5 18.998C12.2348 18.998 11.9804 18.8926 11.7929 18.7051C11.6054 18.5176 11.5 18.2632 11.5 17.998V12.998H6.5C6.23478 12.998 5.98043 12.8926 5.79289 12.7051C5.60536 12.5176 5.5 12.2632 5.5 11.998C5.5 11.7328 5.60536 11.4784 5.79289 11.2909C5.98043 11.1033 6.23478 10.998 6.5 10.998H11.5V5.99799C11.5 5.73277 11.6054 5.47842 11.7929 5.29088C11.9804 5.10334 12.2348 4.99799 12.5 4.99799C12.7652 4.99799 13.0196 5.10334 13.2071 5.29088C13.3946 5.47842 13.5 5.73277 13.5 5.99799V10.998H18.5C18.7652 10.998 19.0196 11.1033 19.2071 11.2909C19.3946 11.4784 19.5 11.7328 19.5 11.998C19.5 12.2632 19.3946 12.5176 19.2071 12.7051C19.0196 12.8926 18.7652 12.998 18.5 12.998Z" fill="white"></path>
+                        </svg>
+                        Əlavə et
+                    </a>
+                </div>
+            </div>
+            <div class="rolePermission-body">
+                <div class="rolePermission-table">
+                                {!! $dataTable->table(['class' => 'table table-bordered']) !!}
+                </div>
+            </div>
         </div>
-    </div>
-</div>
+
+
 <div class="pagination-result">
     <p class="result-text" id="result-text">Showing 1 to 10 of 50 entries</p>
     <div class="pagination-result-right">
@@ -156,7 +146,7 @@
 
 <script>
     $(function() {
-        let tableId = '{{ $tableId ?? "users-table" }}';
+        let tableId = '{{ $tableId ?? "role-permissions-table" }}';
         let table = $('#' + tableId).DataTable();
 
         function updateCustomInfo(settings) {
@@ -253,7 +243,7 @@
             $(".message").remove()
             $(".saveForm").remove()
             $.ajax({
-                url: "{{ route('users.form') }}",
+                url: "{{ route('role-managements.form') }}",
                 type: "post",
                 data: {
                     _token: '{{csrf_token()}}'
@@ -272,7 +262,7 @@
             $(".saveForm").remove()
             var id = $(this).attr('data-id')
             $.ajax({
-                url: "{{ route('users.form') }}" + "/" + id,
+                url: "{{ route('role-managements.form') }}" + "/" + id,
                 type: "post",
                 data: {
                     _token: '{{csrf_token()}}'

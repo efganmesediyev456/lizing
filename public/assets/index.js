@@ -160,6 +160,26 @@ document.addEventListener("click", (e) => {
   });
 });
 
+document.body.addEventListener("click", function (e) {
+  if (e.target.classList.contains("actionBtn")) {
+    const next = e.target.nextElementSibling;
+    if (next) {
+      next.classList.toggle("active");
+    }
+  }
+});
+
+
+document.addEventListener("click", function (e) {
+  document.querySelectorAll(".actionBtn").forEach(actionBtn => {
+    const next = actionBtn.nextElementSibling;
+    if (!actionBtn.contains(e.target) && !next.contains(e.target)) {
+      next.classList.remove("active");
+    }
+  });
+});
+
+
 
 
 const closeError=document.querySelector(".closeError")
@@ -943,12 +963,13 @@ const closeEditUser = document.querySelector(".closeEditUser");
 const editUserBtns = document.querySelectorAll(".editUserBtn");
 
 
-editUserBtns.forEach(editUserBtn=>{
-  editUserBtn?.addEventListener("click", () => {
-      add_user_container.style.display = "flex";
-      document.body.style.overflow = "hidden";
-  });
-})
+document.body.addEventListener('click', function(event) {
+  if (event.target.classList.contains('editUserBtn')) {
+    add_user_container.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+});
+
 
 closeEditUser?.addEventListener("click", () => {
   edit_user_container.style.display = "none";

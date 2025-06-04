@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\RoleManagementController;
+use App\Http\Controllers\RolePermissionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,18 +16,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-    Route::get('dahsboard',function(){
+Route::get('dahsboard', function () {})->name('dashboard');
 
-    })->name('dashboard');
-
-    Route::get('logout',function(){
-
-    })->name('logout');
+Route::get('logout', function () {})->name('logout');
 
 
 // Route::middleware(['auth'])->group(function () {
-    Route::get('users',[ UserController::class, 'index']);
-    Route::post('users/form/{item?}', [UserController::class, 'form'])->name('users.form');
-    Route::post('users/save/{item?}', [UserController::class, 'save'])->name('users.save');
+Route::get('users', [UserController::class, 'index']);
+Route::post('users/form/{item?}', [UserController::class, 'form'])->name('users.form');
+Route::post('users/save/{item?}', [UserController::class, 'save'])->name('users.save');
+
+
+//role-managements
+Route::get('role-managements', [RoleManagementController::class, 'index']);
+Route::post('role-managements/form/{item?}', [RoleManagementController::class, 'form'])->name('role-managements.form');
+Route::post('role-managements/save/{item?}', [RoleManagementController::class, 'save'])->name('role-managements.save');
+
+//role-permission
+Route::get('role-permissions', [RolePermissionController::class, 'index']);
+
+
 
 // });

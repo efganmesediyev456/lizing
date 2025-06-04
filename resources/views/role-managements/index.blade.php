@@ -86,7 +86,7 @@
 </div>
 <div class="users-container">
     <div class="users-container-head">
-        <h1>İstifadəçilər</h1>
+        <h1>Rol idarəetməsi</h1>
         <div class="head-buttons">
             <a href="" class="export_excel">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -156,7 +156,7 @@
 
 <script>
     $(function() {
-        let tableId = '{{ $tableId ?? "users-table" }}';
+        let tableId = '{{ $tableId ?? "role-managements-table" }}';
         let table = $('#' + tableId).DataTable();
 
         function updateCustomInfo(settings) {
@@ -253,7 +253,7 @@
             $(".message").remove()
             $(".saveForm").remove()
             $.ajax({
-                url: "{{ route('users.form') }}",
+                url: "{{ route('role-managements.form') }}",
                 type: "post",
                 data: {
                     _token: '{{csrf_token()}}'
@@ -272,7 +272,7 @@
             $(".saveForm").remove()
             var id = $(this).attr('data-id')
             $.ajax({
-                url: "{{ route('users.form') }}" + "/" + id,
+                url: "{{ route('role-managements.form') }}" + "/" + id,
                 type: "post",
                 data: {
                     _token: '{{csrf_token()}}'

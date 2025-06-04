@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('id_card_front')->nullable();
             $table->string('id_card_back')->nullable();
-            $table->enum('status', ['active', 'deactive'])->default('active');
+            $table->tinyInteger('status')->default(1);
             $table->rememberToken();
             $table->timestamps();
         });
