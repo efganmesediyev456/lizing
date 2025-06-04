@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DriverController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RoleManagementController;
 use App\Http\Controllers\RolePermissionController;
@@ -22,19 +23,23 @@ Route::get('logout', function () {})->name('logout');
 
 
 // Route::middleware(['auth'])->group(function () {
-Route::get('users', [UserController::class, 'index']);
+Route::get('users', [UserController::class, 'index'])->name('users.index');
 Route::post('users/form/{item?}', [UserController::class, 'form'])->name('users.form');
 Route::post('users/save/{item?}', [UserController::class, 'save'])->name('users.save');
 
 
 //role-managements
-Route::get('role-managements', [RoleManagementController::class, 'index']);
+Route::get('role-managements', [RoleManagementController::class, 'index'])->name('role-managements.index');
 Route::post('role-managements/form/{item?}', [RoleManagementController::class, 'form'])->name('role-managements.form');
 Route::post('role-managements/save/{item?}', [RoleManagementController::class, 'save'])->name('role-managements.save');
 
 //role-permission
-Route::get('role-permissions', [RolePermissionController::class, 'index']);
+Route::get('role-permissions', [RolePermissionController::class, 'index'])->name('role-permissions.index');
 
 
+//drivers
+Route::get('drivers', [DriverController::class, 'index'])->name('drivers.index');
+Route::post('drivers/form/{item?}', [DriverController::class, 'form'])->name('drivers.form');
+Route::post('drivers/save/{item?}', [DriverController::class, 'save'])->name('drivers.save');
 
 // });

@@ -136,10 +136,10 @@
             </button>
             <div class="aside-dropdown-links">
               <div class="dropdown-links-inner">
-                <a href="../settings/users.html" class="dropdown-link">İstifadəçilər</a>
-                <a href="../settings/logo-management.html" class="dropdown-link">Logo idarəetməsi</a>
-                <a href="../settings/role-permission.html" class="dropdown-link">Rol icazələri</a>
-                <a href="../settings/role-management.html" class="dropdown-link">Rol idarəetməsi</a>
+                <a href="{{ route('users.index') }}" class="dropdown-link">İstifadəçilər</a>
+                <a href="/" class="dropdown-link">Logo idarəetməsi</a>
+                <a href="{{ route('role-permissions.index') }}" class="dropdown-link">Rol icazələri</a>
+                <a href="{{ route('role-managements.index') }}" class="dropdown-link">Rol idarəetməsi</a>
                 <a href="../settings/oilChangeType.html" class="dropdown-link">Yağ dəyişmə növü</a>
               </div>
             </div>

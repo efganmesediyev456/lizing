@@ -116,7 +116,6 @@
         </div>
         <div class="users-table">
 
-            <div id="custom-info" style="margin-bottom: 10px; font-weight: bold;"></div>
 
             {!! $dataTable->table(['class' => 'table table-bordered']) !!}
         </div>
