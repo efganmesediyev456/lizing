@@ -21,7 +21,7 @@
               <p class="right-title">Ödənişlər</p>
             </div>
           </a>
-          <a href="../drivers/drivers.html" class="menuLink">
+          <a href="{{ route('drivers.index') }}" class="menuLink">
             <div class="menuLink-inner">
               <img src="../assets/icons/aside_drivers.svg" alt="" />
               <p>Sürücülər</p>
@@ -45,7 +45,7 @@
                 <a href="../cars/ban-type.html" class="dropdown-link">Ban növü</a>
                 <a href="../cars/brand.html" class="dropdown-link">Marka</a>
                 <a href="../cars/model.html" class="dropdown-link">Model</a>
-                <a href="../cars/autos.html" class="dropdown-link">Avtomobillər</a>
+                <a href="{{ route('vehicles.index') }}" class="dropdown-link">Avtomobillər</a>
                 <a href="../cars/technical-review.html" class="dropdown-link">Texniki baxış</a>
                 <a href="../cars/insurance.html" class="dropdown-link">Sığorta</a>
                 <a href="../cars/oil-change.html" class="dropdown-link">Yağın deyişilməsi</a>
@@ -136,10 +136,10 @@
             </button>
             <div class="aside-dropdown-links">
               <div class="dropdown-links-inner">
-                <a href="../settings/users.html" class="dropdown-link">İstifadəçilər</a>
-                <a href="../settings/logo-management.html" class="dropdown-link">Logo idarəetməsi</a>
-                <a href="../settings/role-permission.html" class="dropdown-link">Rol icazələri</a>
-                <a href="../settings/role-management.html" class="dropdown-link">Rol idarəetməsi</a>
+                <a href="{{ route('users.index') }}" class="dropdown-link">İstifadəçilər</a>
+                <a href="/" class="dropdown-link">Logo idarəetməsi</a>
+                <a href="{{ route('role-permissions.index') }}" class="dropdown-link">Rol icazələri</a>
+                <a href="{{ route('role-managements.index') }}" class="dropdown-link">Rol idarəetməsi</a>
                 <a href="../settings/oilChangeType.html" class="dropdown-link">Yağ dəyişmə növü</a>
               </div>
             </div>
