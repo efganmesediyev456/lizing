@@ -33,7 +33,9 @@ Route::post('role-managements/form/{item?}', [RoleManagementController::class, '
 Route::post('role-managements/save/{item?}', [RoleManagementController::class, 'save'])->name('role-managements.save');
 
 //role-permission
-Route::get('role-permissions', [RolePermissionController::class, 'index']);
+Route::get('role-permissions', [RolePermissionController::class, 'index'])->name('role-permissions.index');
+Route::get('role-permissions/create', [RolePermissionController::class, 'create'])->name("role-permissions.create");
+Route::post('role-permissions/store', [RolePermissionController::class, 'store'])->name("role-permissions.store");
 
 
 

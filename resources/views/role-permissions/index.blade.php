@@ -96,7 +96,7 @@
                         </svg>
                         Export
                     </a>
-                    <a href="addRolePermisson.html" class="addNewRolePermission">
+                    <a href="{{ route('role-permissions.create') }}" class="addNewRolePermission">
                         <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M18.5 12.998H13.5V17.998C13.5 18.2632 13.3946 18.5176 13.2071 18.7051C13.0196 18.8926 12.7652 18.998 12.5 18.998C12.2348 18.998 11.9804 18.8926 11.7929 18.7051C11.6054 18.5176 11.5 18.2632 11.5 17.998V12.998H6.5C6.23478 12.998 5.98043 12.8926 5.79289 12.7051C5.60536 12.5176 5.5 12.2632 5.5 11.998C5.5 11.7328 5.60536 11.4784 5.79289 11.2909C5.98043 11.1033 6.23478 10.998 6.5 10.998H11.5V5.99799C11.5 5.73277 11.6054 5.47842 11.7929 5.29088C11.9804 5.10334 12.2348 4.99799 12.5 4.99799C12.7652 4.99799 13.0196 5.10334 13.2071 5.29088C13.3946 5.47842 13.5 5.73277 13.5 5.99799V10.998H18.5C18.7652 10.998 19.0196 11.1033 19.2071 11.2909C19.3946 11.4784 19.5 11.7328 19.5 11.998C19.5 12.2632 19.3946 12.5176 19.2071 12.7051C19.0196 12.8926 18.7652 12.998 18.5 12.998Z" fill="white"></path>
                         </svg>
@@ -106,6 +106,9 @@
             </div>
             <div class="rolePermission-body">
                 <div class="rolePermission-table">
+                     @if(session('success'))
+                    <p style="background:green;color:white; padding:12px; border-radius:4px;">{{ session('success') }}</p>
+                    @endif
                                 {!! $dataTable->table(['class' => 'table table-bordered']) !!}
                 </div>
             </div>
