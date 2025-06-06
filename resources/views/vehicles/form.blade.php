@@ -23,6 +23,28 @@
             @enderror
         </div>
 
+
+        <div class="form-item">
+                        <label for="">Marka</label>
+                        <select name="brand_id" id="">
+                            <option value="">Secin</option>
+                            @foreach($brands as $brand)
+                            <option @selected($brand->id==$item?->brand_id) value="{{ $brand->id }}">{{ $brand->title }}</option>
+                            @endforeach
+                          
+                        </select>
+                    </div>
+                    <div class="form-item">
+                        <label for="">Model</label>
+                        <select name="model_id" id="">
+                            <option value="">Secin</option>
+                            @foreach($models as $model)
+                            <option @selected($model->id==$item?->model_id) value="{{ $model->id }}">{{ $model->title }}</option>
+                            @endforeach
+                          
+                        </select>
+                    </div>
+
         <div class="form-item">
             <label for="">Dövlət Qeydiyyat Nişanı</label>
             <div class="form-input">
@@ -63,6 +85,17 @@
             @enderror
         </div>
 
+        <!-- <div class="form-item">
+                        <label for="">Yanacaq növü</label>
+                        <select name="oil_change_type_id" id="">
+                            <option value="">Secin</option>
+                            @foreach($oilChangeTypes as $oilChangeType)
+                            <option @selected($oilChangeType->id==$item?->oil_change_type_id) value="{{ $oilChangeType->id }}">{{ $oilChangeType->title }}</option>
+                            @endforeach
+                          
+                        </select>
+                    </div> -->
+
         <div class="form-item">
             <label for="">Mühərrik</label>
             <div class="form-input">
@@ -73,13 +106,13 @@
             @enderror
         </div>
 
-        <div class="form-item">
+        <!-- <div class="form-item">
             <label for="">Status</label>
             <select name="status">
                 <option value="1" @selected($item?->status == 1)>Aktiv</option>
                 <option value="0" @selected($item?->status == 0)>Deaktiv</option>
             </select>
-        </div>
+        </div> -->
     </div>
 
     <button class="submit" type="submit">Yadda Saxla</button>

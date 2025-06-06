@@ -1018,7 +1018,7 @@ button{
         }
         p{
             margin: 20px auto 0;
-            max-width: 100pc;
+            max-width: 100%;
             font-weight: 400;
             font-size: 16px;
             line-height: 24px;
@@ -9496,7 +9496,14 @@ button{
                     font-size: 18px;
                     line-height: 28px;
                     text-align: start;
-                    padding-bottom: 16px;
+                    padding: 0 8px 16px;
+                    &:first-child{
+                        padding-left: 0;
+                    }
+                    &:last-child{
+                        padding-right: 0;
+                        text-align: end;
+                    }   
                 }
                 td{
                     font-weight: 400;
@@ -9504,19 +9511,26 @@ button{
                     line-height: 24px;
                     text-align: start;
                     color: #202224;
-                    padding: 16px 0;
+                    padding: 16px 8px;
+                    min-width: 100px;
+                    &:first-child{
+                        padding-left: 0;
+                        min-width: 40px;
+                    }
+                    &:last-child{
+                        padding-right: 0;
+                    }
                 }
                 tbody{
                     tr{ 
                         border-bottom: 1px solid #DADADA;
                         td{
-                            min-width: 55px;
                             max-width: 250px;
                             .action{
                                 position: relative;
                                 display: flex;
                                 flex-direction: column;
-                                align-items: center;
+                                align-items: end;
                                 .actionBtn{
                                     width: 24px;
                                     height: 24px;
@@ -10464,7 +10478,14 @@ button{
                     font-size: 18px;
                     line-height: 28px;
                     text-align: start;
-                    padding-bottom: 16px;
+                    padding: 0 8px 16px;
+                    &:first-child{
+                        padding-left: 0;
+                    }
+                    &:last-child{
+                        padding-right: 0;
+                        text-align: end;
+                    }   
                 }
                 td{
                     font-weight: 400;
@@ -10472,19 +10493,26 @@ button{
                     line-height: 24px;
                     text-align: start;
                     color: #202224;
-                    padding: 16px 0;
+                    padding: 16px 8px;
+                    min-width: 100px;
+                    &:first-child{
+                        padding-left: 0;
+                        min-width: 40px;
+                    }
+                    &:last-child{
+                        padding-right: 0;
+                    }
                 }
                 tbody{
                     tr{ 
                         border-bottom: 1px solid #DADADA;
                         td{
-                            min-width: 55px;
                             max-width: 250px;
                             .action{
                                 position: relative;
                                 display: flex;
                                 flex-direction: column;
-                                align-items: center;
+                                align-items: end;
                                 .actionBtn{
                                     width: 24px;
                                     height: 24px;
@@ -11055,7 +11083,14 @@ button{
                     font-size: 18px;
                     line-height: 28px;
                     text-align: start;
-                    padding-bottom: 16px;
+                    padding: 0 8px 16px;
+                    &:first-child{
+                        padding-left: 0;
+                    }
+                    &:last-child{
+                        padding-right: 0;
+                        text-align: end;
+                    }   
                 }
                 td{
                     font-weight: 400;
@@ -11063,19 +11098,26 @@ button{
                     line-height: 24px;
                     text-align: start;
                     color: #202224;
-                    padding: 16px 0;
+                    padding: 16px 8px;
+                    min-width: 100px;
+                    &:first-child{
+                        padding-left: 0;
+                        min-width: 40px;
+                    }
+                    &:last-child{
+                        padding-right: 0;
+                    }
                 }
                 tbody{
                     tr{ 
                         border-bottom: 1px solid #DADADA;
                         td{
-                            min-width: 55px;
                             max-width: 250px;
                             .action{
                                 position: relative;
                                 display: flex;
                                 flex-direction: column;
-                                align-items: center;
+                                align-items: end;
                                 .actionBtn{
                                     width: 24px;
                                     height: 24px;
@@ -11645,7 +11687,14 @@ button{
                     font-size: 18px;
                     line-height: 28px;
                     text-align: start;
-                    padding-bottom: 16px;
+                    padding: 0 8px 16px;
+                    &:first-child{
+                        padding-left: 0;
+                    }
+                    &:last-child{
+                        padding-right: 0;
+                        text-align: end;
+                    }   
                 }
                 td{
                     font-weight: 400;
@@ -11653,19 +11702,26 @@ button{
                     line-height: 24px;
                     text-align: start;
                     color: #202224;
-                    padding: 16px 0;
+                    padding: 16px 8px;
+                    min-width: 100px;
+                    &:first-child{
+                        padding-left: 0;
+                        min-width: 40px;
+                    }
+                    &:last-child{
+                        padding-right: 0;
+                    }
                 }
                 tbody{
                     tr{ 
                         border-bottom: 1px solid #DADADA;
                         td{
-                            min-width: 55px;
                             max-width: 250px;
                             .action{
                                 position: relative;
                                 display: flex;
                                 flex-direction: column;
-                                align-items: center;
+                                align-items: end;
                                 .actionBtn{
                                     width: 24px;
                                     height: 24px;
@@ -12236,7 +12292,14 @@ button{
                     font-size: 18px;
                     line-height: 28px;
                     text-align: start;
-                    padding-bottom: 16px;
+                    padding: 0 8px 16px;
+                    &:first-child{
+                        padding-left: 0;
+                    }
+                    &:last-child{
+                        padding-right: 0;
+                        text-align: end;
+                    }   
                 }
                 td{
                     font-weight: 400;
@@ -12244,19 +12307,26 @@ button{
                     line-height: 24px;
                     text-align: start;
                     color: #202224;
-                    padding: 16px 0;
+                    padding: 16px 8px;
+                    min-width: 100px;
+                    &:first-child{
+                        padding-left: 0;
+                        min-width: 40px;
+                    }
+                    &:last-child{
+                        padding-right: 0;
+                    }
                 }
                 tbody{
                     tr{ 
                         border-bottom: 1px solid #DADADA;
                         td{
-                            min-width: 55px;
                             max-width: 250px;
                             .action{
                                 position: relative;
                                 display: flex;
                                 flex-direction: column;
-                                align-items: center;
+                                align-items: end;
                                 .actionBtn{
                                     width: 24px;
                                     height: 24px;
@@ -12811,7 +12881,14 @@ button{
                     font-size: 18px;
                     line-height: 28px;
                     text-align: start;
-                    padding-bottom: 16px;
+                    padding: 0 8px 16px;
+                    &:first-child{
+                        padding-left: 0;
+                    }
+                    &:last-child{
+                        padding-right: 0;
+                        text-align: end;
+                    }   
                 }
                 td{
                     font-weight: 400;
@@ -12819,19 +12896,26 @@ button{
                     line-height: 24px;
                     text-align: start;
                     color: #202224;
-                    padding: 16px 0;
+                    padding: 16px 8px;
+                    min-width: 100px;
+                    &:first-child{
+                        padding-left: 0;
+                        min-width: 40px;
+                    }
+                    &:last-child{
+                        padding-right: 0;
+                    }
                 }
                 tbody{
                     tr{ 
                         border-bottom: 1px solid #DADADA;
                         td{
-                            min-width: 55px;
                             max-width: 250px;
                             .action{
                                 position: relative;
                                 display: flex;
                                 flex-direction: column;
-                                align-items: center;
+                                align-items: end;
                                 .actionBtn{
                                     width: 24px;
                                     height: 24px;
@@ -13386,7 +13470,14 @@ button{
                     font-size: 18px;
                     line-height: 28px;
                     text-align: start;
-                    padding-bottom: 16px;
+                    padding: 0 8px 16px;
+                    &:first-child{
+                        padding-left: 0;
+                    }
+                    &:last-child{
+                        padding-right: 0;
+                        text-align: end;
+                    }   
                 }
                 td{
                     font-weight: 400;
@@ -13394,13 +13485,20 @@ button{
                     line-height: 24px;
                     text-align: start;
                     color: #202224;
-                    padding: 16px 0;
+                    padding: 16px 8px;
+                    min-width: 100px;
+                    &:first-child{
+                        padding-left: 0;
+                        min-width: 40px;
+                    }
+                    &:last-child{
+                        padding-right: 0;
+                    }
                 }
                 tbody{
                     tr{ 
                         border-bottom: 1px solid #DADADA;
                         td{
-                            min-width: 55px;
                             max-width: 250px;
                             .activeUser{
                                 display: flex;
@@ -13454,7 +13552,7 @@ button{
                                 position: relative;
                                 display: flex;
                                 flex-direction: column;
-                                align-items: center;
+                                align-items: end;
                                 .actionBtn{
                                     width: 24px;
                                     height: 24px;
@@ -13517,7 +13615,6 @@ button{
                             border-bottom: none;
                         }
                     }
-                    
                 }
             }
         }
@@ -14885,10 +14982,14 @@ button{
                     font-size: 18px;
                     line-height: 28px;
                     text-align: start;
-                    padding-bottom: 16px;
-                    &:last-child{
-                        text-align: end;
+                    padding: 0 8px 16px;
+                    &:first-child{
+                        padding-left: 0;
                     }
+                    &:last-child{
+                        padding-right: 0;
+                        text-align: end;
+                    }   
                 }
                 td{
                     font-weight: 400;
@@ -14896,13 +14997,20 @@ button{
                     line-height: 24px;
                     text-align: start;
                     color: #202224;
-                    padding: 16px 0;
+                    padding: 16px 8px;
+                    min-width: 100px;
+                    &:first-child{
+                        padding-left: 0;
+                        min-width: 40px;
+                    }
+                    &:last-child{
+                        padding-right: 0;
+                    }
                 }
                 tbody{
                     tr{ 
                         border-bottom: 1px solid #DADADA;
                         td{
-                            min-width: 55px;
                             max-width: 250px;
                             .activeRole{
                                 display: flex;
@@ -15019,7 +15127,6 @@ button{
                             border-bottom: none;
                         }
                     }
-                    
                 }
             }
         }
@@ -15386,10 +15493,14 @@ button{
                     font-size: 18px;
                     line-height: 28px;
                     text-align: start;
-                    padding-bottom: 16px;
-                    &:last-child{
-                        text-align: end;
+                    padding: 0 8px 16px;
+                    &:first-child{
+                        padding-left: 0;
                     }
+                    &:last-child{
+                        padding-right: 0;
+                        text-align: end;
+                    }   
                 }
                 td{
                     font-weight: 400;
@@ -15397,13 +15508,20 @@ button{
                     line-height: 24px;
                     text-align: start;
                     color: #202224;
-                    padding: 16px 0;
+                    padding: 16px 8px;
+                    min-width: 100px;
+                    &:first-child{
+                        padding-left: 0;
+                        min-width: 40px;
+                    }
+                    &:last-child{
+                        padding-right: 0;
+                    }
                 }
                 tbody{
                     tr{ 
                         border-bottom: 1px solid #DADADA;
                         td{
-                            min-width: 55px;
                             max-width: 250px;
                             .activeOilType{
                                 display: flex;
@@ -15520,7 +15638,6 @@ button{
                             border-bottom: none;
                         }
                     }
-                    
                 }
             }
         }
@@ -16004,7 +16121,123 @@ button{
     }
 }
 
-
+.entry-container{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    min-height: 100svh;
+    padding: 40px 20px;
+    .bgImg{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        object-fit: cover;
+        filter: brightness(70%);
+    }
+    .entry-box{
+        max-width: 700px;
+        width: 100%;
+        height: auto;
+        background: rgba(96, 96, 96, 0.16);
+        backdrop-filter: blur(4px);
+        border-radius: 12px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 60px 90px 100px;
+        .logo{
+            width: 140px;
+            height: 140px;
+            min-width: 140px;
+            img{
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .box-title{
+            font-weight: 700;
+            font-size: 30px;
+            line-height: 36px;
+            margin-top: 24px;
+            color: #fff;
+        }
+        form{
+            margin-top: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            width: 100%;
+            .form-inputs{
+                display: flex;
+                flex-direction: column;
+                align-items: start;
+                width: 100%;
+                gap: 24px;
+                input{
+                    border: 1px solid #D8D8D8;
+                    border-radius: 14px;
+                    padding: 12px 20px;
+                    background: transparent;
+                    font-weight: 400;
+                    font-size: 16px;
+                    line-height: 24px;
+                    color: #fff;
+                    width: 100%;
+                    outline: none;
+                    &::placeholder{
+                        color: #B3B2B7;
+                    }
+                }
+            }
+            .form-bottom{
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-top: 16px;
+                .saveMemory{
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    input{
+                        width: 14px;
+                        height: 14px;
+                    }
+                    label{
+                        font-weight: 400;
+                        font-size: 12px;
+                        line-height: 18px;
+                        color: #FFFFFF;
+                    }
+                }
+                .forgetPasswordLink{
+                    font-weight: 400;
+                    font-size: 12px;
+                    line-height: 18px;
+                    text-decoration: underline;
+                    color: #FFFFFF;
+                }
+            }
+            .submitBtn{
+                margin-top: 60px;
+                width: 100%;
+                padding: 12px;
+                background: #4679EF;
+                border-radius: 100px;
+                color: #fff;
+                font-weight: 500;
+                font-size: 16px;
+                line-height: 24px;
+                text-align: center;
+            }
+        }
+    }
+}
 @media only screen and (max-width: 1250px) {
     .crm-container{
         grid-template-columns: 210px calc(100% - 210px);
@@ -16292,7 +16525,72 @@ button{
             }
         }
     }
-
+    .success-modal-container{
+        .success-modal{
+            max-width: 630px;
+            padding: 40px 20px;
+            .closeSuccess{
+                width: 24px;
+                height: 24px;
+                min-width: 24px;
+                top: 16px;
+                right: 16px;
+            }
+            img{
+                max-width: 200px;
+            }
+            h2{
+                margin-top: 20px;
+                font-size: 20px;
+                line-height: 28px;
+            }
+            p{
+                margin: 12px auto 0;
+                max-width: 300px;
+                font-size: 15px;
+                line-height: 22px;
+            }
+            .goBack{
+                margin: 14px auto 0;
+                padding: 10px 40px;
+                font-size: 15px;
+                line-height: 22px;
+            }  
+        }
+    }
+    .error-modal-container{
+        .error-modal{
+            max-width: 630px;
+            padding: 40px 20px;
+            .closeError{
+                width: 24px;
+                height: 24px;
+                min-width: 24px;
+                top: 16px;
+                right: 16px;
+            }
+            img{
+                max-width: 230px;
+            }
+            h2{
+                margin-top: 20px;
+                font-size: 20px;
+                line-height: 28px;
+            }
+            p{
+                margin: 12px auto 0;
+                max-width: 300px;
+                font-size: 15px;
+                line-height: 22px;
+            }
+            .goBack{
+                margin: 14px auto 0;
+                padding: 10px 40px;
+                font-size: 15px;
+                line-height: 22px;
+            } 
+        }
+    }
     /*============== Dashboard ==================*/
 
     .dashboard-continer{
@@ -16702,6 +17000,7 @@ button{
             }
             .viewDrivers-form{
                 margin-top: 20px;
+                gap: 20px;
                 .form-items{
                     max-width: 100%;
                     gap: 20px 60px;
@@ -19866,6 +20165,2931 @@ button{
             }
         }
     }
+
+    /*============== Leasing ==================*/
+    .leasing-container{
+        padding:20px 20px 0;
+        .leasing-container-head{
+            h1{
+                font-size: 28px;
+                line-height: 36px;
+            }
+            .head-buttons{
+                display: flex;
+                align-items: center;
+                gap: 20px;
+                .export_excel{
+                    padding: 10px 24px;
+                    gap: 8px;
+                    font-size: 15px;
+                    line-height: 22px;
+                    svg{
+                        min-width: 22px;
+                        width: 22px;
+                        height: 22px;
+                    }
+                }
+                .addNewLeasing{
+                    padding: 10px 24px;
+                    gap: 8px;
+                    font-size: 15px;
+                    line-height: 22px;
+                    svg{
+                        min-width: 22px;
+                        width: 22px;
+                        height: 22px;
+                    }
+                }
+            }
+        }
+        .leasing-body{
+            margin-top: 20px;
+            padding: 20px 16px;
+            .leasing-body-head{
+                h2{
+                    font-size: 18px;
+                    line-height: 24px;
+                }
+                .modul-search{
+                    gap: 8px;
+                    padding: 6px 8px;
+                    .search_btn{
+                        width: 22px;
+                        height: 22px;
+                        min-width: 22px;
+                    }
+                }
+            }
+            .leasing-table{
+                margin-top: 40px;
+                table{
+                    th{
+                        font-size: 16px;
+                        line-height: 24px;
+                        padding: 0 8px 12px;
+                        &:first-child{
+                            padding-left: 0;
+                        }
+                        &:last-child{
+                            padding-right: 0;
+                        }  
+                    }
+                    td{
+                        font-size: 14px;
+                        line-height: 20px;
+                        padding: 12px 8px;
+                        &:first-child{
+                            padding-left: 0;
+                        }
+                        &:last-child{
+                            padding-right: 0;
+                        }
+                    }
+                    tbody{
+                        tr{ 
+                            td{
+                                .action{
+                                    .action-links{
+                                        .action-link{
+                                            font-size: 15px;
+                                            line-height: 22px;
+                                            padding: 8px 6px;
+                                            img{
+                                                width: 19px;
+                                                height: 19px;
+                                                min-width: 19px
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            } 
+            .total-payment{
+                padding: 20px 24px 0;
+                p,span{
+                    font-size: 16px;
+                    line-height: 24px;
+                }
+            }
+        }
+    }
+    .add-leasing-container{
+        .add-leasing{
+            max-width: 630px;
+            padding: 30px 20px;
+            h2{
+                font-size: 28px;
+                line-height: 36px;
+            }
+            .closeAddLeasing{
+                width: 24px;
+                height: 24px;
+                min-width: 24px;
+                top: 16px;
+                right: 16px;
+            }
+            form{
+                margin-top: 20px;
+                gap: 16px;
+                .form-items{
+                    gap: 16px;
+                }
+                .form-item{
+                    gap: 8px;
+                    label{
+                        font-size: 14px;
+                        line-height: 20px;
+                    }
+                    .form-input{
+                        gap: 10px;
+                        padding: 12px 16px;
+                        textarea{
+                            height: 90px;
+                        }
+                    }
+                    select{
+                        padding: 12px 16px;   
+                    }
+                }
+                .upload-box{
+                    gap: 10px;
+                    .add_file_box{
+                        padding: 8px 16px;
+                        gap: 10px;
+                        .uploadIcon{
+                            width: 32px;
+                            height: 32px;
+                            min-width: 32px;
+                        }
+                        .box-text{
+                            gap: 6px;
+                            p{
+                                font-size: 12px;
+                                line-height: 14px;
+                            }
+                            span{
+                                font-size: 12px;
+                                line-height: 14px;
+                            }
+                        }
+                        .selectFileTxt{
+                            font-size: 13px;
+                            line-height: 15px;
+                        }
+                    }
+                    .document-list{
+                        padding: 12px;
+                        gap: 12px;
+                        .document-item{
+                            gap: 16px;
+                            .document-title{
+                                gap: 12px;
+                                img{
+                                    width: 28px;
+                                    height: 28px;
+                                    min-width: 28px;
+                                }
+                                p{
+                                    font-size: 12px;
+                                    line-height: 14px;
+                                }
+                            }
+                            .document-actions{
+                                gap: 8px;
+                                .viewDocument,.deleteDocument{
+                                    width: 22px;
+                                    height: 22px;
+                                    min-width: 22px;
+                                }
+                            }
+                        }
+                    }
+                }
+                .submit{
+                    margin-top: 12px;
+                    padding: 12px;
+                    font-size: 15px;
+                    line-height: 22px;
+                }
+            }
+        }
+    }
+    .edit-leasing-container{
+        .edit-leasing{
+            max-width: 630px;
+            padding: 30px 20px;
+            h2{
+                font-size: 28px;
+                line-height: 36px;
+            }
+            .closeEditLeasing{
+                width: 24px;
+                height: 24px;
+                min-width: 24px;
+                top: 16px;
+                right: 16px;
+            }
+            form{
+                margin-top: 20px;
+                gap: 16px;
+                .form-items{
+                    gap: 16px;
+                }
+                .form-item{
+                    gap: 8px;
+                    label{
+                        font-size: 14px;
+                        line-height: 20px;
+                    }
+                    .form-input{
+                        gap: 10px;
+                        padding: 12px 16px;
+                        textarea{
+                            height: 90px;
+                        }
+                    }
+                    select{
+                        padding: 12px 16px;   
+                    }
+                }
+                .upload-box{
+                    gap: 10px;
+                    .add_file_box{
+                        padding: 8px 16px;
+                        gap: 10px;
+                        .uploadIcon{
+                            width: 32px;
+                            height: 32px;
+                            min-width: 32px;
+                        }
+                        .box-text{
+                            gap: 6px;
+                            p{
+                                font-size: 12px;
+                                line-height: 14px;
+                            }
+                            span{
+                                font-size: 12px;
+                                line-height: 14px;
+                            }
+                        }
+                        .selectFileTxt{
+                            font-size: 13px;
+                            line-height: 15px;
+                        }
+                    }
+                    .document-list{
+                        padding: 12px;
+                        gap: 12px;
+                        .document-item{
+                            gap: 16px;
+                            .document-title{
+                                gap: 12px;
+                                img{
+                                    width: 28px;
+                                    height: 28px;
+                                    min-width: 28px;
+                                }
+                                p{
+                                    font-size: 12px;
+                                    line-height: 14px;
+                                }
+                            }
+                            .document-actions{
+                                gap: 8px;
+                                .viewDocument,.deleteDocument{
+                                    width: 22px;
+                                    height: 22px;
+                                    min-width: 22px;
+                                }
+                            }
+                        }
+                    }
+                }
+                .submit{
+                    margin-top: 12px;
+                    padding: 12px;
+                    font-size: 15px;
+                    line-height: 22px;
+                }
+            }
+        }
+    }
+    .viewLeasing-container{
+        padding:20px;
+        .viewLeasing-container-head{
+            h1{
+                font-size: 20px;
+                line-height: 24px;
+            }
+        }
+        .viewLeasing-body{
+            margin-top: 30px;
+            padding: 30px;
+            .viewLeasing-tabs{
+                max-width: 540px;
+                gap: 12px;
+                .leasing_tab{
+                    font-size: 18px;
+                    line-height: 24px;
+                    padding-bottom: 6px;
+                }
+            }
+            .viewLeasing_content{
+                .form-items{
+                    max-width: 100%;
+                    gap: 20px 60px;
+                }
+                .form-item{
+                    max-width: 100%;
+                    gap: 8px;
+                    label{
+                        font-size: 14px;
+                        line-height: 20px;
+                    }
+                    .form-input{
+                        gap: 10px;
+                        padding: 12px;
+                        textarea{
+                            height: 90px;
+                        }
+                    }
+                    select{
+                        padding: 12px;   
+                    }
+                }
+            }
+            .driverInfoContent{
+                .driver-document-images{
+                    .document-box{
+                        gap: 14px;
+                        h2{
+                            font-size: 14px;
+                            line-height: 18px;
+                        }
+                        .document-list{
+                            padding: 20px;
+                            gap: 20px;
+                            .document-item{
+                                gap: 16px;
+                                .document-title{
+                                    gap: 12px;
+                                    img{
+                                        width: 28px;
+                                        height: 28px;
+                                        min-width: 28px;
+                                    }
+                                    p{
+                                        font-size: 12px;
+                                        line-height: 14px;
+                                    }
+                                }
+                                .document-actions{
+                                    gap: 8px;
+                                    .viewDocument,.deleteDocument{
+                                        width: 22px;
+                                        height: 22px;
+                                        min-width: 22px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .leasingInfoContent{
+                .documents{
+                    max-width: 100%;
+                    .document-box{
+                        gap: 14px;
+                        h2{
+                            font-size: 14px;
+                            line-height: 18px;
+                        }
+                        .document-list{
+                            padding: 20px;
+                            gap: 20px;
+                            .document-item{
+                                gap: 16px;
+                                .document-title{
+                                    gap: 12px;
+                                    img{
+                                        width: 28px;
+                                        height: 28px;
+                                        min-width: 28px;
+                                    }
+                                    p{
+                                        font-size: 12px;
+                                        line-height: 14px;
+                                    }
+                                }
+                                .document-actions{
+                                    gap: 8px;
+                                    .viewDocument,.deleteDocument{
+                                        width: 22px;
+                                        height: 22px;
+                                        min-width: 22px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /*============== Deposits ==================*/
+    .deposits-container{
+        padding:20px 20px 0;
+        .deposits-container-head{
+            h1{
+                font-size: 28px;
+                line-height: 36px;
+            }
+            .head-buttons{
+                display: flex;
+                align-items: center;
+                gap: 20px;
+                .export_excel{
+                    padding: 10px 24px;
+                    gap: 8px;
+                    font-size: 15px;
+                    line-height: 22px;
+                    svg{
+                        min-width: 22px;
+                        width: 22px;
+                        height: 22px;
+                    }
+                }
+                .addNewDeposits{
+                    padding: 10px 24px;
+                    gap: 8px;
+                    font-size: 15px;
+                    line-height: 22px;
+                    svg{
+                        min-width: 22px;
+                        width: 22px;
+                        height: 22px;
+                    }
+                }
+            }
+        }
+        .deposits-body{
+            margin-top: 20px;
+            padding: 20px 16px;
+            .deposits-body-head{
+                h2{
+                    font-size: 18px;
+                    line-height: 24px;
+                }
+                .modul-search{
+                    gap: 8px;
+                    padding: 6px 8px;
+                    .search_btn{
+                        width: 22px;
+                        height: 22px;
+                        min-width: 22px;
+                    }
+                }
+            }
+            .deposits-table{
+                margin-top: 40px;
+                table{
+                    th{
+                        font-size: 16px;
+                        line-height: 24px;
+                        padding: 0 8px 12px;
+                        &:first-child{
+                            padding-left: 0;
+                        }
+                        &:last-child{
+                            padding-right: 0;
+                        }  
+                    }
+                    td{
+                        font-size: 14px;
+                        line-height: 20px;
+                        padding: 12px 8px;
+                        &:first-child{
+                            padding-left: 0;
+                        }
+                        &:last-child{
+                            padding-right: 0;
+                        }
+                    }
+                    tbody{
+                        tr{ 
+                            td{
+                                .action{
+                                    .action-links{
+                                        .action-link{
+                                            font-size: 15px;
+                                            line-height: 22px;
+                                            padding: 8px 6px;
+                                            img{
+                                                width: 19px;
+                                                height: 19px;
+                                                min-width: 19px
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            } 
+            .total-payment{
+                padding: 20px 24px 0;
+                p,span{
+                    font-size: 16px;
+                    line-height: 24px;
+                }
+            }
+        }
+    }
+    .add-deposits-container{
+        .add-deposits{
+            max-width: 630px;
+            padding: 30px 20px;
+            h2{
+                font-size: 28px;
+                line-height: 36px;
+            }
+            .closeAddDeposits{
+                width: 24px;
+                height: 24px;
+                min-width: 24px;
+                top: 16px;
+                right: 16px;
+            }
+            form{
+                margin-top: 20px;
+                gap: 16px;
+                .form-items{
+                    gap: 16px;
+                }
+                .form-item{
+                    gap: 8px;
+                    label{
+                        font-size: 14px;
+                        line-height: 20px;
+                    }
+                    .form-input{
+                        gap: 10px;
+                        padding: 12px 16px;
+                        textarea{
+                            height: 90px;
+                        }
+                    }
+                    select{
+                        padding: 12px 16px;   
+                    }
+                }
+                .submit{
+                    margin-top: 12px;
+                    padding: 12px;
+                    font-size: 15px;
+                    line-height: 22px;
+                }
+            }
+        }
+    }
+    .edit-deposits-container{
+        .edit-deposits{
+            max-width: 630px;
+            padding: 30px 20px;
+            h2{
+                font-size: 28px;
+                line-height: 36px;
+            }
+            .closeEditDeposits{
+                width: 24px;
+                height: 24px;
+                min-width: 24px;
+                top: 16px;
+                right: 16px;
+            }
+            form{
+                margin-top: 20px;
+                gap: 16px;
+                .form-items{
+                    gap: 16px;
+                }
+                .form-item{
+                    gap: 8px;
+                    label{
+                        font-size: 14px;
+                        line-height: 20px;
+                    }
+                    .form-input{
+                        gap: 10px;
+                        padding: 12px 16px;
+                        textarea{
+                            height: 90px;
+                        }
+                    }
+                    select{
+                        padding: 12px 16px;   
+                    }
+                }
+                .submit{
+                    margin-top: 12px;
+                    padding: 12px;
+                    font-size: 15px;
+                    line-height: 22px;
+                }
+            }
+        }
+    }
+    .viewDeposits-container{
+        padding:20px;
+        .viewDeposits-container-head{
+            h1{
+                font-size: 20px;
+                line-height: 24px;
+            }
+        }
+        .viewDeposits-body{
+            margin-top: 30px;
+            padding: 30px;
+            .viewDeposits-body-head{
+                h2{
+                    font-size: 18px;
+                    line-height: 24px;
+                }
+            }
+            .viewDeposits-form{
+                max-width: 100%;
+                margin-top: 20px;
+                gap: 20px;
+                .form-items{
+                    gap: 20px 60px;
+                }
+                .form-item{
+                    gap: 8px;
+                    label{
+                        font-size: 14px;
+                        line-height: 20px;
+                    }
+                    .form-input{
+                        gap: 10px;
+                        padding: 12px;
+                        textarea{
+                            height: 90px;
+                            resize: none;
+                        }
+                    }
+                    select{
+                        padding: 12px;
+                    }
+                }
+            }
+        }
+    }
+
+    /*============== Expenses ==================*/
+    .expenses-container{
+        padding:20px 20px 0;
+        .expenses-container-head{
+            h1{
+                font-size: 28px;
+                line-height: 36px;
+            }
+            .head-buttons{
+                display: flex;
+                align-items: center;
+                gap: 20px;
+                .export_excel{
+                    padding: 10px 24px;
+                    gap: 8px;
+                    font-size: 15px;
+                    line-height: 22px;
+                    svg{
+                        min-width: 22px;
+                        width: 22px;
+                        height: 22px;
+                    }
+                }
+                .addNewExpenses{
+                    padding: 10px 24px;
+                    gap: 8px;
+                    font-size: 15px;
+                    line-height: 22px;
+                    svg{
+                        min-width: 22px;
+                        width: 22px;
+                        height: 22px;
+                    }
+                }
+            }
+        }
+        .expenses-body{
+            margin-top: 20px;
+            padding: 20px 16px;
+            .expenses-body-head{
+                h2{
+                    font-size: 18px;
+                    line-height: 24px;
+                }
+                .modul-search{
+                    gap: 8px;
+                    padding: 6px 8px;
+                    .search_btn{
+                        width: 22px;
+                        height: 22px;
+                        min-width: 22px;
+                    }
+                }
+            }
+            .expenses-table{
+                margin-top: 40px;
+                table{
+                    th{
+                        font-size: 16px;
+                        line-height: 24px;
+                        padding: 0 8px 12px;
+                        &:first-child{
+                            padding-left: 0;
+                        }
+                        &:last-child{
+                            padding-right: 0;
+                        }  
+                    }
+                    td{
+                        font-size: 14px;
+                        line-height: 20px;
+                        padding: 12px 8px;
+                        &:first-child{
+                            padding-left: 0;
+                        }
+                        &:last-child{
+                            padding-right: 0;
+                        }
+                    }
+                    tbody{
+                        tr{ 
+                            td{
+                                .action{
+                                    .action-links{
+                                        .action-link{
+                                            font-size: 15px;
+                                            line-height: 22px;
+                                            padding: 8px 6px;
+                                            img{
+                                                width: 19px;
+                                                height: 19px;
+                                                min-width: 19px
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            } 
+            .total-payment{
+                padding: 20px 24px 0;
+                p,span{
+                    font-size: 16px;
+                    line-height: 24px;
+                }
+            }
+        }
+    }
+    .add-expenses-container{
+        .add-expenses{
+            max-width: 630px;
+            padding: 30px 20px;
+            h2{
+                font-size: 28px;
+                line-height: 36px;
+            }
+            .closeAddExpenses{
+                width: 24px;
+                height: 24px;
+                min-width: 24px;
+                top: 16px;
+                right: 16px;
+            }
+            form{
+                margin-top: 20px;
+                gap: 16px;
+                .form-items{
+                    gap: 16px;
+                }
+                .form-item{
+                    gap: 8px;
+                    label{
+                        font-size: 14px;
+                        line-height: 20px;
+                    }
+                    .form-input{
+                        gap: 10px;
+                        padding: 12px 16px;
+                        textarea{
+                            height: 90px;
+                        }
+                    }
+                    select{
+                        padding: 12px 16px;   
+                    }
+                }
+                .submit{
+                    margin-top: 12px;
+                    padding: 12px;
+                    font-size: 15px;
+                    line-height: 22px;
+                }
+            }
+        }
+    }
+    .edit-expenses-container{
+        .edit-expenses{
+            max-width: 630px;
+            padding: 30px 20px;
+            h2{
+                font-size: 28px;
+                line-height: 36px;
+            }
+            .closeEditExpenses{
+                width: 24px;
+                height: 24px;
+                min-width: 24px;
+                top: 16px;
+                right: 16px;
+            }
+            form{
+                margin-top: 20px;
+                gap: 16px;
+                .form-items{
+                    gap: 16px;
+                }
+                .form-item{
+                    gap: 8px;
+                    label{
+                        font-size: 14px;
+                        line-height: 20px;
+                    }
+                    .form-input{
+                        gap: 10px;
+                        padding: 12px 16px;
+                        textarea{
+                            height: 90px;
+                        }
+                    }
+                    select{
+                        padding: 12px 16px;   
+                    }
+                }
+                .submit{
+                    margin-top: 12px;
+                    padding: 12px;
+                    font-size: 15px;
+                    line-height: 22px;
+                }
+            }
+        }
+    }
+    .viewExpenses-container{
+        padding:20px;
+        .viewExpenses-container-head{
+            h1{
+                font-size: 20px;
+                line-height: 24px;
+            }
+        }
+        .viewExpenses-body{
+            margin-top: 30px;
+            padding: 30px;
+            .viewExpenses-body-head{
+                h2{
+                    font-size: 18px;
+                    line-height: 24px;
+                }
+            }
+            .viewExpenses-form{
+                max-width: 100%;
+                margin-top: 20px;
+                gap: 20px;
+                .form-items{
+                    gap: 20px 60px;
+                }
+                .form-item{
+                    gap: 8px;
+                    label{
+                        font-size: 14px;
+                        line-height: 20px;
+                    }
+                    .form-input{
+                        gap: 10px;
+                        padding: 12px;
+                        textarea{
+                            height: 90px;
+                            resize: none;
+                        }
+                    }
+                    select{
+                        padding: 12px;
+                    }
+                }
+            }
+        }
+    }
+
+    /*============== Revenue ==================*/
+    .revenue-container{
+        padding:20px 20px 0;
+        .revenue-container-head{
+            h1{
+                font-size: 28px;
+                line-height: 36px;
+            }
+            .head-buttons{
+                display: flex;
+                align-items: center;
+                gap: 20px;
+                .export_excel{
+                    padding: 10px 24px;
+                    gap: 8px;
+                    font-size: 15px;
+                    line-height: 22px;
+                    svg{
+                        min-width: 22px;
+                        width: 22px;
+                        height: 22px;
+                    }
+                }
+                .addNewRevenue{
+                    padding: 10px 24px;
+                    gap: 8px;
+                    font-size: 15px;
+                    line-height: 22px;
+                    svg{
+                        min-width: 22px;
+                        width: 22px;
+                        height: 22px;
+                    }
+                }
+            }
+        }
+        .revenue-body{
+            margin-top: 20px;
+            padding: 20px 16px;
+            .revenue-body-head{
+                h2{
+                    font-size: 18px;
+                    line-height: 24px;
+                }
+                .modul-search{
+                    gap: 8px;
+                    padding: 6px 8px;
+                    .search_btn{
+                        width: 22px;
+                        height: 22px;
+                        min-width: 22px;
+                    }
+                }
+            }
+            .revenue-table{
+                margin-top: 40px;
+                table{
+                    th{
+                        font-size: 16px;
+                        line-height: 24px;
+                        padding: 0 8px 12px;
+                        &:first-child{
+                            padding-left: 0;
+                        }
+                        &:last-child{
+                            padding-right: 0;
+                        }  
+                    }
+                    td{
+                        font-size: 14px;
+                        line-height: 20px;
+                        padding: 12px 8px;
+                        &:first-child{
+                            padding-left: 0;
+                        }
+                        &:last-child{
+                            padding-right: 0;
+                        }
+                    }
+                    tbody{
+                        tr{ 
+                            td{
+                                .action{
+                                    .action-links{
+                                        .action-link{
+                                            font-size: 15px;
+                                            line-height: 22px;
+                                            padding: 8px 6px;
+                                            img{
+                                                width: 19px;
+                                                height: 19px;
+                                                min-width: 19px
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            } 
+            .total-payment{
+                padding: 20px 24px 0;
+                p,span{
+                    font-size: 16px;
+                    line-height: 24px;
+                }
+            }
+        }
+    }
+    .add-revenue-container{
+        .add-revenue{
+            max-width: 630px;
+            padding: 30px 20px;
+            h2{
+                font-size: 28px;
+                line-height: 36px;
+            }
+            .closeAddRevenue{
+                width: 24px;
+                height: 24px;
+                min-width: 24px;
+                top: 16px;
+                right: 16px;
+            }
+            form{
+                margin-top: 20px;
+                gap: 16px;
+                .form-items{
+                   gap: 16px;
+                }
+                .form-item{
+                    gap: 8px;
+                    label{
+                        font-size: 14px;
+                        line-height: 20px;
+                    }
+                    .form-input{
+                        gap: 10px;
+                        padding: 12px 16px;
+                        textarea{
+                            height: 90px;
+                        }
+                    }
+                    select{
+                        padding: 12px 16px;   
+                    }
+                }
+                .submit{
+                    margin-top: 12px;
+                    padding: 12px;
+                    font-size: 15px;
+                    line-height: 22px;
+                }
+            }
+        }
+    }
+    .edit-revenue-container{
+        .edit-revenue{
+            max-width: 630px;
+            padding: 30px 20px;
+            h2{
+                font-size: 28px;
+                line-height: 36px;
+            }
+            .closeEditRevenue{
+                width: 24px;
+                height: 24px;
+                min-width: 24px;
+                top: 16px;
+                right: 16px;
+            }
+            form{
+                margin-top: 20px;
+                gap: 16px;
+                .form-items{
+                   gap: 16px;
+                }
+                .form-item{
+                    gap: 8px;
+                    label{
+                        font-size: 14px;
+                        line-height: 20px;
+                    }
+                    .form-input{
+                        gap: 10px;
+                        padding: 12px 16px;
+                        textarea{
+                            height: 90px;
+                        }
+                    }
+                    select{
+                        padding: 12px 16px;   
+                    }
+                }
+                .submit{
+                    margin-top: 12px;
+                    padding: 12px;
+                    font-size: 15px;
+                    line-height: 22px;
+                }
+            }
+        }
+    }
+    .viewRevenue-container{
+        padding:20px;
+        .viewRevenue-container-head{
+            h1{
+                font-size: 20px;
+                line-height: 24px;
+            }
+        }
+        .viewRevenue-body{
+            margin-top: 30px;
+            padding: 30px;
+            .viewRevenue-body-head{
+                h2{
+                    font-size: 18px;
+                    line-height: 24px;
+                }
+            }
+            .viewRevenue-form{
+                max-width: 100%;
+                margin-top: 20px;
+                gap: 20px;
+                .form-items{
+                    gap: 20px 60px;
+                }
+                .form-item{
+                    gap: 8px;
+                    label{
+                        font-size: 14px;
+                        line-height: 20px;
+                    }
+                    .form-input{
+                        gap: 10px;
+                        padding: 12px;
+                        textarea{
+                            height: 90px;
+                            resize: none;
+                        }
+                    }
+                    select{
+                        padding: 12px;
+                    }
+                }
+            }
+        }
+    }
+
+    /*============== Cashbox ==================*/
+    .cashbox-container{
+        padding:20px 20px 0;
+        .cashbox-container-head{
+            h1{
+                font-size: 28px;
+                line-height: 36px;
+            }
+            .head-buttons{
+                display: flex;
+                align-items: center;
+                gap: 20px;
+                .export_excel{
+                    padding: 10px 24px;
+                    gap: 8px;
+                    font-size: 15px;
+                    line-height: 22px;
+                    svg{
+                        min-width: 22px;
+                        width: 22px;
+                        height: 22px;
+                    }
+                }
+                .addNewCashbox{
+                    padding: 10px 24px;
+                    gap: 8px;
+                    font-size: 15px;
+                    line-height: 22px;
+                    svg{
+                        min-width: 22px;
+                        width: 22px;
+                        height: 22px;
+                    }
+                }
+            }
+        }
+        .cashbox-body{
+            margin-top: 20px;
+            padding: 20px 16px;
+            .cashbox-body-head{
+                h2{
+                    font-size: 18px;
+                    line-height: 24px;
+                }
+                .modul-search{
+                    gap: 8px;
+                    padding: 6px 8px;
+                    .search_btn{
+                        width: 22px;
+                        height: 22px;
+                        min-width: 22px;
+                    }
+                }
+            }
+            .cashbox-table{
+                margin-top: 40px;
+                table{
+                    th{
+                        font-size: 16px;
+                        line-height: 24px;
+                        padding: 0 8px 12px;
+                        &:first-child{
+                            padding-left: 0;
+                        }
+                        &:last-child{
+                            padding-right: 0;
+                        }  
+                    }
+                    td{
+                        font-size: 14px;
+                        line-height: 20px;
+                        padding: 12px 8px;
+                        &:first-child{
+                            padding-left: 0;
+                        }
+                        &:last-child{
+                            padding-right: 0;
+                        }
+                    }
+                    tbody{
+                        tr{ 
+                            td{
+                                .action{
+                                    .action-links{
+                                        .action-link{
+                                            font-size: 15px;
+                                            line-height: 22px;
+                                            padding: 8px 6px;
+                                            img{
+                                                width: 19px;
+                                                height: 19px;
+                                                min-width: 19px
+                                            }
+                                        } 
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            } 
+        }
+    }
+    .add-cashbox-container{
+        .add-cashbox{
+            max-width: 630px;
+            padding: 30px 20px;
+            h2{
+                font-size: 28px;
+                line-height: 36px;
+            }
+            .closeAddCashbox{
+                width: 24px;
+                height: 24px;
+                min-width: 24px;
+                top: 16px;
+                right: 16px;
+            }
+            form{
+                margin-top: 20px;
+                gap: 16px;
+                .form-items{
+                    gap: 16px;
+                }
+                .form-item{
+                    gap: 8px;
+                    label{
+                        font-size: 14px;
+                        line-height: 20px;
+                    }
+                    .form-input{
+                        gap: 10px;
+                        padding: 12px 16px;
+                        textarea{
+                            height: 90px;
+                        }
+                    }
+                    select{
+                        padding: 12px 16px;   
+                    }
+                }
+                .submit{
+                    margin-top: 12px;
+                    padding: 12px;
+                    font-size: 15px;
+                    line-height: 22px;
+                }
+            }
+        }
+    }
+    .edit-cashbox-container{
+        .edit-cashbox{
+            max-width: 630px;
+            padding: 30px 20px;
+            h2{
+                font-size: 28px;
+                line-height: 36px;
+            }
+            .closeEditCashbox{
+                width: 24px;
+                height: 24px;
+                min-width: 24px;
+                top: 16px;
+                right: 16px;
+            }
+            form{
+                margin-top: 20px;
+                gap: 16px;
+                .form-items{
+                    gap: 16px;
+                }
+                .form-item{
+                    gap: 8px;
+                    label{
+                        font-size: 14px;
+                        line-height: 20px;
+                    }
+                    .form-input{
+                        gap: 10px;
+                        padding: 12px 16px;
+                        textarea{
+                            height: 90px;
+                        }
+                    }
+                    select{
+                        padding: 12px 16px;   
+                    }
+                }
+                .submit{
+                    margin-top: 12px;
+                    padding: 12px;
+                    font-size: 15px;
+                    line-height: 22px;
+                }
+            }
+        }
+    }
+    .viewCashbox-container{
+        padding:20px;
+        .viewCashbox-container-head{
+            h1{
+                font-size: 20px;
+                line-height: 24px;
+            }
+        }
+        .viewCashbox-body{
+            margin-top: 30px;
+            padding: 30px;
+            .viewCashbox-body-head{
+                h2{
+                    font-size: 18px;
+                    line-height: 24px;
+                }
+            }
+            .viewCashbox-form{
+                max-width: 100%;
+                margin-top: 20px;
+                gap: 20px;
+                .form-items{
+                    gap: 20px 60px;
+                }
+                .form-item{
+                    gap: 8px;
+                    label{
+                        font-size: 14px;
+                        line-height: 20px;
+                    }
+                    .form-input{
+                        gap: 10px;
+                        padding: 12px;
+                        textarea{
+                            height: 90px;
+                            resize: none;
+                        }
+                    }
+                    select{
+                        padding: 12px;
+                    }
+                }
+            }
+        }
+    }
+
+    /*============== Debt ==================*/
+    .debt-container{
+        padding:20px 20px 0;
+        .debt-container-head{
+            h1{
+                font-size: 28px;
+                line-height: 36px;
+            }
+            .head-buttons{
+                display: flex;
+                align-items: center;
+                gap: 20px;
+                .export_excel{
+                    padding: 10px 24px;
+                    gap: 8px;
+                    font-size: 15px;
+                    line-height: 22px;
+                    svg{
+                        min-width: 22px;
+                        width: 22px;
+                        height: 22px;
+                    }
+                }
+                .addNewDebt{
+                    padding: 10px 24px;
+                    gap: 8px;
+                    font-size: 15px;
+                    line-height: 22px;
+                    svg{
+                        min-width: 22px;
+                        width: 22px;
+                        height: 22px;
+                    }
+                }
+            }
+        }
+        .debt-body{
+            margin-top: 20px;
+            padding: 20px 16px;
+            .debt-body-head{
+                h2{
+                    font-size: 18px;
+                    line-height: 24px;
+                }
+                .modul-search{
+                    gap: 8px;
+                    padding: 6px 8px;
+                    .search_btn{
+                        width: 22px;
+                        height: 22px;
+                        min-width: 22px;
+                    }
+                }
+            }
+            .debt-table{
+                margin-top: 40px;
+                table{
+                    th{
+                        font-size: 16px;
+                        line-height: 24px;
+                        padding: 0 8px 12px;
+                        &:first-child{
+                            padding-left: 0;
+                        }
+                        &:last-child{
+                            padding-right: 0;
+                        }  
+                    }
+                    td{
+                        font-size: 14px;
+                        line-height: 20px;
+                        padding: 12px 8px;
+                        &:first-child{
+                            padding-left: 0;
+                        }
+                        &:last-child{
+                            padding-right: 0;
+                        }
+                    }
+                    tbody{
+                        tr{ 
+                            td{
+                                .action{
+                                    .action-links{
+                                        .action-link{
+                                            font-size: 15px;
+                                            line-height: 22px;
+                                            padding: 8px 6px;
+                                            img{
+                                                width: 19px;
+                                                height: 19px;
+                                                min-width: 19px
+                                            }
+                                        } 
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            } 
+        }
+    }
+    .add-debt-container{
+        .add-debt{
+            max-width: 630px;
+            padding: 30px 20px;
+            h2{
+                font-size: 28px;
+                line-height: 36px;
+            }
+            .closeAddDebt{
+                width: 24px;
+                height: 24px;
+                min-width: 24px;
+                top: 16px;
+                right: 16px;
+            }
+            form{
+                margin-top: 20px;
+                gap: 16px;
+                .form-items{
+                    gap: 16px;
+                }
+                .form-item{
+                    gap: 8px;
+                    label{
+                        font-size: 14px;
+                        line-height: 20px;
+                    }
+                    .form-input{
+                        gap: 10px;
+                        padding: 12px 16px;
+                        textarea{
+                            height: 90px;
+                        }
+                    }
+                    select{
+                        padding: 12px 16px;   
+                    }
+                }
+                .submit{
+                    margin-top: 12px;
+                    padding: 12px;
+                    font-size: 15px;
+                    line-height: 22px;
+                }
+            }
+        }
+    }
+    .edit-debt-container{
+        .edit-debt{
+            max-width: 630px;
+            padding: 30px 20px;
+            h2{
+                font-size: 28px;
+                line-height: 36px;
+            }
+            .closeEditDebt{
+                width: 24px;
+                height: 24px;
+                min-width: 24px;
+                top: 16px;
+                right: 16px;
+            }
+            form{
+                margin-top: 20px;
+                gap: 16px;
+                .form-items{
+                    gap: 16px;
+                }
+                .form-item{
+                    gap: 8px;
+                    label{
+                        font-size: 14px;
+                        line-height: 20px;
+                    }
+                    .form-input{
+                        gap: 10px;
+                        padding: 12px 16px;
+                        textarea{
+                            height: 90px;
+                        }
+                    }
+                    select{
+                        padding: 12px 16px;   
+                    }
+                }
+                .submit{
+                    margin-top: 12px;
+                    padding: 12px;
+                    font-size: 15px;
+                    line-height: 22px;
+                }
+            }
+        }
+    }
+    .viewDebt-container{
+        padding:20px;
+        .viewDebt-container-head{
+            h1{
+                font-size: 20px;
+                line-height: 24px;
+            }
+        }
+        .viewDebt-body{
+            margin-top: 30px;
+            padding: 30px;
+            .viewDebt-body-head{
+                h2{
+                    font-size: 18px;
+                    line-height: 24px;
+                }
+            }
+            .viewDebt-form{
+                max-width: 100%;
+                margin-top: 20px;
+                gap: 20px;
+                .form-items{
+                    gap: 20px 60px;
+                }
+                .form-item{
+                    gap: 8px;
+                    label{
+                        font-size: 14px;
+                        line-height: 20px;
+                    }
+                    .form-input{
+                        gap: 10px;
+                        padding: 12px;
+                        textarea{
+                            height: 90px;
+                            resize: none;
+                        }
+                    }
+                    select{
+                        padding: 12px;
+                    }
+                }
+            }
+        }
+    }
+
+    /*============== Users ==================*/
+    .users-container{
+        padding:20px 20px 0;
+        .users-container-head{
+            h1{
+                font-size: 28px;
+                line-height: 36px;
+            }
+            .head-buttons{
+                display: flex;
+                align-items: center;
+                gap: 20px;
+                .export_excel{
+                    padding: 10px 24px;
+                    gap: 8px;
+                    font-size: 15px;
+                    line-height: 22px;
+                    svg{
+                        min-width: 22px;
+                        width: 22px;
+                        height: 22px;
+                    }
+                }
+                .addNewUsers{
+                    padding: 10px 24px;
+                    gap: 8px;
+                    font-size: 15px;
+                    line-height: 22px;
+                    svg{
+                        min-width: 22px;
+                        width: 22px;
+                        height: 22px;
+                    }
+                }
+            }
+        }
+        .users-body{
+            margin-top: 20px;
+            padding: 20px 16px;
+            .users-body-head{
+                h2{
+                    font-size: 18px;
+                    line-height: 24px;
+                }
+                .modul-search{
+                    gap: 8px;
+                    padding: 6px 8px;
+                    .search_btn{
+                        width: 22px;
+                        height: 22px;
+                        min-width: 22px;
+                    }
+                }
+            }
+            .users-table{
+                margin-top: 40px;
+                table{
+                    th{
+                        font-size: 16px;
+                        line-height: 24px;
+                        padding: 0 8px 12px;
+                        &:first-child{
+                            padding-left: 0;
+                        }
+                        &:last-child{
+                            padding-right: 0;
+                        }
+                    }
+                    td{
+                        font-size: 14px;
+                        line-height: 20px;
+                        padding: 12px 8px;
+                        &:first-child{
+                            padding-left: 0;
+                        }
+                        &:last-child{
+                            padding-right: 0;
+                        }
+                    }
+                    tbody{
+                        tr{ 
+                            td{
+                                .activeUser{
+                                    gap: 6px;
+                                    min-width: 90px;
+                                    font-size: 13px;
+                                    line-height: 16px;
+                                    span{
+                                        width: 8px;
+                                        height: 8px;
+                                        min-width: 8px;
+                                    } 
+                                }
+                                .deactiveUser{
+                                    gap: 6px;
+                                    min-width: 90px;
+                                    font-size: 13px;
+                                    line-height: 16px;
+                                    span{
+                                        width: 8px;
+                                        height: 8px;
+                                        min-width: 8px;
+                                    } 
+                                }
+                                .action{
+                                    .action-links{
+                                        .action-link{
+                                            font-size: 15px;
+                                            line-height: 22px;
+                                            padding: 8px 6px;
+                                            img{
+                                                width: 19px;
+                                                height: 19px;
+                                                min-width: 19px
+                                            }
+                                        }
+                                        
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .add-user-container{
+        .add-user{
+            max-width: 630px;
+            padding: 30px 20px;
+            h2{
+                font-size: 28px;
+                line-height: 36px;
+            }
+            .closeAddUser{
+                width: 24px;
+                height: 24px;
+                min-width: 24px;
+                top: 16px;
+                right: 16px;
+            }
+            form{
+                margin-top: 20px;
+                gap: 16px;
+                .form-items{
+                    gap: 16px;
+                }
+                .form-item{
+                    gap: 8px;
+                    label{
+                        font-size: 14px;
+                        line-height: 20px;
+                    }
+                    .form-input{
+                        gap: 10px;
+                        padding: 12px 16px;
+                        .password-eye{
+                            width: 20px;
+                            height: 20px;
+                            min-width: 20px;
+                        }
+                    }
+                    select{
+                        padding: 12px 16px;   
+                    }
+                }
+                .upload-box{
+                    gap: 10px;
+                    .add_file_box{
+                        padding: 8px 16px;
+                        gap: 10px;
+                        .uploadIcon{
+                            width: 32px;
+                            height: 32px;
+                            min-width: 32px;
+                        }
+                        .box-text{
+                            gap: 6px;
+                            p{
+                                font-size: 12px;
+                                line-height: 14px;
+                            }
+                            span{
+                                font-size: 12px;
+                                line-height: 14px;
+                            }
+                        }
+                        .selectFileTxt{
+                            font-size: 13px;
+                            line-height: 15px;
+                        }
+                    }
+                    .document-list{
+                        padding: 12px;
+                        gap: 12px;
+                        .document-item{
+                            gap: 16px;
+                            .document-title{
+                                gap: 12px;
+                                img{
+                                    width: 28px;
+                                    height: 28px;
+                                    min-width: 28px;
+                                }
+                                p{
+                                    font-size: 12px;
+                                    line-height: 14px;
+                                }
+                            }
+                            .document-actions{
+                                gap: 8px;
+                                .viewDocument,.deleteDocument{
+                                    width: 22px;
+                                    height: 22px;
+                                    min-width: 22px;
+                                }
+                            }
+                        }
+                    }
+                }
+                .submit{
+                    margin-top: 12px;
+                    padding: 12px;
+                    font-size: 15px;
+                    line-height: 22px;
+
+                }
+            }
+        }
+    }
+    .edit-user-container{
+        .edit-user{
+            max-width: 630px;
+            padding: 30px 20px;
+            h2{
+                font-size: 28px;
+                line-height: 36px;
+            }
+            .closeEditUser{
+                width: 24px;
+                height: 24px;
+                min-width: 24px;
+                top: 16px;
+                right: 16px;
+            }
+            form{
+                margin-top: 20px;
+                gap: 16px;
+                .form-items{
+                    gap: 16px;
+                }
+                .form-item{
+                    gap: 8px;
+                    label{
+                        font-size: 14px;
+                        line-height: 20px;
+                    }
+                    .form-input{
+                        gap: 10px;
+                        padding: 12px 16px;
+                        .password-eye{
+                            width: 20px;
+                            height: 20px;
+                            min-width: 20px;
+                        }
+                    }
+                    select{
+                        padding: 12px 16px;   
+                    }
+                }
+                .upload-box{
+                    gap: 10px;
+                    .add_file_box{
+                        padding: 8px 16px;
+                        gap: 10px;
+                        .uploadIcon{
+                            width: 32px;
+                            height: 32px;
+                            min-width: 32px;
+                        }
+                        .box-text{
+                            gap: 6px;
+                            p{
+                                font-size: 12px;
+                                line-height: 14px;
+                            }
+                            span{
+                                font-size: 12px;
+                                line-height: 14px;
+                            }
+                        }
+                        .selectFileTxt{
+                            font-size: 13px;
+                            line-height: 15px;
+                        }
+                    }
+                    .document-list{
+                        padding: 12px;
+                        gap: 12px;
+                        .document-item{
+                            gap: 16px;
+                            .document-title{
+                                gap: 12px;
+                                img{
+                                    width: 28px;
+                                    height: 28px;
+                                    min-width: 28px;
+                                }
+                                p{
+                                    font-size: 12px;
+                                    line-height: 14px;
+                                }
+                            }
+                            .document-actions{
+                                gap: 8px;
+                                .viewDocument,.deleteDocument{
+                                    width: 22px;
+                                    height: 22px;
+                                    min-width: 22px;
+                                }
+                            }
+                        }
+                    }
+                }
+                .submit{
+                    margin-top: 12px;
+                    padding: 12px;
+                    font-size: 15px;
+                    line-height: 22px;
+
+                }
+            }
+        }
+    }
+    .viewUser-container{
+        padding:20px;
+        .viewUser-container-head{
+            h1{
+                font-size: 20px;
+                line-height: 24px;
+            }
+        }
+        .viewUser-body{
+            margin-top: 30px;
+            padding: 30px;
+            .viewUser-body-head{
+                h2{
+                    font-size: 18px;
+                    line-height: 24px;
+                }
+            }
+            .viewUser-form{
+                max-width: 100%;
+                margin-top: 20px;
+                gap: 20px;
+                .form-items{
+                    gap: 20px;
+                }
+                .form-item{
+                    gap: 8px;
+                    label{
+                        font-size: 14px;
+                        line-height: 20px;
+                    }
+                    .form-input{
+                        gap: 10px;
+                        padding: 12px;
+                        
+                        .password-eye{
+                            width: 20px;
+                            height: 20px;
+                            min-width: 20px;
+                        }
+                    }
+                    select{
+                        padding: 12px;   
+                    }
+                }
+                .document-box{
+                    gap: 14px;
+                    h2{
+                        font-size: 14px;
+                        line-height: 18px;
+                    }
+                    .document-list{
+                        padding: 20px;
+                        gap: 20px;
+                        .document-item{
+                            gap: 16px;
+                            .document-title{
+                                gap: 12px;
+                                img{
+                                    width: 28px;
+                                    height: 28px;
+                                    min-width: 28px;
+                                }
+                                p{
+                                    font-size: 12px;
+                                    line-height: 14px;
+                                }
+                            }
+                            .document-actions{
+                                gap: 8px;
+                                .viewDocument,.deleteDocument{
+                                    width: 22px;
+                                    height: 22px;
+                                    min-width: 22px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    /*============== Logo Management ==================*/
+    .logoManagement-container{
+        padding:20px;
+        .logoManagement-container-head{
+            h1{
+                font-size: 28px;
+                line-height: 36px;
+            }
+        }
+        .logoManagement-body{
+            margin-top: 20px;
+            padding: 20px 16px;
+            .logoManagement-body-head{
+                h2{
+                    font-size: 18px;
+                    line-height: 24px;
+                }
+            }
+            .addLogo{
+                max-width: 500px;
+                margin-top: 30px;
+                gap: 30px;
+                .add_file_box{
+                    padding: 8px 16px;
+                    gap: 10px;
+                    .uploadIcon{
+                        width: 32px;
+                        height: 32px;
+                        min-width: 32px;
+                    }
+                    .box-text{
+                        gap: 6px;
+                        p{
+                            font-size: 12px;
+                            line-height: 14px;
+                        }
+                        span{
+                            font-size: 12px;
+                            line-height: 14px;
+                        }
+                    }
+                    .selectFileTxt{
+                        font-size: 13px;
+                        line-height: 15px;
+                    }
+                }
+                .logoImg{
+                    width: 132px;
+                }
+                .saveLogo{
+                    padding: 10px 24px;
+                    gap: 8px;
+                    font-size: 15px;
+                    line-height: 22px;
+                    svg{
+                        min-width: 22px;
+                        width: 22px;
+                        height: 22px;
+                    }
+                }
+            }
+        }
+    }
+
+    /*============== Role Permission ==================*/
+    .rolePermission-container{
+        padding:20px 20px 0;
+        .rolePermission-container-head{
+            h1{
+                font-size: 28px;
+                line-height: 36px;
+            }
+            .head-buttons{
+                display: flex;
+                align-items: center;
+                gap: 20px;
+                .export_excel{
+                    padding: 10px 24px;
+                    gap: 8px;
+                    font-size: 15px;
+                    line-height: 22px;
+                    svg{
+                        min-width: 22px;
+                        width: 22px;
+                        height: 22px;
+                    }
+                }
+                .addNewRolePermission{
+                    padding: 10px 24px;
+                    gap: 8px;
+                    font-size: 15px;
+                    line-height: 22px;
+                    svg{
+                        min-width: 22px;
+                        width: 22px;
+                        height: 22px;
+                    }
+                }
+            }
+        }
+        .rolePermission-body{
+            margin-top: 20px;
+            padding-bottom: 70px;
+            .rolePermission-table{
+                table{
+                    td,th{
+                        padding: 16px 12px;
+                        font-size: 13px;
+                        line-height: 15px;
+                    }
+                    tbody{
+                        tr{ 
+                            td{
+                                .action-links{
+                                    gap: 20px;
+                                    .action-link{
+                                        min-width: 22px;
+                                        width: 22px;
+                                        height: 22px;
+                                    }
+                                }
+                                .table_role_items{
+                                    .roleItem{
+                                        padding: 5px 10px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .addRolePermisson-container{
+        padding:20px;
+        .addRolePermisson-container-head{
+            h1{
+                font-size: 20px;
+                line-height: 24px;
+            }
+        }
+        .roleForm{
+            margin-top: 30px;
+            .role-name{
+                input{
+                    padding: 14px;
+                }
+            }
+            .permissons{
+                margin-top: 30px;
+                gap: 20px;
+                .permissons-boxes{
+                    gap: 20px;
+                    .permisson-box{
+                        gap: 16px;
+                        padding: 10px;
+                        h2{
+                            padding: 14px;
+                            font-size: 15px;
+                            line-height: 20px;
+                        }
+                        .permisson-list{
+                            gap: 14px;
+                            .permisson-item{
+                                input{
+                                    width: 18px;
+                                    height: 18px;
+                                    min-width: 18px;
+                                }
+                                label{
+                                    font-size: 13px;
+                                    line-height: 16px;
+                                }
+                                
+                            }
+                        }
+                    }
+                }
+            }
+            .saveForm{
+                margin-top: 40px;
+                padding: 12px 24px;
+                font-size: 15px;
+            }
+        }
+    }
+    .editRolePermisson-container{
+        padding:20px;
+        .editRolePermisson-container-head{
+            h1{
+                font-size: 20px;
+                line-height: 24px;
+            }
+        }
+        .roleForm{
+            margin-top: 30px;
+            .role-name{
+                input{
+                    padding: 14px;
+                }
+            }
+            .permissons{
+                margin-top: 30px;
+                gap: 20px;
+                .permissons-boxes{
+                    gap: 20px;
+                    .permisson-box{
+                        gap: 16px;
+                        padding: 10px;
+                        h2{
+                            padding: 14px;
+                            font-size: 15px;
+                            line-height: 20px;
+                        }
+                        .permisson-list{
+                            gap: 14px;
+                            .permisson-item{
+                                input{
+                                    width: 18px;
+                                    height: 18px;
+                                    min-width: 18px;
+                                }
+                                label{
+                                    font-size: 13px;
+                                    line-height: 16px;
+                                }
+                                
+                            }
+                        }
+                    }
+                }
+            }
+            .saveForm{
+                margin-top: 40px;
+                padding: 12px 24px;
+                font-size: 15px;
+            }
+        }
+    }
+    .viewRolePermisson-container{
+        padding:20px;
+        .viewRolePermisson-container-head{
+            h1{
+                font-size: 20px;
+                line-height: 24px;
+            }
+        }
+        .roleForm{
+            margin-top: 30px;
+            .role-name{
+                input{
+                    padding: 14px;
+                }
+            }
+            .permissons{
+                margin-top: 30px;
+                gap: 20px;
+                .permissons-boxes{
+                    gap: 20px;
+                    .permisson-box{
+                        gap: 16px;
+                        padding: 10px;
+                        h2{
+                            padding: 14px;
+                            font-size: 15px;
+                            line-height: 20px;
+                        }
+                        .permisson-list{
+                            gap: 14px;
+                            .permisson-item{
+                                input{
+                                    width: 18px;
+                                    height: 18px;
+                                    min-width: 18px;
+                                }
+                                label{
+                                    font-size: 13px;
+                                    line-height: 16px;
+                                }
+                                
+                            }
+                        }
+                    }
+                }
+            }
+            .saveForm{
+                margin-top: 40px;
+                padding: 12px 24px;
+                font-size: 15px;
+            }
+        }
+    }
+
+    /*============== Role Management ==================*/
+    .roleManagement-container{
+        padding:20px 20px 0;
+        .roleManagement-container-head{
+            h1{
+                font-size: 28px;
+                line-height: 36px;
+            }
+            .head-buttons{
+               display: flex;
+                align-items: center;
+                gap: 20px;
+                .export_excel{
+                    padding: 10px 24px;
+                    gap: 8px;
+                    font-size: 15px;
+                    line-height: 22px;
+                    svg{
+                        min-width: 22px;
+                        width: 22px;
+                        height: 22px;
+                    }
+                }
+                .addNewRoleManagement{
+                    padding: 10px 24px;
+                    gap: 8px;
+                    font-size: 15px;
+                    line-height: 22px;
+                    svg{
+                        min-width: 22px;
+                        width: 22px;
+                        height: 22px;
+                    }
+                }
+            }
+        }
+        .roleManagement-body{
+             margin-top: 20px;
+            padding: 20px 16px;
+            .roleManagement-body-head{
+                h2{
+                    font-size: 18px;
+                    line-height: 24px;
+                }
+                .modul-search{
+                    gap: 8px;
+                    padding: 6px 8px;
+                    .search_btn{
+                        width: 22px;
+                        height: 22px;
+                        min-width: 22px;
+                    }
+                }
+            }
+            .roleManagement-table{
+                margin-top: 40px;
+                table{
+                    th{
+                        font-size: 16px;
+                        line-height: 24px;
+                        padding: 0 8px 12px;
+                        &:first-child{
+                            padding-left: 0;
+                        }
+                        &:last-child{
+                            padding-right: 0;
+                        }  
+                    }
+                    td{
+                        font-size: 14px;
+                        line-height: 20px;
+                        padding: 12px 8px;
+                        &:first-child{
+                            padding-left: 0;
+                        }
+                        &:last-child{
+                            padding-right: 0;
+                        }
+                    }
+                    tbody{
+                        tr{ 
+                            td{
+                                .activeRole{
+                                    gap: 6px;
+                                    min-width: 90px;
+                                    font-size: 13px;
+                                    line-height: 16px;
+                                    span{
+                                        width: 8px;
+                                        height: 8px;
+                                        min-width: 8px;
+                                    } 
+                                }
+                                .deactiveRole{
+                                    gap: 6px;
+                                    min-width: 90px;
+                                    font-size: 13px;
+                                    line-height: 16px;
+                                    span{
+                                        width: 8px;
+                                        height: 8px;
+                                        min-width: 8px;
+                                    } 
+                                }
+                                .action{
+                                    .action-links{
+                                        .action-link{
+                                            font-size: 15px;
+                                            line-height: 22px;
+                                            padding: 8px 6px;
+                                            img{
+                                                width: 19px;
+                                                height: 19px;
+                                                min-width: 19px
+                                            }
+                                        } 
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .add-roleManagement-container{
+        .add-roleManagement{
+            max-width: 580px;
+            padding: 30px 20px;
+            h2{
+                font-size: 28px;
+                line-height: 36px;
+            }
+            .closeAddRoleManagement{
+                width: 24px;
+                height: 24px;
+                min-width: 24px;
+                top: 16px;
+                right: 16px;
+            }
+            form{
+                margin-top: 20px;
+                gap: 32px;
+                .form-items{
+                    gap: 16px;
+                    .form-item{
+                        gap: 8px;
+                        label{
+                            font-size: 14px;
+                            line-height: 20px;
+                        }
+                        .form-input{
+                            gap: 10px;
+                            padding: 12px 16px;
+                        }
+                        select{
+                            padding: 12px 16px;   
+                        }
+                    }
+                }
+                .submit{
+                    padding: 12px;
+                    font-size: 15px;
+                    line-height: 22px;
+                }
+            }
+        }
+    }
+    .edit-roleManagement-container{
+        .edit-roleManagement{
+            max-width: 580px;
+            padding: 30px 20px;
+            h2{
+                font-size: 28px;
+                line-height: 36px;
+            }
+            .closeEditRoleManagement{
+                width: 24px;
+                height: 24px;
+                min-width: 24px;
+                top: 16px;
+                right: 16px;
+            }
+            form{
+                margin-top: 20px;
+                gap: 32px;
+                .form-items{
+                    gap: 16px;
+                    .form-item{
+                        gap: 8px;
+                        label{
+                            font-size: 14px;
+                            line-height: 20px;
+                        }
+                        .form-input{
+                            gap: 10px;
+                            padding: 12px 16px;
+                        }
+                        select{
+                            padding: 12px 16px;   
+                        }
+                    }
+                }
+                .submit{
+                    padding: 12px;
+                    font-size: 15px;
+                    line-height: 22px;
+                }
+            }
+        }
+    }
+
+    /*============== Oil Change Type ==================*/
+    .oilChangeType-container{
+        padding:20px 20px 0;
+        .oilChangeType-container-head{
+            h1{
+                font-size: 28px;
+                line-height: 36px;
+            }
+            .head-buttons{
+                display: flex;
+                align-items: center;
+                gap: 20px;
+                .export_excel{
+                    padding: 10px 24px;
+                    gap: 8px;
+                    font-size: 15px;
+                    line-height: 22px;
+                    svg{
+                        min-width: 22px;
+                        width: 22px;
+                        height: 22px;
+                    }
+                }
+                .addNewOilChangeType{
+                    padding: 10px 24px;
+                    gap: 8px;
+                    font-size: 15px;
+                    line-height: 22px;
+                    svg{
+                        min-width: 22px;
+                        width: 22px;
+                        height: 22px;
+                    }
+                }
+            }
+        }
+        .oilChangeType-body{
+             margin-top: 20px;
+            padding: 20px 16px;
+            .oilChangeType-body-head{
+                h2{
+                    font-size: 18px;
+                    line-height: 24px;
+                }
+                .modul-search{
+                    gap: 8px;
+                    padding: 6px 8px;
+                    .search_btn{
+                        width: 22px;
+                        height: 22px;
+                        min-width: 22px;
+                    }
+                }
+            }
+            .oilChangeType-table{
+                margin-top: 40px;
+                table{
+                    th{
+                        font-size: 16px;
+                        line-height: 24px;
+                        padding: 0 8px 12px;
+                        &:first-child{
+                            padding-left: 0;
+                        }
+                        &:last-child{
+                            padding-right: 0;
+                        }  
+                    }
+                    td{
+                        font-size: 14px;
+                        line-height: 20px;
+                        padding: 12px 8px;
+                        &:first-child{
+                            padding-left: 0;
+                        }
+                        &:last-child{
+                            padding-right: 0;
+                        }
+                    }
+                    tbody{
+                        tr{ 
+                            td{
+                                .activeOilType{
+                                    gap: 6px;
+                                    min-width: 90px;
+                                    font-size: 13px;
+                                    line-height: 16px;
+                                    span{
+                                        width: 8px;
+                                        height: 8px;
+                                        min-width: 8px;
+                                    } 
+                                }
+                                .deactiveOilType{
+                                   gap: 6px;
+                                    min-width: 90px;
+                                    font-size: 13px;
+                                    line-height: 16px;
+                                    span{
+                                        width: 8px;
+                                        height: 8px;
+                                        min-width: 8px;
+                                    } 
+                                }
+                                .action{
+                                    .action-links{
+                                        .action-link{
+                                            font-size: 15px;
+                                            line-height: 22px;
+                                            padding: 8px 6px;
+                                            img{
+                                                width: 19px;
+                                                height: 19px;
+                                                min-width: 19px
+                                            }
+                                        } 
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .add-oilChangeType-container{
+        .add-oilChangeType{
+            max-width: 580px;
+            padding: 30px 20px;
+            h2{
+                font-size: 28px;
+                line-height: 36px;
+            }
+            .closeAddOilChangeType{
+                width: 24px;
+                height: 24px;
+                min-width: 24px;
+                top: 16px;
+                right: 16px;
+            }
+            form{
+                margin-top: 20px;
+                gap: 32px;
+                .form-items{
+                    gap: 16px;
+                    .form-item{
+                        gap: 8px;
+                        label{
+                            font-size: 14px;
+                            line-height: 20px;
+                        }
+                        .form-input{
+                            gap: 10px;
+                            padding: 12px 16px;
+                        }
+                        select{
+                            padding: 12px 16px;   
+                        }
+                    }
+                }
+                .submit{
+                    padding: 12px;
+                    font-size: 15px;
+                    line-height: 22px;
+                }
+            }
+        }
+    }
+    .edit-oilChangeType-container{
+        .edit-oilChangeType{
+            max-width: 580px;
+            padding: 30px 20px;
+            h2{
+                font-size: 28px;
+                line-height: 36px;
+            }
+            .closeEditOilChangeType{
+                width: 24px;
+                height: 24px;
+                min-width: 24px;
+                top: 16px;
+                right: 16px;
+            }
+            form{
+                margin-top: 20px;
+                gap: 32px;
+                .form-items{
+                    gap: 16px;
+                    .form-item{
+                        gap: 8px;
+                        label{
+                            font-size: 14px;
+                            line-height: 20px;
+                        }
+                        .form-input{
+                            gap: 10px;
+                            padding: 12px 16px;
+                        }
+                        select{
+                            padding: 12px 16px;   
+                        }
+                    }
+                }
+                .submit{
+                    padding: 12px;
+                    font-size: 15px;
+                    line-height: 22px;
+                }
+            }
+        }
+    }
+
+    /*============== Profile ==================*/
+    .profile-container{
+        padding:20px;
+        .profile-container-head{
+            h1{
+                font-size: 28px;
+                line-height: 36px;
+            }
+        }
+        .profile-body{
+            margin-top: 20px;
+            padding: 30px;
+            .profile-body-head{
+                h2{
+                    font-size: 18px;
+                    line-height: 24px;
+                }
+            }
+            .profileForm{
+                max-width: 100%;
+                margin-top: 20px;
+                gap: 20px;
+                .form-items{
+                    gap: 20px;
+                }
+                .form-item{
+                    gap: 8px;
+                    label{
+                        font-size: 14px;
+                        line-height: 20px;
+                    }
+                    .form-input{
+                        gap: 10px;
+                        padding: 12;
+                        .password-eye{
+                            width: 20px;
+                            height: 20px;
+                            min-width: 20px;
+                        }
+                    }
+                    select{
+                        padding: 12px;   
+                    }
+                }
+                .saveProfile{
+                    padding: 10px 24px;
+                    gap: 8px;
+                    font-size: 15px;
+                    line-height: 22px;
+                    svg{
+                        min-width: 22px;
+                        width: 22px;
+                        height: 22px;
+                    }
+                }
+            }
+        }
+    }
+
+    .error-page-container{
+        padding:70px 20px;
+        .error-page{
+            max-width: 670px;
+            img{
+                max-width: 480px;
+            }
+            h2{
+                margin-top: 40px;
+                font-size: 36px;
+                line-height: 44px;
+            }
+            p{
+                margin: 16px auto 0;
+                font-size: 15px;
+                line-height: 22px;
+            }
+            .goBack{
+                margin: 24px auto 0;
+                padding: 10px 44px;
+                font-size: 15px;
+                line-height: 22px;
+            }  
+        }
+    }
+
+    .entry-container{
+        .entry-box{
+            max-width: 600px;
+            padding: 40px 60px 70px;
+            .logo{
+                width: 120px;
+                height: 120px;
+                min-width: 120px;
+            }
+            .box-title{
+                font-size: 24px;
+                line-height: 32px;
+                margin-top: 20px;
+            }
+            form{
+                margin-top: 32px;
+                .form-inputs{
+                    gap: 20px;
+                    input{
+                        padding: 10px 18px;
+                    }
+                }
+                .form-bottom{
+                    margin-top: 12px;
+                }
+                .submitBtn{
+                    margin-top: 40px;
+                    padding: 10px;
+                    font-size: 15px;
+                    line-height: 22px;
+                }
+            }
+        }
+    }
 }
 
 @media only screen and (max-width: 992px) {
@@ -20320,6 +23544,7 @@ button{
             margin-top: 20px;
             padding: 20px;
             .viewAuto-form{
+                gap: 16px;
                 .form-items{
                     gap: 16px;
                     grid-template-columns: repeat(1,1fr);
@@ -20608,6 +23833,489 @@ button{
                             }
                         }
                     }
+                }
+            }
+        }
+    }
+
+    /*============== Leasing ==================*/
+    .leasing-container{
+        .leasing-container-head{
+            flex-direction: column;
+            align-items: start;
+            gap: 12px;
+            h1{
+                font-size: 24px;
+                line-height: 32px;
+            }
+            .head-buttons{
+                gap: 16px;
+            }
+        }
+        .leasing-body{
+            .leasing-body-head{
+                flex-direction: column;
+                gap: 10px;
+                align-items: start;
+                .modul-search{
+                    max-width: 100%;
+                }
+            }
+        }
+    }
+    .viewLeasing-container{
+        .viewLeasing-body{
+            margin-top: 20px;
+            padding: 20px;
+            .viewLeasing-tabs{
+                max-width: 100%;
+                gap: 20px;
+                .leasing_tab{
+                    font-size: 14px;
+                    line-height: 20px;
+                    padding-bottom: 4px;
+                }
+            }
+            .viewLeasing_content{
+                gap: 16px;
+                .form-items{
+                    gap: 16px;
+                    grid-template-columns: repeat(1,1fr);
+                }
+            }
+            .driverInfoContent{
+                .driver-document-images{
+                    grid-template-columns: repeat(1,1fr);
+                    .document-box{
+                        .document-list{
+                            padding: 12px;
+                            gap: 12px;
+                            .document-item{
+                                gap: 16px;
+                                .document-title{
+                                    gap: 12px;
+                                    img{
+                                        width: 28px;
+                                        height: 28px;
+                                        min-width: 28px;
+                                    }
+                                    p{
+                                        font-size: 12px;
+                                        line-height: 14px;
+                                    }
+                                }
+                                .document-actions{
+                                    gap: 8px;
+                                    .viewDocument,.deleteDocument{
+                                        width: 22px;
+                                        height: 22px;
+                                        min-width: 22px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .leasingInfoContent{
+                .documents{
+                    .document-box{
+                        .document-list{
+                            padding: 12px;
+                            gap: 12px;
+                            .document-item{
+                                gap: 16px;
+                                .document-title{
+                                    gap: 12px;
+                                    img{
+                                        width: 28px;
+                                        height: 28px;
+                                        min-width: 28px;
+                                    }
+                                    p{
+                                        font-size: 12px;
+                                        line-height: 14px;
+                                    }
+                                }
+                                .document-actions{
+                                    gap: 8px;
+                                    .viewDocument,.deleteDocument{
+                                        width: 22px;
+                                        height: 22px;
+                                        min-width: 22px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /*============== Deposits ==================*/
+    .deposits-container{
+        .deposits-container-head{
+            flex-direction: column;
+            align-items: start;
+            gap: 12px;
+            h1{
+                font-size: 24px;
+                line-height: 32px;
+            }
+            .head-buttons{
+                gap: 16px;
+            }
+        }
+        .deposits-body{
+            .deposits-body-head{
+                flex-direction: column;
+                gap: 10px;
+                align-items: start;
+                .modul-search{
+                    max-width: 100%;
+                }
+            }
+        }
+    }
+    .viewDeposits-container{
+        .viewDeposits-body{
+            margin-top: 20px;
+            padding: 20px;
+            .viewDeposits-form{
+                gap: 16px;
+                .form-items{
+                    gap: 16px;
+                    grid-template-columns: repeat(1,1fr);
+                }
+            }
+        }
+    }
+
+    /*============== Expenses ==================*/
+    .expenses-container{
+        .expenses-container-head{
+            flex-direction: column;
+            align-items: start;
+            gap: 12px;
+            h1{
+                font-size: 24px;
+                line-height: 32px;
+            }
+            .head-buttons{
+                gap: 16px;
+            }
+        }
+        .expenses-body{
+            .expenses-body-head{
+                flex-direction: column;
+                gap: 10px;
+                align-items: start;
+                .modul-search{
+                    max-width: 100%;
+                }
+            }
+        }
+    }
+    .viewExpenses-container{
+        .viewExpenses-body{
+            margin-top: 20px;
+            padding: 20px;
+            .viewExpenses-form{
+                gap: 16px;
+                .form-items{
+                    gap: 16px;
+                    grid-template-columns: repeat(1,1fr);
+                }
+            }
+        }
+    }
+
+    /*============== Revenue ==================*/
+    .revenue-container{
+        .revenue-container-head{
+            flex-direction: column;
+            align-items: start;
+            gap: 12px;
+            h1{
+                font-size: 24px;
+                line-height: 32px;
+            }
+            .head-buttons{
+                gap: 16px;
+            }
+        }
+        .revenue-body{
+            .revenue-body-head{
+                flex-direction: column;
+                gap: 10px;
+                align-items: start;
+                .modul-search{
+                    max-width: 100%;
+                }
+            }
+        }
+    }
+    .viewRevenue-container{
+        .viewRevenue-body{
+            margin-top: 20px;
+            padding: 20px;
+            .viewRevenue-form{
+                gap: 16px;
+                .form-items{
+                    gap: 16px;
+                    grid-template-columns: repeat(1,1fr);
+                }
+            }
+        }
+    }
+
+    /*============== Cashbox ==================*/
+    .cashbox-container{
+        .cashbox-container-head{
+            flex-direction: column;
+            align-items: start;
+            gap: 12px;
+            h1{
+                font-size: 24px;
+                line-height: 32px;
+            }
+            .head-buttons{
+                gap: 16px;
+            }
+        }
+        .cashbox-body{
+            .cashbox-body-head{
+                flex-direction: column;
+                gap: 10px;
+                align-items: start;
+                .modul-search{
+                    max-width: 100%;
+                }
+            }
+        }
+    }
+    .viewCashbox-container{
+        .viewCashbox-body{
+            margin-top: 20px;
+            padding: 20px;
+            .viewCashbox-form{
+                gap: 16px;
+                .form-items{
+                    gap: 16px;
+                    grid-template-columns: repeat(1,1fr);
+                }
+            }
+        }
+    }
+
+    /*============== Debt ==================*/
+    .debt-container{
+        .debt-container-head{
+            flex-direction: column;
+            align-items: start;
+            gap: 12px;
+            h1{
+                font-size: 24px;
+                line-height: 32px;
+            }
+            .head-buttons{
+                gap: 16px;
+            }
+        }
+        .debt-body{
+            .debt-body-head{
+                flex-direction: column;
+                gap: 10px;
+                align-items: start;
+                .modul-search{
+                    max-width: 100%;
+                }
+            }
+        }
+    }
+    .viewDebt-container{
+        .viewDebt-body{
+            margin-top: 20px;
+            padding: 20px;
+            .viewDebt-form{
+                gap: 16px;
+                .form-items{
+                    gap: 16px;
+                    grid-template-columns: repeat(1,1fr);
+                }
+            }
+        }
+    }
+
+    /*============== Users ==================*/
+    .users-container{
+        .users-container-head{
+            flex-direction: column;
+            align-items: start;
+            gap: 12px;
+            h1{
+                font-size: 24px;
+                line-height: 32px;
+            }
+            .head-buttons{
+                gap: 16px;
+            }
+        }
+        .users-body{
+            .users-body-head{
+                flex-direction: column;
+                gap: 10px;
+                align-items: start;
+                .modul-search{
+                    max-width: 100%;
+                }
+            }
+        }
+    }
+    .viewUser-container{
+        .viewUser-body{
+            margin-top: 20px;
+            padding: 20px;
+            .viewUser-form{
+                gap: 16px;
+                .form-items{
+                    gap: 16px;
+                    grid-template-columns: repeat(1,1fr);
+                }
+            }
+        }
+    }
+    /*============== Logo Management ==================*/
+    .logoManagement-container{
+        .logoManagement-container-head{
+            h1{
+                font-size: 24px;
+                line-height: 32px;
+            }
+        }
+    }
+
+    /*============== Role Permission ==================*/
+    .rolePermission-container{
+        .rolePermission-container-head{
+            flex-direction: column;
+            align-items: start;
+            gap: 12px;
+            h1{
+                font-size: 24px;
+                line-height: 32px;
+            }
+            .head-buttons{
+                gap: 16px;
+            }
+        }
+        .rolePermission-body{
+            padding-bottom: 40px;
+            .rolePermission-table{
+                table{
+                    tbody{
+                        tr{ 
+                            td{
+                                .action-links{
+                                    gap: 14px;
+                                    .action-link{
+                                        min-width: 20px;
+                                        width: 20px;
+                                        height: 20px;
+                                    }
+                                }
+                                .table_role_items{
+                                    min-width: 252px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /*============== Role Management ==================*/
+    .roleManagement-container{
+        .roleManagement-container-head{
+            flex-direction: column;
+            align-items: start;
+            gap: 12px;
+            h1{
+                font-size: 24px;
+                line-height: 32px;
+            }
+            .head-buttons{
+                gap: 16px;
+            }
+        }
+        .roleManagement-body{
+            .roleManagement-body-head{
+                flex-direction: column;
+                gap: 10px;
+                align-items: start;
+                .modul-search{
+                    max-width: 100%;
+                }
+            }
+        }
+    }
+
+    /*============== Oil Change Type ==================*/
+    .oilChangeType-container{
+        .oilChangeType-container-head{
+            flex-direction: column;
+            align-items: start;
+            gap: 12px;
+            h1{
+                font-size: 24px;
+                line-height: 32px;
+            }
+            .head-buttons{
+                gap: 16px;
+            }
+        }
+        .oilChangeType-body{
+            .oilChangeType-body-head{
+                flex-direction: column;
+                gap: 10px;
+                align-items: start;
+                .modul-search{
+                    max-width: 100%;
+                }
+            }
+        }
+    }
+
+    /*============== Profile ==================*/
+    .profile-container{
+        .profile-container-head{
+            h1{
+                font-size: 24px;
+                line-height: 32px;
+            }
+        }
+        .profile-body{
+            padding: 20px;
+            .profileForm{
+                gap: 16px;
+                .form-items{
+                    gap: 16px;
+                    grid-template-columns: repeat(1,1fr);
+                }
+            }
+        }
+    }
+
+    .entry-container{
+        .entry-box{
+            max-width: 100%;
+            padding: 30px 20px;
+            
+            form{
+                .submitBtn{
+                    margin-top: 30px;
                 }
             }
         }
@@ -21079,6 +24787,373 @@ button{
                     grid-template-columns: repeat(1,1fr);
                 }
             }
+        }
+    }
+    .add-leasing-container{
+        .add-leasing{
+            max-width: 100%;
+            h2{
+                font-size: 24px;
+                line-height: 32px;
+            }
+            form{
+                .form-items{
+                    grid-template-columns: repeat(1,1fr);
+                }
+                .upload-box{
+                    .add_file_box{
+                        padding: 8px 16px;
+                        gap: 10px;
+                        flex-direction: column;
+                        align-items: center;
+                        .box-text{
+                            align-items: center;
+                        }
+                        .selectFileTxt{
+                            margin-left: 0;
+                            margin-top: 12px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .edit-leasing-container{
+        .edit-leasing{
+            max-width: 100%;
+            h2{
+                font-size: 24px;
+                line-height: 32px;
+            }
+            form{
+                .form-items{
+                    grid-template-columns: repeat(1,1fr);
+                }
+                .upload-box{
+                    .add_file_box{
+                        padding: 8px 16px;
+                        gap: 10px;
+                        flex-direction: column;
+                        align-items: center;
+                        .box-text{
+                            align-items: center;
+                        }
+                        .selectFileTxt{
+                            margin-left: 0;
+                            margin-top: 12px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .add-deposits-container{
+        .add-deposits{
+            max-width: 100%;
+            h2{
+                font-size: 24px;
+                line-height: 32px;
+            }
+            form{
+                .form-items{
+                    grid-template-columns: repeat(1,1fr);
+                }
+            }
+        }
+    }
+    .edit-deposits-container{
+        .edit-deposits{
+            max-width: 100%;
+            h2{
+                font-size: 24px;
+                line-height: 32px;
+            }
+            form{
+                .form-items{
+                    grid-template-columns: repeat(1,1fr);
+                }
+            }
+        }
+    }
+    .add-expenses-container{
+        .add-expenses{
+            max-width: 100%;
+            h2{
+                font-size: 24px;
+                line-height: 32px;
+            }
+            form{
+                .form-items{
+                    grid-template-columns: repeat(1,1fr);
+                }
+            }
+        }
+    }
+    .edit-expenses-container{
+        .edit-expenses{
+            max-width: 100%;
+            h2{
+                font-size: 24px;
+                line-height: 32px;
+            }
+            form{
+                .form-items{
+                    grid-template-columns: repeat(1,1fr);
+                }
+            }
+        }
+    }
+    .add-revenue-container{
+        .add-revenue{
+            max-width: 100%;
+            h2{
+                font-size: 24px;
+                line-height: 32px;
+            }
+            form{
+                .form-items{
+                    grid-template-columns: repeat(1,1fr);
+                }
+            }
+        }
+    }
+    .edit-revenue-container{
+        .edit-revenue{
+            max-width: 100%;
+            h2{
+                font-size: 24px;
+                line-height: 32px;
+            }
+            form{
+                .form-items{
+                    grid-template-columns: repeat(1,1fr);
+                }
+            }
+        }
+    }
+    .add-cashbox-container{
+        .add-cashbox{
+            max-width: 100%;
+            h2{
+                font-size: 24px;
+                line-height: 32px;
+            }
+            form{
+                .form-items{
+                    grid-template-columns: repeat(1,1fr);
+                }
+            }
+        }
+    }
+    .edit-cashbox-container{
+        .edit-cashbox{
+            max-width: 100%;
+            h2{
+                font-size: 24px;
+                line-height: 32px;
+            }
+            form{
+                .form-items{
+                    grid-template-columns: repeat(1,1fr);
+                }
+            }
+        }
+    }
+    .add-debt-container{
+        .add-debt{
+            max-width: 100%;
+            h2{
+                font-size: 24px;
+                line-height: 32px;
+            }
+            form{
+                .form-items{
+                    grid-template-columns: repeat(1,1fr);
+                }
+            }
+        }
+    }
+    .edit-debt-container{
+        .edit-debt{
+            max-width: 100%;
+            h2{
+                font-size: 24px;
+                line-height: 32px;
+            }
+            form{
+                .form-items{
+                    grid-template-columns: repeat(1,1fr);
+                }
+            }
+        }
+    }
+    .add-user-container{
+        .add-user{
+            max-width: 100%;
+            h2{
+                font-size: 24px;
+                line-height: 32px;
+            }
+            form{
+                .form-items{
+                    grid-template-columns: repeat(1,1fr)
+                }
+            }
+        }
+    }
+    .edit-user-container{
+        .edit-user{
+            max-width: 100%;
+            h2{
+                font-size: 24px;
+                line-height: 32px;
+            }
+            form{
+                .form-items{
+                    grid-template-columns: repeat(1,1fr)
+                }
+            }
+        }
+    }
+     /*============== Logo Management ==================*/
+    .logoManagement-container{
+        .logoManagement-body{
+            .addLogo{
+                gap: 16px;
+                .add_file_box{
+                    gap: 10px;
+                    flex-direction: column;
+                    align-items: center;
+                    .box-text{
+                        align-items: center;
+                    }
+                    .selectFileTxt{
+                        margin-left: 0;
+                        margin-top: 12px;
+                    }
+                }
+            }
+        }
+    }
+
+    .addRolePermisson-container{
+        .roleForm{
+            margin-top: 20px;
+            .role-name{
+                input{
+                    padding: 12px;
+                }
+            }
+            .permissons{
+                margin-top: 20px;
+                gap: 16px;
+                .permissons-boxes{
+                    gap: 16px;
+                    grid-template-columns: repeat(1,1fr);
+                }
+            }
+            .saveForm{
+                margin-top: 30px;
+            }
+        }
+    }
+    .editRolePermisson-container{
+        .roleForm{
+            margin-top: 20px;
+            .role-name{
+                input{
+                    padding: 12px;
+                }
+            }
+            .permissons{
+                margin-top: 20px;
+                gap: 16px;
+                .permissons-boxes{
+                    gap: 16px;
+                    grid-template-columns: repeat(1,1fr);
+                }
+            }
+            .saveForm{
+                margin-top: 30px;
+            }
+        }
+    }
+    .viewRolePermisson-container{
+        .roleForm{
+            margin-top: 20px;
+            .role-name{
+                input{
+                    padding: 12px;
+                }
+            }
+            .permissons{
+                margin-top: 20px;
+                gap: 16px;
+                .permissons-boxes{
+                    gap: 16px;
+                    grid-template-columns: repeat(1,1fr);
+                }
+            }
+            .saveForm{
+                margin-top: 30px;
+            }
+        }
+    }
+    .add-roleManagement-container{
+        .add-roleManagement{
+            max-width: 100%;
+            h2{
+                font-size: 24px;
+                line-height: 32px;
+            }
+        }
+    }
+    .edit-roleManagement-container{
+        .edit-roleManagement{
+            max-width: 100%;
+            h2{
+                font-size: 24px;
+                line-height: 32px;
+            }
+        }
+    }
+    .add-oilChangeType-container{
+        .add-oilChangeType{
+            max-width: 100%;
+            h2{
+                font-size: 24px;
+                line-height: 32px;
+            }
+        }
+    }
+    .edit-oilChangeType-container{
+        .edit-oilChangeType{
+            max-width: 100%;
+            h2{
+                font-size: 24px;
+                line-height: 32px;
+            }
+        }
+    }
+
+    .error-page-container{
+        padding:40px 20px;
+        .error-page{
+            max-width: 100%;
+            img{
+                max-width: 330px;
+            }
+            h2{
+                margin-top: 30px;
+                font-size: 32px;
+                line-height: 40px;
+            }
+            p{
+                margin: 14px auto 0;
+            }
+            .goBack{
+                margin: 20px auto 0;
+            }  
         }
     }
 }

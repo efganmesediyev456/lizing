@@ -75,12 +75,12 @@ class DriversDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            ['data' => 'id', 'title' => 'NO:'],
-            ['data' => 'created_at', 'title' => 'Tarix'],
+            ['data' => 'id', 'title' => 'No:'],
+            ['data' => 'tableId', 'title' => 'Table İD'],
             ['data' => 'name', 'title' => 'Ad Soyad'],
             ['data' => 'email', 'title' => 'Mail'],
             ['data' => 'fin', 'title' => 'FİN'],
-            ['data' => 'status', 'title' => 'Status'],
+            ['data' => 'phone', 'title' => 'Əlaqə nömrəsi'],
             ['data' => 'action', 'title' => 'Action', 'exportable' => false, 'printable' => false, 'orderable' => false, 'searchable' => false],
         ];
     }

@@ -1,9 +1,9 @@
    <div class="aside-container">
-        <a href="../index.html" class="crm-logo">
+        <a href="{{ route('dashboard') }}" class="crm-logo">
           <img src="../assets/images/crmLogo.svg" alt="" />
         </a>
         <div class="aside-menu">
-          <a href="../index.html" class="menuLink">
+          <a href="{{ route('dashboard') }}" class="menuLink">
             <div class="menuLink-inner">
               <img src="../assets/icons/aside_dashboard.svg" alt="" />
               <p>Dashboard</p>
@@ -42,9 +42,9 @@
             </button>
             <div class="aside-dropdown-links">
               <div class="dropdown-links-inner">
-                <a href="../cars/ban-type.html" class="dropdown-link">Ban növü</a>
-                <a href="../cars/brand.html" class="dropdown-link">Marka</a>
-                <a href="../cars/model.html" class="dropdown-link">Model</a>
+                <a href="{{ route('ban-types.index') }}" class="dropdown-link">Ban növü</a>
+                <a href="{{ route('brands.index') }}" class="dropdown-link">Marka</a>
+                <a href="{{ route("models.index") }}" class="dropdown-link">Model</a>
                 <a href="{{ route('vehicles.index') }}" class="dropdown-link">Avtomobillər</a>
                 <a href="../cars/technical-review.html" class="dropdown-link">Texniki baxış</a>
                 <a href="../cars/insurance.html" class="dropdown-link">Sığorta</a>
@@ -140,7 +140,8 @@
                 <a href="/" class="dropdown-link">Logo idarəetməsi</a>
                 <a href="{{ route('role-permissions.index') }}" class="dropdown-link">Rol icazələri</a>
                 <a href="{{ route('role-managements.index') }}" class="dropdown-link">Rol idarəetməsi</a>
-                <a href="../settings/oilChangeType.html" class="dropdown-link">Yağ dəyişmə növü</a>
+                <a href="{{ route('oil_change_types.index') }}" class="dropdown-link">Yağ dəyişmə növü</a>
+                <a href="{{ route('cities.index') }}" class="dropdown-link">Cties</a>
               </div>
             </div>
             <div class="right-title-box">
@@ -156,7 +157,7 @@
                 </div>
             </div>
           </div>
-          <button type="button" class="exitProfile">
+          <a href="{{ route('logout') }}" type="button" class="exitProfile">
             <div class="exitProfile-inner">
               <img src="../assets/icons/aside_exit.svg" alt="" />
               <p>Çıxış</p>
@@ -164,6 +165,6 @@
             <div class="right-title-box">
               <p class="right-title">Çıxış</p>
             </div>
-          </button>
+          </a>
         </div>
       </div>

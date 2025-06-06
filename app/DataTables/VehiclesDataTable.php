@@ -27,18 +27,24 @@ class VehiclesDataTable extends DataTable
             ->editColumn('created_at', function ($vehicle) {
                 return $vehicle->created_at->format('Y-m-d');
             })
+            ->editColumn('brand_id', function ($vehicle) {
+                return $vehicle->brand?->title;
+            })
+             ->editColumn('model_id', function ($vehicle) {
+                return $vehicle->model?->title;
+            })
             ->editColumn('status', function ($vehicle) {
                 $status = $vehicle->status;
                 $html = '';
                 if($status){
-                    $html = '<p class="activeUser">
+                    $html = '<p class="inDrive">
                                 <span></span>
                                 Active
                             </p>';
                 }else{
-                    $html = '<p class="deactiveUser">
+                    $html = '<p class="idle">
                                 <span></span>
-                                Deactive
+                                        Deactive
                             </p>';
                 }
                 return $html;
@@ -72,14 +78,11 @@ class VehiclesDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            ['data' => 'id', 'title' => 'NO:'],
-            ['data' => 'table_id_number', 'title' => 'Table ID Nömrəsi'],
-            ['data' => 'vin_code', 'title' => 'VIN Kod'],
-            ['data' => 'state_registration_number', 'title' => 'Dövlət Qeydiyyat Nişanı'],
-            ['data' => 'production_year', 'title' => 'İstehsal İli'],
-            ['data' => 'purchase_price', 'title' => 'Alış Qiyməti'],
-            ['data' => 'mileage', 'title' => 'Gediş Məsafəsi'],
-            ['data' => 'engine', 'title' => 'Mühərrik'],
+            ['data' => 'id', 'title' => 'No:'],
+            ['data' => 'table_id_number', 'title' => 'Table İD'],
+             ['data' => 'brand_id', 'title' => 'Marka'],
+            ['data' => 'model_id', 'title' => 'Model'],
+            ['data' => 'state_registration_number', 'title' => 'D.Q.N'],
             ['data' => 'status', 'title' => 'Status'],
             ['data' => 'action', 'title' => 'Action', 'exportable' => false, 'printable' => false, 'orderable' => false, 'searchable' => false],
         ];

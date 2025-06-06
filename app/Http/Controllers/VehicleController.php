@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Brand;
+use App\Models\Model;
+use App\Models\OilChangeType;
 use App\Models\Vehicle;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -19,7 +22,11 @@ class VehicleController extends Controller
 
     public function form(Vehicle $item)
     {
-        $view = view('vehicles.form', compact('item'))->render();
+        $brands= Brand::get();
+        $models=Model::get();
+        $oilChangeTypes = OilChangeType::all();
+        $view = view('vehicles.form', compact('item', 'brands','models','oilChangeTypes'))->render();
+
 
         return response()->json([
             "view" => $view
@@ -53,32 +60,14 @@ class VehicleController extends Controller
         try {
             DB::beginTransaction();
 
-            if (is_null($item)) {
-                $item = new Vehicle($request->all());
-            }
-
             if ($validator->fails()) {
-                $view = view('vehicles.form', [
-                    'item' => $item,
-                    'errors' => $validator->errors(),
-                ])->render();
-
                 return response()->json([
-                    'view' => $view,
-                    'errors' => true,
-                ]);
+                    'errors' => $validator->errors(),
+                ], 422);
             }
 
-            $data = $request->only([
-                'table_id_number',
-                'vin_code',
-                'state_registration_number',
-                'production_year',
-                'purchase_price',
-                'mileage',
-                'engine',
-                'status'
-            ]);
+            $data = $request->except('_token');
+
 
             if ($item->id) {
                 $item->update($data);
@@ -86,16 +75,11 @@ class VehicleController extends Controller
                 $item = Vehicle::create($data);
             }
 
-            $view = view('vehicles.form', [
-                'item' => $item,
-                "success" => false,
-                'message' => 'Nəqliyyat vasitəsi uğurla yadda saxlanıldı.',
-            ])->render();
+            
 
             DB::commit();
 
             return response()->json([
-                'view' => $view,
                 'success' => true,
             ]);
         } catch (\Exception $e) {

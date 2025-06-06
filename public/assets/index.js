@@ -120,7 +120,7 @@ if (nextButton) {
 
 const notification_btn=document.querySelector(".notification-btn")
 notification_btn?.addEventListener("click", () => {
-    const parent = notification_btn.parentElement;
+    const parent = notification_btn?.parentElement;
     parent.classList.toggle("active");
 });
 document.addEventListener("click", (e) => {
@@ -160,6 +160,11 @@ document.addEventListener("click", (e) => {
   });
 });
 
+
+
+
+
+
 document.body.addEventListener("click", function (e) {
   if (e.target.classList.contains("actionBtn")) {
     const next = e.target.nextElementSibling;
@@ -171,14 +176,20 @@ document.body.addEventListener("click", function (e) {
 
 
 document.addEventListener("click", function (e) {
-  document.querySelectorAll(".actionBtn").forEach(actionBtn => {
-    const next = actionBtn.nextElementSibling;
-    if (!actionBtn.contains(e.target) && !next.contains(e.target)) {
-      next.classList.remove("active");
-    }
-  });
-});
 
+  document.querySelectorAll(".actionBtn").forEach(actionBtn => {
+
+    const next = actionBtn.nextElementSibling;
+
+    if (!actionBtn.contains(e.target) && !next.contains(e.target)) {
+
+      next.classList.remove("active");
+
+    }
+
+  });
+
+});
 
 
 
@@ -251,6 +262,31 @@ window.addEventListener("resize", handleResponsiveHover);
 
 aside_resize_btn?.addEventListener("click", () => {
   crm_container.classList.toggle("short-aside");
+
+  const isLargeScreen = window.innerWidth > 992;
+  const isShortAside = crm_container.classList.contains("short-aside");
+  const shortAsideInStorage = localStorage.getItem("shortAside");
+
+  if (isLargeScreen) {
+    if (isShortAside && !shortAsideInStorage) {
+      localStorage.setItem("shortAside", "true");
+    } else if (!isShortAside && shortAsideInStorage) {
+      localStorage.removeItem("shortAside");
+    }
+  }
+
+  handleResponsiveHover();
+});
+
+window.addEventListener("DOMContentLoaded", () => {
+  const isLargeScreen = window.innerWidth > 992;
+  const savedShortAside = localStorage.getItem("shortAside");
+
+  if (isLargeScreen && savedShortAside === "true" && crm_container) {
+
+    crm_container.classList.add("short-aside");
+  }
+
   handleResponsiveHover();
 });
 
@@ -969,7 +1005,6 @@ document.body.addEventListener('click', function(event) {
     document.body.style.overflow = 'hidden';
   }
 });
-
 
 closeEditUser?.addEventListener("click", () => {
   edit_user_container.style.display = "none";

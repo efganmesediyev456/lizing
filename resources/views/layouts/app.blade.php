@@ -39,6 +39,7 @@
   <div class="crm-container">
     @include('layouts.sidebar')
     <div class="crm-body">
+      @include('layouts.header')
       @yield('content')
     </div>
   </div>
@@ -68,7 +69,7 @@
 
 
   <script>
-    function initFileInputUploadStyle2(inputClass) {
+    function initFileInputUploadStyle(inputClass) {
       $('body').on('change', inputClass, function(e) {
         const file = e.target.files[0];
         if (!file) return;

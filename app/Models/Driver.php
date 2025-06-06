@@ -4,30 +4,29 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
+use Spatie\Permission\Traits\HasRoles;
 
-class Driver extends Model
+class Driver extends Authenticatable
 {
+    use HasApiTokens, HasFactory, Notifiable;
+    use HasRoles;
+
     use HasFactory;
 
-    protected $fillable = [
-        'name', 
-        'surname', 
-        'email', 
-        'phone', 
-        'tableId',
-        'fin', 
-        'id_card_serial_code', 
-        'current_address', 
-        'registered_address', 
-        'date', 
-        'gender', 
-        'id_card_front', 
-        'id_card_back',
-        'status'
-    ];
+    protected $guarded = [];
 
     protected $casts = [
-        'date'=>'datetime'
+        'date'=>'datetime',
+        'password' => 'hashed',
+    ];
+
+
+    protected $hidden = [
+        'password',
+       
     ];
 
 }

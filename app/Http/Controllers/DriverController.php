@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\City;
 use App\Models\Driver;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -21,8 +22,8 @@ class DriverController extends Controller
 
     public function form(Driver $item)
     {
-        
-        $view = view('drivers.form', compact('item'))->render();
+        $cities=City::get();
+        $view = view('drivers.form', compact('item', 'cities'))->render();
 
         return response()->json([
             "view" => $view
@@ -31,6 +32,7 @@ class DriverController extends Controller
 
     public function save(Request $request, Driver $item)
     {
+       
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'surname' => 'required|string|max:255',
@@ -50,35 +52,25 @@ class DriverController extends Controller
             ],
             'id_card_front' => $item?->id ? 'nullable' : 'required',
             'id_card_back' => $item?->id ? 'nullable' : 'required',
+            'tableId'=>'required',
+            'current_address'=>'required',
+            'registered_address'=>'required',
+            'date'=>'required',
+            'city_id'=>'required|exists:cities,id',
+            'password'=>$item?->id ? 'sometimes' : 'required',
         ]);
 
         try {
             DB::beginTransaction();
 
-            if (is_null($item)) {
-                $item = new Driver($request->all());
-            }
-
             if ($validator->fails()) {
-                $view = view('drivers.form', [
-                    'item' => $item,
-                    'errors' => $validator->errors(),
-                ])->render();
-
                 return response()->json([
-                    'view' => $view,
-                    'errors' => true,
-                ]);
+                    'errors' => $validator->errors(),
+                ], 422);
             }
 
-            $data = $request->only([
-                'name', 'surname', 'email', 'phone', 
-                'fin', 'id_card_serial_code', 
-                'current_address', 'registered_address', 
-                'date', 'gender', 'status', 'tableId'
-            ]);
+            $data = $request->except(['id_card_front','id_card_back']);
 
-            // Handle file uploads
             if($request->hasFile('id_card_front')){
                 $file = $request->file('id_card_front');
                 $newFileName = time() . '_' . $file->getClientOriginalName();
@@ -99,16 +91,11 @@ class DriverController extends Controller
                 $item = Driver::create($data);
             }
 
-            $view = view('drivers.form', [
-                'item' => $item,
-                "success" => false,
-                'message' => 'Sürücü uğurla yadda saxlanıldı.',
-            ])->render();
+           
 
             DB::commit();
 
             return response()->json([
-                'view' => $view,
                 'success' => true,
             ]);
         } catch (\Exception $e) {
