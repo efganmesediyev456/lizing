@@ -43,7 +43,7 @@
               <div class="header-user">
                 <button class="header-user-btn" type="button">
                   <div class="userImg">
-                    <img src="../assets/images/userImg.svg" alt="">
+                    <img src="{{ asset('assets/images/userImg.svg') }}" alt="">
                   </div>
                   <div class="userBody">
                     <p>Parviz Mammadli</p>

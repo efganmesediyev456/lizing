@@ -53,9 +53,12 @@
           </div>
           <div class="form-item">
               <label for="">Rol</label>
-              <select name="" id="">
-                  <option value="">Rol1</option>
-                  <option value="">Rol2</option>
+              <select name="role" id="">
+                  <option value="">Secin</option>
+                  @foreach($roles as $role)
+                  <option value="{{ $role->name }}" @selected($item->hasRole($role->name))>{{ $role->name }}</option>
+                  @endforeach
+                  
               </select>
           </div>
           <div class="form-item">
@@ -114,8 +117,6 @@
               <p class="selectFileTxt">Fayl seç</p>
 
               <input type="file" name="id_card_front" class="id_card_front">
-
-
 
           </div>
 

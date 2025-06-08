@@ -198,8 +198,8 @@
                 success: function(e) {
                     $(".saveFormArea").append(e.view)
                 },
-                error: function() {
-
+                error: function(e) {
+                    
                 }
             })
         })
@@ -217,8 +217,8 @@
                 success: function(e) {
                     $(".saveFormArea").append(e.view)
                 },
-                error: function() {
-
+                error: function(e) {
+                    console.log(e)
                 }
             })
         })
@@ -239,9 +239,11 @@
                success: function(e) {
                     $(".closeAddUser").trigger("click")
                     $(".success-modal-container").css({
-                        'display':'inline'
+                        'display':'flex'
                     })
                     table.draw();
+                    $(".success-modal-container").find('h2').text(e.message)
+
                 },
                error: function(xhr) {
                     for(let a in xhr.responseJSON.errors){

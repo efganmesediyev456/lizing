@@ -7,11 +7,7 @@
             <img src="../assets/icons/edit_blue.svg" alt="">
             Edit
         </button>
-        <a href="user_view.html" class="view_link action-link">
-            <img src="../assets/icons/eye_yellow.svg" alt="">
-            View
-        </a>
-        <button class="deleteTableRow action-link">
+        <button data-permission="role-managements" class="deleteTableRow action-link" data-model="{{ get_class($item) }}" data-id="{{ $item->id }}">
             <img src="../assets/icons/trash-red.svg" alt="">
             Delete
         </button>

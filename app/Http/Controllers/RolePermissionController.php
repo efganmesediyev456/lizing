@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Services\PermissionService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
@@ -21,14 +22,17 @@ class RolePermissionController extends Controller
         return $dataTable->render('role-permissions.index');
     }
 
-    public function create()
+    public function create(Role $item, PermissionService $permissionService)
     {
+        $action = $item->id ? 'edit' : 'create';
+        $permissionService->checkPermission($action, 'role-permissions');
+
         $roles = Role::all();
         $permissions = Permission::get()->groupBy('group_name');
-        return view('role-permissions.create', compact('roles', 'permissions'));
+        return view('role-permissions.create', compact('roles', 'permissions', 'item'));
     }
 
-    public function store(Request $request)
+    public function store(Request $request,  PermissionService $permissionService)
     {
         $this->validate($request, [
             "role_id" => "required",
@@ -37,6 +41,11 @@ class RolePermissionController extends Controller
         try {
             DB::beginTransaction();
             $role = Role::find($request->role_id);
+
+            $action = $role->id ? 'edit' : 'create';
+            $permissionService->checkPermission($action, 'role-permissions');
+            
+
             if ($role) {
                 $role->syncPermissions($request->permissions);
             }
@@ -49,4 +58,15 @@ class RolePermissionController extends Controller
             return redirect()->back()->withError('System Error: ' . $e->getMessage());
         }
     }
+
+
+    public function show(Role $item){
+        $permissions = $item->permissions->groupBy('group_name');
+      
+        return view('role-permissions.show',compact('item','permissions'));
+    }
+
+
+   
+
 }

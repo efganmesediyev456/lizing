@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\City;
 use App\Models\Driver;
+use App\Services\PermissionService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -21,8 +22,12 @@ class CitiesController extends Controller
         return $dataTable->render('cities.index');
     }
 
-    public function form(City $item)
+    public function form(City $item, PermissionService $permissionService)
     {
+        $action = $item->id ? 'edit' : 'create';
+        $permissionService->checkPermission($action, 'cities');
+        
+
         
         $view = view('cities.form', compact('item'))->render();
 
@@ -31,8 +36,12 @@ class CitiesController extends Controller
         ]);
     }
 
-    public function save(Request $request, City $item)
+    public function save(Request $request, City $item, PermissionService $permissionService)
     {
+        $action = $item->id ? 'edit' : 'create';
+        $permissionService->checkPermission($action, 'cities');
+        
+
         $validator = Validator::make($request->all(), [
             'title' => 'required|string|max:255',
         ]);
@@ -48,22 +57,22 @@ class CitiesController extends Controller
 
             $data = $request->except('_token');
 
+            $message = '';
             if ($item->id) {
                 $item->update($data);
+                $message = 'Uğurla dəyişiklik edildi';
             } else {
                 $item = City::create($data);
+                $message = 'Uğurla əlavə olundu';
             }
 
-            $view = view('cities.form', [
-                'item' => $item,
-                "success" => false,
-                'message' => 'Marka uğurla yadda saxlanıldı.',
-            ])->render();
 
+            
             DB::commit();
 
            return response()->json([
                 'success' => true,
+                'message'=> $message
             ]);
         } catch (\Exception $e) {
             DB::rollBack();

@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Brand;
 use App\Models\Model;
 use App\Models\OilChangeType;
+use App\Models\OilType;
 use App\Models\Vehicle;
+use App\Services\PermissionService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
@@ -20,12 +22,15 @@ class VehicleController extends Controller
         return $dataTable->render('vehicles.index');
     }
 
-    public function form(Vehicle $item)
+    public function form(Vehicle $item,PermissionService $permissionService)
     {
+        $action = $item->id ? 'edit' : 'create';
+        $permissionService->checkPermission($action, 'vehicles');
+
         $brands= Brand::get();
         $models=Model::get();
-        $oilChangeTypes = OilChangeType::all();
-        $view = view('vehicles.form', compact('item', 'brands','models','oilChangeTypes'))->render();
+        $oilTypes = OilType::all();
+        $view = view('vehicles.form', compact('item', 'brands','models','oilTypes'))->render();
 
 
         return response()->json([
@@ -33,8 +38,11 @@ class VehicleController extends Controller
         ]);
     }
 
-    public function save(Request $request, Vehicle $item)
+    public function save(Request $request, Vehicle $item, PermissionService $permissionService)
     {
+        $action = $item->id ? 'edit' : 'create';
+        $permissionService->checkPermission($action, 'vehicles');
+
         $validator = Validator::make($request->all(), [
             'table_id_number' => [
                 'required',
@@ -55,6 +63,9 @@ class VehicleController extends Controller
             'purchase_price' => 'required|numeric|min:0',
             'mileage' => 'required|integer|min:0',
             'engine' => 'required|string|max:255',
+            'oil_type_id' => 'required|exists:oil_types,id',
+            'brand_id' => 'required|exists:brands,id',
+            'model_id' => 'required|exists:models,id',
         ]);
 
         try {
@@ -69,11 +80,15 @@ class VehicleController extends Controller
             $data = $request->except('_token');
 
 
+            $message = '';
             if ($item->id) {
                 $item->update($data);
+                $message = 'Uğurla dəyişiklik edildi';
             } else {
                 $item = Vehicle::create($data);
+                $message = 'Uğurla əlavə olundu';
             }
+
 
             
 
@@ -81,6 +96,8 @@ class VehicleController extends Controller
 
             return response()->json([
                 'success' => true,
+                'message'=> $message
+
             ]);
         } catch (\Exception $e) {
             DB::rollBack();
@@ -90,5 +107,10 @@ class VehicleController extends Controller
                 'message' => 'System Error: '.$e->getMessage()
             ]);
         }
+    }
+
+     public function show(Vehicle $item){
+      
+        return view('vehicles.show',compact('item'));
     }
 }

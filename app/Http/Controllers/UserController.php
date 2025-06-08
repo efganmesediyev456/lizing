@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Models\Role;
+use App\Services\PermissionService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use DB;
 use App\DataTables\UsersDataTable;
+use Spatie\Permission\Models\Role;
 
 
 class UserController extends Controller
@@ -22,12 +23,17 @@ class UserController extends Controller
     }
 
 
-    public function form(User $item)
+    public function form(User $item , PermissionService $permissionService)
     {
+        $action = $item->id ? 'edit' : 'create';
+        $permissionService->checkPermission($action, 'users');
+
+
         if ($item) {
             $item->password = null;
         }
-        $view = view('users.form', compact('item'))->render();
+        $roles= Role::get();
+        $view = view('users.form', compact('item','roles'))->render();
 
         return response()->json([
             "view" => $view
@@ -35,9 +41,10 @@ class UserController extends Controller
     }
 
 
-    public function save(Request $request, User $item)
+    public function save(Request $request, User $item, PermissionService $permissionService)
     {
-
+        $action = $item->id ? 'edit' : 'create';
+        $permissionService->checkPermission($action, 'users');
         
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
@@ -52,28 +59,20 @@ class UserController extends Controller
             'id_card_front'=>$item?->id ? 'nullable':'required',
             'id_card_back'=>$item?->id ? 'nullable':'required',
             'fin'=>'required',
+            'role'=>'required',
         ]);
 
         try {
             DB::beginTransaction();
 
-            if (is_null($item)) {
-                $item = new User($request->all());
-            }
-
             if ($validator->fails()) {
-                $view = view('users.form', [
-                    'item' => $item,
-                    'errors' => $validator->errors(),
-                ])->render();
-
                 return response()->json([
-                    'view' => $view,
-                    'errors' => true,
-                ]);
+                    'errors' => $validator->errors(),
+                ], 422);
             }
 
-            $data = $request->only(['name', 'email', 'surname', 'fin', 'status']);
+            $data = $request->except('_token', 'id_card_front','id_card_back', 'role', 'password');
+        
             if($request->hasFile('id_card_front')){
                 $file = $request->file('id_card_front');
                 $newFileName = time() . '_' . $file->getClientOriginalName();
@@ -90,24 +89,23 @@ class UserController extends Controller
                 $data['password'] = bcrypt($request->password);
             }
 
+            $message = '';
             if ($item->id) {
                 $item->update($data);
+                $message = 'Uğurla dəyişiklik edildi';
             } else {
                 $item = User::create($data);
+                $message = 'Uğurla əlavə olundu';
             }
 
-            $view = view('users.form', [
-                'item' => $item,
-                "success" => false,
-                'message' => 'İstifadəçi uğurla yadda saxlanıldı.',
-            ])->render();
+            $item->syncRoles([$request->role]);
 
             DB::commit();
-
             return response()->json([
-                'view' => $view,
                 'success' => true,
+                'message'=> $message
             ]);
+
         } catch (\Exception $e) {
             DB::rollBack();
             return response()->json([
@@ -116,5 +114,11 @@ class UserController extends Controller
                     'message'=>'System Error: '.$e->getMessage()
             ]);
         }
+    }
+
+
+    public function show(User $item){
+      
+        return view('users.show',compact('item'));
     }
 }

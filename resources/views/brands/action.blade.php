@@ -10,7 +10,7 @@
                                                 <img src="../assets/icons/edit_blue.svg" alt="">
                                                 Edit
                                             </button>
-                                            <button class="deleteTableRow action-link">
+                                            <button data-permission="brands" data-id="{{ $item->id }}" data-model="{{ get_class($item) }}" class="deleteTableRow action-link">
                                                 <img src="../assets/icons/trash-red.svg" alt="">
                                                 Delete
                                             </button>

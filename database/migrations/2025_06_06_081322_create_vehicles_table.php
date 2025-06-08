@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('vehicles', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('oil_type_id')->nullable();
+            $table->foreign('oil_type_id')->references('id')->on('oil_types')->nullOnDelete();
+            $table->unsignedBigInteger("brand_id")->nullable();
+            $table->foreign("brand_id")->references("id")->on("brands")->nullOnDelete();
+            $table->unsignedBigInteger("model_id")->nullable();
+            $table->foreign("model_id")->references("id")->on("models")->nullOnDelete();
             $table->string('table_id_number')->unique();
             $table->string('vin_code')->unique();
             $table->string('state_registration_number')->unique();

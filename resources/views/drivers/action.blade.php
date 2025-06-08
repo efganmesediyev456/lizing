@@ -7,11 +7,11 @@
             <img src="../assets/icons/edit_blue.svg" alt="">
             Redaktə et
         </button>
-        <a href="" class="view_link action-link">
+        <a href="{{ route('drivers.show',$item->id) }}" class="view_link action-link">
             <img src="../assets/icons/eye_yellow.svg" alt="">
             Baxış
         </a>
-        <button class="deleteTableRow action-link" data-id="{{ $item->id }}">
+        <button data-permission="drivers" class="deleteTableRow action-link" data-id="{{ $item->id }}" data-model="{{ get_class($item) }}">
             <img src="../assets/icons/trash-red.svg" alt="">
             Sil
         </button>

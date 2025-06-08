@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\City;
 use App\Models\Driver;
+use App\Services\PermissionService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -14,14 +15,21 @@ use App\DataTables\DriversDataTable;
 
 class DriverController extends Controller
 {
+
+
+   
+    
     public function index()
     {
         $dataTable = new DriversDataTable(); 
         return $dataTable->render('drivers.index');
     }
 
-    public function form(Driver $item)
+    public function form(Driver $item, PermissionService $permissionService)
     {
+        $action = $item->id ? 'edit' : 'create';
+        $permissionService->checkPermission($action, 'drivers');
+
         $cities=City::get();
         $view = view('drivers.form', compact('item', 'cities'))->render();
 
@@ -30,8 +38,10 @@ class DriverController extends Controller
         ]);
     }
 
-    public function save(Request $request, Driver $item)
+    public function save(Request $request, Driver $item, PermissionService $permissionService)
     {
+        $action = $item->id ? 'edit' : 'create';
+        $permissionService->checkPermission($action, 'drivers');
        
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
@@ -85,10 +95,13 @@ class DriverController extends Controller
                 $data['id_card_back'] = $path;
             }
 
+            $message = '';
             if ($item->id) {
                 $item->update($data);
+                $message = 'Uğurla dəyişiklik edildi';
             } else {
                 $item = Driver::create($data);
+                $message = 'Uğurla əlavə olundu';
             }
 
            
@@ -97,6 +110,8 @@ class DriverController extends Controller
 
             return response()->json([
                 'success' => true,
+                'message'=> $message
+
             ]);
         } catch (\Exception $e) {
             DB::rollBack();
@@ -106,5 +121,10 @@ class DriverController extends Controller
                 'message' => 'System Error: '.$e->getMessage()
             ]);
         }
+    }
+
+
+    public function show(Driver $item){
+        return view('drivers.show',compact('item'));
     }
 }

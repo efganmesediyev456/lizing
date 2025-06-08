@@ -239,14 +239,20 @@
                 success: function(e) {
                     $(".closeAddUser").trigger("click")
                     $(".success-modal-container").css({
-                        'display':'inline'
+                        'display':'flex'
                     })
                     table.draw();
+                    $(".success-modal-container").find('h2').text(e.message)
+
                 },
                 error: function(xhr) {
                     for(let a in xhr.responseJSON.errors){
                         for(let b in xhr.responseJSON.errors[a]){
-                            $(form).find("[name='"+a+"']").parents('.form-item').append('<p class="formError" style="color:red">'+xhr.responseJSON.errors[a][b]+'</p>')
+                            if($(form).find("[name='"+a+"']").parents('.form-item').length){
+                                $(form).find("[name='"+a+"']").parents('.form-item').append('<p class="formError" style="color:red">'+xhr.responseJSON.errors[a][b]+'</p>')
+                            }else if($(form).find("[name='"+a+"']").parents('.add_file_box').length){
+                                $(form).find("[name='"+a+"']").parents('.add_file_box').after('<p class="formError" style="color:red">'+xhr.responseJSON.errors[a][b]+'</p>')
+                            }
                         }
                     }
                 }

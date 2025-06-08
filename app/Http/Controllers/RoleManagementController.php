@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Services\PermissionService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
@@ -21,8 +22,11 @@ class RoleManagementController extends Controller
     }
 
 
-    public function form(Role $item)
+    public function form(Role $item, PermissionService $permissionService)
     {
+        $action = $item->id ? 'edit' : 'create';
+        $permissionService->checkPermission($action, 'role-managements');
+
         $view = view('role-managements.form', compact('item'))->render();
 
         return response()->json([
@@ -31,8 +35,11 @@ class RoleManagementController extends Controller
     }
 
 
-    public function save(Request $request, Role $item)
+    public function save(Request $request, Role $item, PermissionService $permissionService)
     {
+        $action = $item->id ? 'edit' : 'create';
+        $permissionService->checkPermission($action, 'role-managements');
+
 
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255|unique:roles,name,'.$item->id,
@@ -42,41 +49,29 @@ class RoleManagementController extends Controller
         try {
             DB::beginTransaction();
 
-            if (is_null($item)) {
-                $item = new Role($request->all());
-            }
-
             if ($validator->fails()) {
-                $view = view('role-managements.form', [
-                    'item' => $item,
-                    'errors' => $validator->errors(),
-                ])->render();
-
                 return response()->json([
-                    'view' => $view,
-                    'errors' => true,
-                ]);
+                    'errors' => $validator->errors(),
+                ], 422);
             }
 
             $data = $request->only(['name', 'status']);
+            $message = '';
             if ($item->id) {
                 $item->update($data);
+                $message = 'Uğurla dəyişiklik edildi';
             } else {
                 $item = Role::create($data);
+                $message = 'Uğurla əlavə olundu';
             }
-
-            $view = view('role-managements.form', [
-                'item' => $item,
-                "success" => false,
-                'message' => 'Role idarəetməsi uğurla yadda saxlanıldı.',
-            ])->render();
 
             DB::commit();
 
             return response()->json([
-                'view' => $view,
                 'success' => true,
+                'message'=>$message
             ]);
+
         } catch (\Exception $e) {
             DB::rollBack();
             return response()->json([

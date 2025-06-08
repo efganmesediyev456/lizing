@@ -29,4 +29,8 @@ class Driver extends Authenticatable
        
     ];
 
+    public function city(){
+        return $this->belongsTo(City::class);
+    }
+
 }

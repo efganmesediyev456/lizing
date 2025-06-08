@@ -1,11 +1,11 @@
    <div class="aside-container">
         <a href="{{ route('dashboard') }}" class="crm-logo">
-          <img src="../assets/images/crmLogo.svg" alt="" />
+          <img src="{{asset('assets/images')}}/crmLogo.svg" alt="" />
         </a>
         <div class="aside-menu">
           <a href="{{ route('dashboard') }}" class="menuLink">
             <div class="menuLink-inner">
-              <img src="../assets/icons/aside_dashboard.svg" alt="" />
+              <img src="{{asset('assets/icons')}}/aside_dashboard.svg" alt="" />
               <p>Dashboard</p>
             </div>
             <div class="right-title-box">
@@ -14,7 +14,7 @@
           </a>
           <a href="../payments/payments.html" class="menuLink">
             <div class="menuLink-inner">
-              <img src="../assets/icons/aside_payment.svg" alt="" />
+              <img src="{{asset('assets/icons')}}/aside_payment.svg" alt="" />
               <p>Ödənişlər</p>
             </div>
             <div class="right-title-box">
@@ -23,7 +23,7 @@
           </a>
           <a href="{{ route('drivers.index') }}" class="menuLink">
             <div class="menuLink-inner">
-              <img src="../assets/icons/aside_drivers.svg" alt="" />
+              <img src="{{asset('assets/icons')}}/aside_drivers.svg" alt="" />
               <p>Sürücülər</p>
             </div>
             <div class="right-title-box">
@@ -33,7 +33,7 @@
           <div class="aside-dropdown">
             <button class="asideDownBtn" type="button">
               <div class="asideDownBtn-inner">
-                <img src="../assets/icons/aside_cars.svg" alt="" />
+                <img src="{{asset('assets/icons')}}/aside_cars.svg" alt="" />
                 <p>Avtomobillər</p>
                 <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M7.87695 10L12.877 15L17.877 10L7.87695 10Z" fill="white"/>
@@ -46,9 +46,9 @@
                 <a href="{{ route('brands.index') }}" class="dropdown-link">Marka</a>
                 <a href="{{ route("models.index") }}" class="dropdown-link">Model</a>
                 <a href="{{ route('vehicles.index') }}" class="dropdown-link">Avtomobillər</a>
-                <a href="../cars/technical-review.html" class="dropdown-link">Texniki baxış</a>
-                <a href="../cars/insurance.html" class="dropdown-link">Sığorta</a>
-                <a href="../cars/oil-change.html" class="dropdown-link">Yağın deyişilməsi</a>
+                <a href="{{ route('technical_reviews.index') }}" class="dropdown-link">Texniki baxış</a>
+                <a href="{{ route('insurances.index') }}" class="dropdown-link">Sığorta</a>
+                <a href="{{ route('oil_changes.index') }}" class="dropdown-link">Yağın deyişilməsi</a>
                 <a href="../cars/credits.html" class="dropdown-link">Kreditlər</a>
               </div>
             </div>
@@ -71,7 +71,7 @@
           <div class="aside-dropdown">
             <button class="asideDownBtn" type="button">
               <div class="asideDownBtn-inner">
-                <img src="../assets/icons/aside_leasing.svg" alt="" />
+                <img src="{{asset('assets/icons')}}/aside_leasing.svg" alt="" />
                 <p>Lizinglər</p>
                 <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M7.87695 10L12.877 15L17.877 10L7.87695 10Z" fill="white"/>
@@ -97,7 +97,7 @@
           <div class="aside-dropdown">
             <button class="asideDownBtn" type="button">
               <div class="asideDownBtn-inner">
-                <img src="../assets/icons/aside_cashbox.svg" alt="" />
+                <img src="{{asset('assets/icons')}}/aside_cashbox.svg" alt="" />
                 <p>Kassa</p>
                 <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M7.87695 10L12.877 15L17.877 10L7.87695 10Z" fill="white"/>
@@ -127,7 +127,7 @@
           <div class="aside-dropdown aside-settings activeLink">
             <button class="asideDownBtn" type="button">
               <div class="asideDownBtn-inner">
-                <img src="../assets/icons/aside_setting.svg" alt="" />
+                <img src="{{asset('assets/icons')}}/aside_setting.svg" alt="" />
                 <p>Tənzimləmələr</p>
                 <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M7.87695 10L12.877 15L17.877 10L7.87695 10Z" fill="white"/>
@@ -137,11 +137,12 @@
             <div class="aside-dropdown-links">
               <div class="dropdown-links-inner">
                 <a href="{{ route('users.index') }}" class="dropdown-link">İstifadəçilər</a>
-                <a href="/" class="dropdown-link">Logo idarəetməsi</a>
+                <a href="{{ route('logo-managements.index') }}" class="dropdown-link">Logo idarəetməsi</a>
                 <a href="{{ route('role-permissions.index') }}" class="dropdown-link">Rol icazələri</a>
                 <a href="{{ route('role-managements.index') }}" class="dropdown-link">Rol idarəetməsi</a>
                 <a href="{{ route('oil_change_types.index') }}" class="dropdown-link">Yağ dəyişmə növü</a>
-                <a href="{{ route('cities.index') }}" class="dropdown-link">Cties</a>
+                <a href="{{ route('cities.index') }}" class="dropdown-link">Şəhərlər</a>
+                <a href="{{ route('oil_types.index') }}" class="dropdown-link">Yanacaq növü</a>
               </div>
             </div>
             <div class="right-title-box">
@@ -159,7 +160,7 @@
           </div>
           <a href="{{ route('logout') }}" type="button" class="exitProfile">
             <div class="exitProfile-inner">
-              <img src="../assets/icons/aside_exit.svg" alt="" />
+              <img src="{{asset('assets/icons')}}/aside_exit.svg" alt="" />
               <p>Çıxış</p>
             </div>
             <div class="right-title-box">

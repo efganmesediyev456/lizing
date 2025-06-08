@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Brand;
 use App\Models\Driver;
+use App\Services\PermissionService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -21,8 +22,10 @@ class BrandController extends Controller
         return $dataTable->render('brands.index');
     }
 
-    public function form(Brand $item)
+    public function form(Brand $item,PermissionService $permissionService)
     {
+        $action = $item->id ? 'edit' : 'create';
+        $permissionService->checkPermission($action, 'brands');
         
         $view = view('brands.form', compact('item'))->render();
 
@@ -31,8 +34,10 @@ class BrandController extends Controller
         ]);
     }
 
-    public function save(Request $request, Brand $item)
+    public function save(Request $request, Brand $item,PermissionService $permissionService)
     {
+        $action = $item->id ? 'edit' : 'create';
+        $permissionService->checkPermission($action, 'brands');
         $validator = Validator::make($request->all(), [
             'title' => 'required|string|max:255',
         ]);
@@ -40,42 +45,28 @@ class BrandController extends Controller
         try {
             DB::beginTransaction();
 
-            if (is_null($item)) {
-                $item = new Brand($request->all());
-            }
-
             if ($validator->fails()) {
-                $view = view('brands.form', [
-                    'item' => $item,
-                    'errors' => $validator->errors(),
-                ])->render();
-
                 return response()->json([
-                    'view' => $view,
-                    'errors' => true,
-                ]);
+                    'errors' => $validator->errors(),
+                ], 422);
             }
 
-            $data = $request->only([
-                'title','status'
-            ]);
+            $data = $request->except('_token');
 
+            $message = '';
             if ($item->id) {
                 $item->update($data);
+                $message = 'Uğurla dəyişiklik edildi';
             } else {
                 $item = Brand::create($data);
+                $message = 'Uğurla əlavə olundu';
             }
 
-            $view = view('brands.form', [
-                'item' => $item,
-                "success" => false,
-                'message' => 'Marka uğurla yadda saxlanıldı.',
-            ])->render();
+            
 
             DB::commit();
 
             return response()->json([
-                'view' => $view,
                 'success' => true,
             ]);
         } catch (\Exception $e) {
