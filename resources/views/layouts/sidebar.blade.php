@@ -80,7 +80,7 @@
             </button>
             <div class="aside-dropdown-links">
               <div class="dropdown-links-inner">
-                <a href="../leasings/leasing.html" class="dropdown-link">Lizinglər</a>
+                <a href="{{ route('leasing.index') }}" class="dropdown-link">Lizinglər</a>
                 <a href="../leasings/deposits.html" class="dropdown-link">Depozitlər</a>
               </div>
             </div>

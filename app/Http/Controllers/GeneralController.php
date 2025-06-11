@@ -94,4 +94,26 @@ class GeneralController extends Controller
         }
     }
 
+    public function getDriverFin(Request $request,PermissionService $permissionService){
+        try{
+
+        $driver = Driver::find( $request->value);
+        if($driver?->fin){
+        $view = '<option value="">Seçin</option><option selected>'.$driver->fin.'</option>';
+
+        }else{
+        $view = '<option value="">Seçin</option>';
+
+        }
+        return response()->json([
+            'view'=>$view
+        ]);
+
+       }catch(\Exception $e){
+        return response()->json([
+            "error"=> $e->getMessage()
+            ], 500);
+        }
+    }
+
 }

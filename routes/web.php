@@ -19,6 +19,8 @@ use App\Http\Controllers\InsuranceController;
 use App\Http\Controllers\OilChangeController;
 use App\Http\Controllers\OilTypeController;
 use App\Http\Controllers\SiteSettingController;
+use App\Http\Controllers\LeasingController;
+
 
 
 
@@ -142,6 +144,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::post('general/id-card-serial-number',[GeneralController::class,'getSerialCard'])->name('getSerialCard');
     Route::post('general/brands',[GeneralController::class,'getBrand'])->name('getBrand');
+    Route::post('general/driver/fin',[GeneralController::class,'getDriverFin'])->name('getDriverFin');
     Route::post('general/delete',[GeneralController::class,'delete'])->name('general.delete');
 
    
@@ -153,6 +156,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('logo-managements', [SiteSettingController::class, 'index'])->name('logo-managements.index')->middleware('permission:logo-managements.index');
     Route::post('logo-managements', [SiteSettingController::class, 'save'])->name('logo-managements.save')->middleware("permission:logo-managements.edit");
 
+
+
+     //leasing
+    Route::get('leasing', [LeasingController::class, 'index'])->name('leasing.index')->middleware('permission:leasing.index');
+    Route::post('leasing/form/{item?}', [LeasingController::class, 'form'])->name('leasing.form');
+    Route::post('leasing/save/{item?}', [LeasingController::class, 'save'])->name('leasing.save');
+    Route::get('leasing/{item?}', [LeasingController::class, 'show'])->name('leasing.show');
     
 
 
