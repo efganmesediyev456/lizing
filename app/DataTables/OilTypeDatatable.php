@@ -28,6 +28,7 @@ class OilTypeDatatable extends DataTable
                 ])->render();
                 return $view;
             })
+             ->addIndexColumn()
             ->editColumn('created_at', function ($driver) {
                 return $driver->created_at->format('Y-m-d');
             })
@@ -63,11 +64,18 @@ class OilTypeDatatable extends DataTable
             ->columns($this->getColumns())
             ->minifiedAjax()
             ->parameters([
-                'paging' => true,
+               'paging' => true,
                 'info' => false,
                 'searching' => true,
                 'ordering' => false,
-                'buttons'  => []
+                'responsive' => true,
+                'autoWidth' => false,
+                'scrollX' => true,
+                'scrollY' => '',
+                'pageLength' => 100,
+                'buttons' => [
+                    ['extend' => 'colvis', 'text' => 'Sütunları Göstər/Gizlə']
+                ]
             ])
             ->dom('Bfrtip')
             ->orderBy(0);
@@ -76,7 +84,7 @@ class OilTypeDatatable extends DataTable
     protected function getColumns()
     {
         return [
-            ['data' => 'id', 'title' => 'No:'],
+            ['data' => 'DT_RowIndex', 'title' => 'No:', 'orderable' => false, 'searchable' => false],
             ['data' => 'title', 'title' => 'Ad'],
             ['data' => 'status', 'title' => 'Status'],
             ['data' => 'action', 'title' => 'Action', 'exportable' => false, 'printable' => false, 'orderable' => false, 'searchable' => false],

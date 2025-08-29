@@ -1,6 +1,4 @@
-@if(isset($message))
-<p style="padding:12px; background:green; color:white; border-radius:4px; text-align:center; margin-top:22px;" class="message">{{$message}}</p>
-@else
+
 <form action="{{route('brands.save',['item'=>$item?->id])}}" class="saveForm" enctype="multipart/form-data">
     
      <div class="form-item">
@@ -24,4 +22,4 @@
 
     <button class="submit" type="submit">Əlavə et</button>
 </form>
-@endif
+

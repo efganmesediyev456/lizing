@@ -20,6 +20,8 @@ class RoleManagementDatatable extends DataTable
     {
         return datatables()
             ->eloquent($query)
+            ->addIndexColumn() 
+
             ->addColumn('action', function ($item) {
                 $view=view('role-managements.action', [
                     'item'=>$item
@@ -67,7 +69,14 @@ class RoleManagementDatatable extends DataTable
                 'info' => false,
                 'searching' => true,
                 'ordering' => false,
-                'buttons'  => []
+                'responsive' => true,
+                'autoWidth' => false,
+                'scrollX' => true,
+                'scrollY' => '',
+                'pageLength' => 100,
+                'buttons' => [
+                    ['extend' => 'colvis', 'text' => 'Sütunları Göstər/Gizlə']
+                ]
             ])
             ->dom('Bfrtip')
             ->orderBy(0);
@@ -76,7 +85,7 @@ class RoleManagementDatatable extends DataTable
     protected function getColumns()
     {
         return [
-            ['data' => 'id', 'title' => 'No:'],
+            ['data' => 'DT_RowIndex', 'title' => 'No:', 'orderable' => false, 'searchable' => false],
             ['data' => 'name', 'title' => 'Rolun adı'],
             ['data' => 'status', 'title' => 'Status'],
             ['data' => 'action', 'title' => 'Action', 'exportable' => false, 'printable' => false, 'orderable' => false, 'searchable' => false],

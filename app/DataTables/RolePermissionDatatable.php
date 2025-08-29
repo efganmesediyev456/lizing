@@ -20,6 +20,8 @@ class RolePermissionDatatable extends DataTable
     {
         return datatables()
             ->eloquent($query)
+            ->addIndexColumn() 
+
             ->addColumn('action', function ($item) {
                 $view=view('role-permissions.action', [
                     'item'=>$item
@@ -69,11 +71,18 @@ class RolePermissionDatatable extends DataTable
             ->columns($this->getColumns())
             ->minifiedAjax()
             ->parameters([
-                'paging' => true,
+                 'paging' => true,
                 'info' => false,
                 'searching' => true,
                 'ordering' => false,
-                'buttons'  => []
+                'responsive' => true,
+                'autoWidth' => false,
+                'scrollX' => true,
+                'scrollY' => '',
+                'pageLength' => 100,
+                'buttons' => [
+                    ['extend' => 'colvis', 'text' => 'Sütunları Göstər/Gizlə']
+                ]
             ])
             ->dom('Bfrtip')
             ->orderBy(0);
@@ -82,7 +91,7 @@ class RolePermissionDatatable extends DataTable
     protected function getColumns()
     {
         return [
-            ['data' => 'id', 'title' => 'No:'],
+            ['data' => 'DT_RowIndex', 'title' => 'No:', 'orderable' => false, 'searchable' => false],
             ['data' => 'name', 'title' => 'Rolun adı'],
             ['data' => 'permissions', 'title' => 'İcazələr'],
             ['data' => 'action', 'title' => 'Action', 'exportable' => false, 'printable' => false, 'orderable' => false, 'searchable' => false],

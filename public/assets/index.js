@@ -142,14 +142,21 @@ document.addEventListener("click", (e) => {
     }
 });
 
-const actionBtns = document.querySelectorAll(".actionBtn");
+const actionBtns = document.querySelectorAll(".actionBtn, .actionBtn img");
 
 actionBtns.forEach(actionBtn => {
-  actionBtn?.addEventListener("click", () => {
-    const next = actionBtn.nextElementSibling;
-    next.classList.toggle("active");
+  actionBtn?.addEventListener("click", (e) => {
+    const target = e.target;
+    const realBtn = target.tagName === "IMG" ? target.parentNode : target;
+    alert(target.tagName);
+    if(target.tagName==="IMG"){
+      alert("img");
+    }
+    const next = realBtn.nextElementSibling;
+    next?.classList.toggle("active");
   });
 });
+
 
 document.addEventListener("click", (e) => {
   actionBtns.forEach(actionBtn => {
@@ -165,14 +172,23 @@ document.addEventListener("click", (e) => {
 
 
 
+
 document.body.addEventListener("click", function (e) {
-  if (e.target.classList.contains("actionBtn")) {
-    const next = e.target.nextElementSibling;
+  let target = e.target;
+
+
+  if (target.tagName === "IMG") {
+    target = target.parentNode;
+  }
+
+  if (target.classList.contains("actionBtn")) {
+    const next = target.nextElementSibling;
     if (next) {
       next.classList.toggle("active");
     }
   }
 });
+
 
 
 document.addEventListener("click", function (e) {
@@ -344,15 +360,15 @@ const add_driver_container = document.querySelector(".add-driver-container");
 const closeAddDriver = document.querySelector(".closeAddDriver");
 const addNewDriver = document.querySelector(".addNewDriver");
 
-addNewDriver?.addEventListener("click", () => {
-  add_driver_container.style.display = "flex";
-  document.body.style.overflow = "hidden";
-});
+// addNewDriver?.addEventListener("click", () => {
+//   add_driver_container.style.display = "flex";
+//   document.body.style.overflow = "hidden";
+// });
 
-closeAddDriver?.addEventListener("click", () => {
-  add_driver_container.style.display = "none";
-  document.body.style.overflow = "auto";
-});
+// closeAddDriver?.addEventListener("click", () => {
+//   add_driver_container.style.display = "none";
+//   document.body.style.overflow = "auto";
+// });
 
 const edit_driver_container = document.querySelector(".edit-driver-container");
 const closeEditDriver = document.querySelector(".closeEditDriver");
@@ -444,15 +460,15 @@ const add_auto_container = document.querySelector(".add-auto-container");
 const closeAddAuto = document.querySelector(".closeAddAuto");
 const addNewAuto = document.querySelector(".addNewAuto");
 
-addNewAuto?.addEventListener("click", () => {
-  add_auto_container.style.display = "flex";
-  document.body.style.overflow = "hidden";
-});
+// addNewAuto?.addEventListener("click", () => {
+//   add_auto_container.style.display = "flex";
+//   document.body.style.overflow = "hidden";
+// });
 
-closeAddAuto?.addEventListener("click", () => {
-  add_auto_container.style.display = "none";
-  document.body.style.overflow = "auto";
-});
+// closeAddAuto?.addEventListener("click", () => {
+//   add_auto_container.style.display = "none";
+//   document.body.style.overflow = "auto";
+// });
 
 
 const edit_auto_container = document.querySelector(".edit-auto-container");
@@ -761,15 +777,15 @@ const add_leasing_container = document.querySelector(".add-leasing-container");
 const closeAddLeasing = document.querySelector(".closeAddLeasing");
 const addNewLeasing = document.querySelector(".addNewLeasing");
 
-addNewLeasing?.addEventListener("click", () => {
-  add_leasing_container.style.display = "flex";
-  document.body.style.overflow = "hidden";
-});
+// addNewLeasing?.addEventListener("click", () => {
+//   add_leasing_container.style.display = "flex";
+//   document.body.style.overflow = "hidden";
+// });
 
-closeAddLeasing?.addEventListener("click", () => {
-  add_leasing_container.style.display = "none";
-  document.body.style.overflow = "auto";
-});
+// closeAddLeasing?.addEventListener("click", () => {
+//   add_leasing_container.style.display = "none";
+//   document.body.style.overflow = "auto";
+// });
 
 
 const edit_leasing_container = document.querySelector(".edit-leasing-container");
@@ -844,15 +860,15 @@ const add_expenses_container = document.querySelector(".add-expenses-container")
 const closeAddExpenses = document.querySelector(".closeAddExpenses");
 const addNewExpenses = document.querySelector(".addNewExpenses");
 
-addNewExpenses?.addEventListener("click", () => {
-  add_expenses_container.style.display = "flex";
-  document.body.style.overflow = "hidden";
-});
+// addNewExpenses?.addEventListener("click", () => {
+//   add_expenses_container.style.display = "flex";
+//   document.body.style.overflow = "hidden";
+// });
 
-closeAddExpenses?.addEventListener("click", () => {
-  add_expenses_container.style.display = "none";
-  document.body.style.overflow = "auto";
-});
+// closeAddExpenses?.addEventListener("click", () => {
+//   add_expenses_container.style.display = "none";
+//   document.body.style.overflow = "auto";
+// });
 
 
 const edit_expenses_container = document.querySelector(".edit-expenses-container");
@@ -950,15 +966,15 @@ const add_cashbox_container = document.querySelector(".add-cashbox-container");
 const closeAddCashbox = document.querySelector(".closeAddCashbox");
 const addNewCashbox = document.querySelector(".addNewCashbox");
 
-addNewCashbox?.addEventListener("click", () => {
-  add_cashbox_container.style.display = "flex";
-  document.body.style.overflow = "hidden";
-});
+// addNewCashbox?.addEventListener("click", () => {
+//   add_cashbox_container.style.display = "flex";
+//   document.body.style.overflow = "hidden";
+// });
 
-closeAddCashbox?.addEventListener("click", () => {
-  add_cashbox_container.style.display = "none";
-  document.body.style.overflow = "auto";
-});
+// closeAddCashbox?.addEventListener("click", () => {
+//   add_cashbox_container.style.display = "none";
+//   document.body.style.overflow = "auto";
+// });
 
 
 const edit_cashbox_container = document.querySelector(".edit-cashbox-container");
@@ -1078,3 +1094,102 @@ closeEditOilChangeType?.addEventListener("click", () => {
   edit_oilChangeType_container.style.display = "none";
   document.body.style.overflow = "auto";
 });
+
+
+
+
+
+
+
+//========Notifications===============
+
+
+
+const add_notification_container = document.querySelector(".add-notification-container");
+
+const closeAddNotification = document.querySelector(".closeAddNotification");
+
+const addNewNotification = document.querySelector(".addNewNotification");
+
+
+
+addNewNotification?.addEventListener("click", () => {
+
+  add_notification_container.style.display = "flex";
+
+  document.body.style.overflow = "hidden";
+
+});
+
+
+
+closeAddNotification?.addEventListener("click", () => {
+
+  add_notification_container.style.display = "none";
+
+  document.body.style.overflow = "auto";
+
+});
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  const filterBtn = document.querySelector(".filter-main-btn");
+
+  const driversListBox = document.querySelector(".driversListBox");
+
+  const seeAllBtn = document.querySelector(".seeAllDrivers");
+
+  const driversList = document.querySelector(".driversList");
+
+
+
+  // Eğer bu sayfada ilgili elementler varsa çalıştır
+
+  if (filterBtn && driversListBox) {
+
+    // Filter butonuna tıklayınca toggle
+
+    filterBtn.addEventListener("click", (e) => {
+
+      driversListBox.classList.toggle("showBox");
+
+    });
+
+
+
+    // Sayfanın başka bir yerine tıklanınca kapat
+
+    document.addEventListener("click", (e) => {
+
+      if (!driversListBox.contains(e.target) && !filterBtn.contains(e.target)) {
+
+        driversListBox.classList.remove("showBox");
+
+      }
+
+    });
+
+  }
+
+
+
+  // "Hamısına bax" varsa ve varsa çalıştır
+
+  if (seeAllBtn && driversList) {
+
+    seeAllBtn.addEventListener("click", () => {
+
+      driversList.classList.add("full_list");
+
+      seeAllBtn.style.display = "none";
+
+    });
+
+  }
+
+});
+

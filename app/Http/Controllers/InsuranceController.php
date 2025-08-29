@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\DataTables\InsurancesDatatable;
 use App\DataTables\ModelDatatable;
 use App\DataTables\TechnicalReviewDatatable;
+use App\Exports\InsuranceExport;
 use App\Models\BanType;
 use App\Models\Brand;
 use App\Models\Driver;
@@ -20,6 +21,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use App\DataTables\BrandsDataTable;
+use Maatwebsite\Excel\Facades\Excel;
 
 
 class InsuranceController extends Controller
@@ -34,6 +36,7 @@ class InsuranceController extends Controller
     {
         $action = $item->id ? 'edit' : 'create';
         $permissionService->checkPermission($action, 'insurances');
+        $formTitle = $item->id ? 'Siğorta redaktə et' : 'Siğorta əlavə et';
 
         $brands=Brand::get();
         $banTypes=BanType::get();
@@ -43,7 +46,8 @@ class InsuranceController extends Controller
         $view = view('insurances.form', compact('item','brands','banTypes', 'drivers','vehicles', 'models'))->render();
 
         return response()->json([
-            "view" => $view
+            "view" => $view,
+            "formTitle" => $formTitle
         ]);
     }
 
@@ -63,7 +67,7 @@ class InsuranceController extends Controller
             'company_name' => 'required',
             'start_date' => 'required',
             'end_date' => 'required',
-            'file'=>$item?->id ? 'nullable':'required',
+            // 'file'=>$item?->id ? 'nullable':'required',
         ]);
         try {
             DB::beginTransaction();
@@ -112,5 +116,9 @@ class InsuranceController extends Controller
      public function show(Insurance $item){
       
         return view('insurances.show',compact('item'));
+    }
+
+    public function export(Request $request){
+        return Excel::download(new InsuranceExport, 'insurances.xlsx');
     }
 }

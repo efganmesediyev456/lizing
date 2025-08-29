@@ -18,9 +18,19 @@
                             @endif
                         </select>
                     </div>
+
+                    <div class="form-item">
+                        <label for="">Table ID</label>
+                        <select name="tableId" id="id_card_serial_code">
+                            <option value="">Seçin</option>
+                            @foreach($tableIds as $id=>$value)
+                                <option @selected($id==$item->tableId) value="{{ $id }}">{{ $value }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                     <div class="form-item">
                         <label for="">D.Q.N</label>
-                        <select name="vehicle_id" id="id_card_serial_code">
+                        <select name="vehicle_id" id="">
                             <option value="">Seçin</option>
                             @foreach($dqns as $id=>$value)
                                 <option @selected($id==$item->vehicle_id) value="{{ $id }}">{{ $value }}</option>
@@ -45,19 +55,18 @@
                             @endforeach
                         </select>
                     </div>
-                    <div class="form-item">
-                        <label for="">Table ID</label>
-                        <div class="form-input">
-                            <input name="tableId" type="text" value="{{ $item->tableId }}">
-                        </div>
-                    </div>
-                    <div class="form-item">
+
+                    
+
+                    
+                  
+                    <!-- <div class="form-item">
                         <label for="">Status</label>
                         <select name="status" id="">
                             <option value="" @selected($item->status!==null and $item->status==1)>Active</option>
                             <option value="" @selected($item->status!==null and $item->status==0)>Deactive</option>
                         </select>
-                    </div>
+                    </div> -->
                     <div class="form-item">
                         <label for="">Reklam</label>
                         <select name="has_advertisement" id="">
@@ -65,20 +74,21 @@
                             <option value="0" @selected($item->has_advertisement!==null and $item->has_advertisement==0)>yoxdur</option>
                         </select>
                     </div>
-                    <div class="form-item">
-                        <label for="">Depozit ödənişi</label>
-                        <div class="form-input">
-                            <input type="number" name="deposit_payment" value="{{ $item->deposit_payment }}">
-                            <span>azn</span>
-                        </div>
-                    </div>
-                    <div class="form-item">
+                     <div class="form-item">
                         <label for="">Depozit qiyməti</label>
                         <div class="form-input">
-                            <input type="number" name="deposit_price" value="{{ $item->deposit_price }}">
+                            <input  type="number" name="deposit_price" value="{{ $item->deposit_price }}">
                             <span>azn</span>
                         </div>
                     </div>
+                    <div class="form-item">
+                        <label for="">Depozit ilkin ödənişi</label>
+                        <div class="form-input">
+                            <input  type="number" name="deposit_payment" value="{{ $item->deposit_payment }}">
+                            <span>azn</span>
+                        </div>
+                    </div>
+                   
                     <div class="form-item">
                         <label for="">Depozit borcu</label>
                         <div class="form-input">
@@ -90,21 +100,30 @@
                     <div class="form-item">
                         <label for="">Lizing qiyməti</label>
                         <div class="form-input">
-                            <input type="number" name="leasing_price" value="{{ $item->leasing_price }}">
+                            <input  type="number" name="leasing_price" value="{{ $item->leasing_price }}">
                             <span>azn</span>
                         </div>
                     </div>
+                    
+                    <div class="form-item">
+                            <label for="">Ödəniş tipi</label>
+                            <select name="payment_type" id="">
+                                <option @selected($item->payment_type=='daily') value="daily">Gündəlik</option>
+                                <option @selected($item->payment_type=='monthly') value="monthly">Aylıq</option>
+                            </select>
+                    </div>
+
                     <div class="form-item">
                         <label for="">Günlük ödəniş</label>
                         <div class="form-input">
-                            <input type="number" name="daily_payment" value="{{ $item->daily_payment }}">
+                            <input  type="number" name="daily_payment" value="{{ $item->daily_payment }}">
                             <span>azn</span>
                         </div>
                     </div>
                     <div class="form-item">
                         <label for="">Aylıq ödəniş</label>
                         <div class="form-input">
-                            <input type="number" name="monthly_payment" value="{{ $item->monthly_payment }}">
+                            <input  type="number" name="monthly_payment" value="{{ $item->monthly_payment }}">
                             <span>azn</span>
                         </div>
                     </div> 
@@ -118,7 +137,7 @@
                     <div class="form-item">
                         <label for="">Lizing müddəti (ay)</label>
                         <div class="form-input">
-                            <input type="number" name="leasing_period_months" value="{{ $item->leasing_period_months }}">
+                            <input  type="number" name="leasing_period_months" value="{{ $item->leasing_period_months }}">
                             <span>ay</span>
                         </div>
                     </div>
@@ -134,14 +153,30 @@
                             <input type="date" name="end_date" value="{{ $item->end_date?->format('Y-m-d') }}">
                         </div>
                     </div>
+
+                    <div class="form-item">
+                        <label for="">Lizinq Statusu</label>
+                        <select name="leasing_status_id" id="">
+                            <option  value="">Seçin</option>
+                            @foreach($leasing_statuses as $status)
+                                <option @if($action=='create' and $status->is_active==1) selected @endif  data-passive="{{ $status->is_passive }}"
+                                    @selected($status->id == $item->leasing_status_id) 
+                                    value="{{ $status->id }}"
+                                >
+                                    {{ $status->title }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+
                 </div>
                 <div class="form-item">
                     <label for="">Qeyd</label>
                     <div class="form-input">
-                        <textarea name="notes" id="" >{{ $item->notes }}</textarea>
+                        <textarea name="notes" class="note" id="" >{{ $item->notes }}</textarea>
                     </div>
                 </div>
-                <div class="upload-box">
+                {{-- <div class="upload-box">
                     <div class="add_file_box">
                         <img src="../assets/icons/uploadIcon.svg" alt="" class="uploadIcon">
                         <div class="box-text">
@@ -149,7 +184,7 @@
                             <span>JPG, XLSX or PDF, file size no more than 10MB</span>
                         </div>
                         <p class="selectFileTxt">Fayl seç</p>
-                        <input type="file" name="upload" class="file">
+                        <input type="file" name="file" class="file">
                     </div>
                     <div class="document-list">
                         @if($item?->file)
@@ -169,6 +204,6 @@
                         </div>
                         @endif
                     </div>
-                </div>
+                </div> --}}
                 <button class="submit" type="submit">Əlavə et</button>
             </form>

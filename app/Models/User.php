@@ -29,7 +29,8 @@ class User extends Authenticatable
         'fin',
         'status',
         'id_card_back',
-        'id_card_front'
+        'id_card_front',
+        'image'
     ];
 
     /**

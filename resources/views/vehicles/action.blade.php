@@ -3,6 +3,18 @@
         <img src="../assets/icons/three_points.svg" alt="">
     </button>
     <div class="action-links">
+        {{-- <a href="{{  route('vehicles.penalties.index',['vehicle'=>$item->id]) }}" class="action-link" >
+                                                <img src="../assets/icons/fine-auto.svg" alt="">
+                                                Cərimələr
+        </a> --}}
+        <a href="{{ route('insurances.index',['vehicle'=>$item->id]) }}" class="action-link">
+                                                <img src="../assets/icons/insurance-green.svg" alt="">
+                                                Siğorta
+                                            </a>
+        <a href="{{ route("technical_reviews.index",['vehicle'=>$item->id]) }}" class="action-link">
+                                                <img src="../assets/icons/technicalAuto-blue.svg" alt="">
+                                                Texniki baxış
+                                            </a>
         <button data-id="{{ $item->id }}" class="editUserBtn action-link editItem" type="button">
             <img src="../assets/icons/edit_blue.svg" alt="">
             Redaktə et

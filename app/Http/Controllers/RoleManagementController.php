@@ -26,11 +26,13 @@ class RoleManagementController extends Controller
     {
         $action = $item->id ? 'edit' : 'create';
         $permissionService->checkPermission($action, 'role-managements');
+        $formTitle = $item->id ? 'Rol idarəetməsi redaktə et' : 'Rol idarəetməsi əlavə et';
 
         $view = view('role-managements.form', compact('item'))->render();
 
         return response()->json([
-            "view" => $view
+            "view" => $view,
+            "formTitle" => $formTitle
         ]);
     }
 

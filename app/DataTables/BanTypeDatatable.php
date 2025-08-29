@@ -26,6 +26,8 @@ class BanTypeDatatable extends DataTable
                 ])->render();
                 return $view;
             })
+                     ->addIndexColumn() 
+
             ->editColumn('status', function ($driver) {
                 $status = $driver->status;
                 $html = '';
@@ -48,6 +50,8 @@ class BanTypeDatatable extends DataTable
     public function query(BanType $model)
     {
         $query = $model->newQuery()->orderBy('id', 'desc');
+       
+
         return $query;
     }
 
@@ -58,11 +62,18 @@ class BanTypeDatatable extends DataTable
             ->columns($this->getColumns())
             ->minifiedAjax()
             ->parameters([
-                'paging' => true,
+                 'paging' => true,
                 'info' => false,
                 'searching' => true,
                 'ordering' => false,
-                'buttons'  => []
+                'responsive' => true,
+                'autoWidth' => false,
+                'scrollX' => true,
+                'scrollY' => '',
+                'pageLength' => 100,
+                'buttons' => [
+                    ['extend' => 'colvis', 'text' => 'Sütunları Göstər/Gizlə']
+                ]
             ])
             ->dom('Bfrtip')
             ->orderBy(0);
@@ -71,7 +82,7 @@ class BanTypeDatatable extends DataTable
     protected function getColumns()
     {
         return [
-            ['data' => 'id', 'title' => 'NO:'],
+            ['data' => 'DT_RowIndex', 'title' => 'No:', 'orderable' => false, 'searchable' => false],
             ['data' => 'title', 'title' => 'Ban növü'],
             ['data' => 'status', 'title' => 'Status'],
             ['data' => 'action', 'title' => 'Action', 'exportable' => false, 'printable' => false, 'orderable' => false, 'searchable' => false],

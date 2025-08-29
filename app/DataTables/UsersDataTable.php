@@ -20,6 +20,8 @@ class UsersDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
+            ->addIndexColumn() 
+
             ->addColumn('action', function ($item) {
                 $view=view('users.action', [
                     'item'=>$item
@@ -68,11 +70,18 @@ class UsersDataTable extends DataTable
             ->columns($this->getColumns())
             ->minifiedAjax()
             ->parameters([
-                'paging' => true,
+                 'paging' => true,
                 'info' => false,
                 'searching' => true,
                 'ordering' => false,
-                'buttons'  => []
+                'responsive' => true,
+                'autoWidth' => false,
+                'scrollX' => true,
+                'scrollY' => '',
+                'pageLength' => 100,
+                'buttons' => [
+                    ['extend' => 'colvis', 'text' => 'Sütunları Göstər/Gizlə']
+                ]
             ])
             ->dom('Bfrtip')
             ->orderBy(0);
@@ -81,12 +90,12 @@ class UsersDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            ['data' => 'id', 'title' => 'NO:'],
-            ['data' => 'created_at', 'title' => 'Tarix'],
+            ['data' => 'DT_RowIndex', 'title' => 'No:', 'orderable' => false, 'searchable' => false],
             ['data' => 'name', 'title' => 'Ad Soyad'],
             ['data' => 'email', 'title' => 'Mail'],
             ['data' => 'fin', 'title' => 'FİN'],
             ['data' => 'status', 'title' => 'Status'],
+            ['data' => 'created_at', 'title' => 'Tarix'],
             ['data' => 'action', 'title' => 'Action', 'exportable' => false, 'printable' => false, 'orderable' => false, 'searchable' => false],
         ];
     }

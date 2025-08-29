@@ -65,7 +65,7 @@
                     <div class="form-item">
                         <label for="">Sığorta şirkətinin adı</label>
                         <div class="form-input">
-                            <input type="number" name="company_name" value="{{ $item->company_name }}">
+                            <input type="text" name="company_name" value="{{ $item->company_name }}">
                             <span>azn</span>
                         </div>
                     </div>

@@ -27,12 +27,14 @@ class CitiesController extends Controller
         $action = $item->id ? 'edit' : 'create';
         $permissionService->checkPermission($action, 'cities');
         
+        $formTitle = $item->id ? 'Şəhər redaktə et' : 'Şəhər əlavə et';
 
         
         $view = view('cities.form', compact('item'))->render();
 
         return response()->json([
-            "view" => $view
+            "view" => $view,
+            "formTitle" => $formTitle
         ]);
     }
 

@@ -35,6 +35,7 @@ class OilChangeController extends Controller
     {
         $action = $item->id ? 'edit' : 'create';
         $permissionService->checkPermission($action, 'oil-changes');
+        $formTitle = $item->id ? 'Yağın dəyişilməsi redaktə et' : 'Yağın dəyişilməsi əlavə et';
 
         $brands=Brand::get();
         $banTypes=BanType::get();
@@ -45,7 +46,8 @@ class OilChangeController extends Controller
         $view = view('oil_changes.form', compact('item','brands','banTypes', 'drivers','vehicles', 'models', 'oilChangeTypes'))->render();
 
         return response()->json([
-            "view" => $view
+            "view" => $view,
+            "formTitle" => $formTitle
         ]);
     }
 
@@ -115,5 +117,20 @@ class OilChangeController extends Controller
      public function show(OilChange $item){
       
         return view('oil_changes.show',compact('item'));
+    }
+
+
+    public function changeOil(Request $request){
+        $driver = Driver::find($request->driver_id);
+        $change_interval = $request->change_interval;
+        $oil_change_type = OilChangeType::find($request->oil_change_type_id);
+        $oilChange = $driver->oilChanges()->where('oil_change_type_id', $request->oil_change_type_id)->latest()->first();
+        $data = $request->change_interval -  $oilChange->next_change_interval;
+        if($request->change_interval != $oilChange->next_change_interval){
+            return response()->json([
+                "difference_interval"=>$data,
+                "next_change_interval"=>$request->change_interval + $oil_change_type->km
+            ]);
+        }
     }
 }

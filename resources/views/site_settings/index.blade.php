@@ -43,9 +43,8 @@
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M23.1626 6.83765C23.3381 7.01343 23.4367 7.25171 23.4367 7.50015C23.4367 7.74859 23.3381 7.98687 23.1626 8.16265L8.16255 23.1627C7.98483 23.3283 7.74978 23.4184 7.5069 23.4141C7.26402 23.4098 7.03229 23.3114 6.86052 23.1397C6.68876 22.9679 6.59037 22.7362 6.58608 22.4933C6.5818 22.2504 6.67195 22.0154 6.83755 21.8377L21.8376 6.83765C22.0133 6.66209 22.2516 6.56348 22.5001 6.56348C22.7485 6.56348 22.9868 6.66209 23.1626 6.83765Z" fill="#2C2D33"/>
                     </svg>
                 </button>
-                <img src="./assets/images/success.svg" alt="">
+                <img src="{{ asset('assets/images/success.svg') }}" alt="">
                 <h2>Uğurla əlavə olundu !</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam in lacinia orci, non porttitor.</p>
                 <a href="" class="goBack">
                 Geri qayit
                 </a>

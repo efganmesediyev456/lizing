@@ -27,6 +27,7 @@ class UserController extends Controller
     {
         $action = $item->id ? 'edit' : 'create';
         $permissionService->checkPermission($action, 'users');
+        $formTitle = $item->id ? 'İstifadəçi redaktə et' : 'İstifadəçi əlavə et';
 
 
         if ($item) {
@@ -36,7 +37,8 @@ class UserController extends Controller
         $view = view('users.form', compact('item','roles'))->render();
 
         return response()->json([
-            "view" => $view
+            "view" => $view,
+            "formTitle" => $formTitle
         ]);
     }
 

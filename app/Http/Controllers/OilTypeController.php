@@ -34,11 +34,13 @@ class OilTypeController extends Controller
     {
         $action = $item->id ? 'edit' : 'create';
         $permissionService->checkPermission($action, 'oil-types');
+        $formTitle = $item->id ? 'Yanacaq növü redaktə et' : 'Yanacaq növü əlavə et';
 
         $view = view('oil_types.form', compact('item'))->render();
 
         return response()->json([
-            "view" => $view
+            "view" => $view,
+            "formTitle" => $formTitle
         ]);
     }
 

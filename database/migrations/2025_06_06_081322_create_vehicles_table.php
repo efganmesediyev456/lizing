@@ -20,11 +20,11 @@ return new class extends Migration
             $table->unsignedBigInteger("model_id")->nullable();
             $table->foreign("model_id")->references("id")->on("models")->nullOnDelete();
             $table->string('table_id_number')->unique();
-            $table->string('vin_code')->unique();
+            $table->string('vin_code')->nullable();
             $table->string('state_registration_number')->unique();
             $table->integer('production_year');
-            $table->decimal('purchase_price', 10, 2);
-            $table->integer('mileage');
+            $table->decimal('purchase_price', 10, 2)->nullable();
+            $table->integer('mileage')->nullable();
             $table->string('engine');
             $table->tinyInteger('status')->default(1);
             $table->timestamps();

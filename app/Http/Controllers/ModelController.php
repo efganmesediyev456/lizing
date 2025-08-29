@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\ModelDatatable;
+use App\Exports\ModelExport;
 use App\Models\BanType;
 use App\Models\Brand;
 use App\Models\Driver;
@@ -15,6 +16,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use App\DataTables\BrandsDataTable;
+use Maatwebsite\Excel\Facades\Excel;
 
 
 class ModelController extends Controller
@@ -28,13 +30,16 @@ class ModelController extends Controller
     public function form(Model $item,PermissionService $permissionService)
     {
         $action = $item->id ? 'edit' : 'create';
+        $formTitle = $item->id ? 'Model redaktə et' : 'Model əlavə et';
+
         $permissionService->checkPermission($action, 'models');
         $brands=Brand::get();
         $banTypes=BanType::get();
         $view = view('models.form', compact('item','brands','banTypes'))->render();
 
         return response()->json([
-            "view" => $view
+            "view" => $view,
+            "formTitle"=>$formTitle
         ]);
     }
 
@@ -86,5 +91,9 @@ class ModelController extends Controller
                 'message' => 'System Error: '.$e->getMessage()
             ]);
         }
+    }
+
+    public function export(){
+        return Excel::download(new ModelExport(),'models.xlsx');
     }
 }

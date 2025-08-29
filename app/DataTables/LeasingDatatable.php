@@ -9,6 +9,7 @@ use App\Models\Leasing;
 use App\Models\Model;
 use App\Models\TechnicalReview;
 use Yajra\DataTables\Services\DataTable;
+use Yajra\DataTables\Html\Column;
 
 class LeasingDatatable extends DataTable
 {
@@ -29,6 +30,7 @@ class LeasingDatatable extends DataTable
                 ])->render();
                 return $view;
             })
+            ->addIndexColumn() 
             ->editColumn('driver_id', function ($item) {
                 return $item->driver?->name.' '.$item->driver?->surname;
             })
@@ -43,6 +45,9 @@ class LeasingDatatable extends DataTable
             })
             ->addColumn('fin', function ($item) {
                 return $item->driver?->fin;
+            })
+             ->addColumn('leasingStatus', function ($item) {
+                return $item->leasingStatus?->title ?? 'Status yoxdur';
             })
             ->editColumn('status', function ($driver) {
                 $status = $driver->status;
@@ -65,7 +70,14 @@ class LeasingDatatable extends DataTable
 
     public function query(Leasing $model)
     {
-        $query = $model->newQuery()->orderBy('id', 'desc');
+        $query = $model->newQuery() ->with([
+            'driver', 
+            'vehicle', 
+            'leasingStatus'
+        ]);
+
+        $query->orderByRaw('CAST(tableId AS UNSIGNED) ASC');
+
         return $query;
     }
 
@@ -76,11 +88,18 @@ class LeasingDatatable extends DataTable
             ->columns($this->getColumns())
             ->minifiedAjax()
             ->parameters([
-                'paging' => true,
+               'paging' => true,
                 'info' => false,
                 'searching' => true,
                 'ordering' => false,
-                'buttons'  => []
+                'responsive' => true,
+                'autoWidth' => false,
+                'scrollX' => true,
+                'scrollY' => '',
+                'pageLength' => 100,
+                'buttons' => [
+                    ['extend' => 'colvis', 'text' => 'Sütunları Göstər/Gizlə']
+                ]
             ])
             ->dom('Bfrtip')
             ->orderBy(0);
@@ -89,13 +108,14 @@ class LeasingDatatable extends DataTable
     protected function getColumns()
     {
         return [
-            ['data' => 'id', 'title' => 'No:'],
+            ['data' => 'DT_RowIndex', 'title' => 'No:', 'orderable' => false, 'searchable' => false],
             ['data' => 'tableId', 'title' => 'Table İD'],
             ['data' => 'driver_id', 'title' => 'Ad soyad'],
             ['data' => 'model_id', 'title' => 'Model'],
             ['data' => 'brand_id', 'title' => 'Marka'],
             ['data' => 'dqn', 'title' => 'D.Q.N.'],
             ['data' => 'fin', 'title' => 'FİN'],
+            ['data' => 'leasingStatus', 'title' => 'Lizinq Statusu'],
             ['data' => 'action', 'title' => 'Action', 'exportable' => false, 'printable' => false, 'orderable' => false, 'searchable' => false],
         ];
     }

@@ -1,4 +1,7 @@
-<div class="action-links">
+
+
+
+<div class="action-links" style="display:flex!important;">
                                         <a href="{{ route('role-permissions.show',$item->id) }}" class="action-link">
                                             <img src="../assets/icons/eye_yellow.svg" alt="">
                                         </a>
@@ -9,3 +12,6 @@
                                             <img src="../assets/icons/trash-red.svg" alt="">
                                         </button>
                                     </div>
+
+
+                                    

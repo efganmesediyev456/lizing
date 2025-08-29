@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\BrandExport;
 use App\Models\Brand;
 use App\Models\Driver;
 use App\Services\PermissionService;
@@ -12,6 +13,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use App\DataTables\BrandsDataTable;
+use Maatwebsite\Excel\Facades\Excel;
 
 
 class BrandController extends Controller
@@ -25,12 +27,14 @@ class BrandController extends Controller
     public function form(Brand $item,PermissionService $permissionService)
     {
         $action = $item->id ? 'edit' : 'create';
+        $formTitle = $item->id ? 'Marka redaktə et' : 'Marka əlavə et';
         $permissionService->checkPermission($action, 'brands');
         
         $view = view('brands.form', compact('item'))->render();
 
         return response()->json([
-            "view" => $view
+            "view" => $view,
+            "formTitle"=>$formTitle
         ]);
     }
 
@@ -77,5 +81,9 @@ class BrandController extends Controller
                 'message' => 'System Error: '.$e->getMessage()
             ]);
         }
+    }
+
+    public function export(){
+        return Excel::download(new BrandExport(),'brands.xlsx');
     }
 }

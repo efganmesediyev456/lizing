@@ -1,6 +1,4 @@
-@if(isset($message))
-<p style="padding:12px; background:green; color:white; border-radius:4px; text-align:center; margin-top:22px;" class="message">{{$message}}</p>
-@else
+
 <form action="{{route('technical_reviews.save',['item'=>$item?->id])}}" class="saveForm" enctype="multipart/form-data">
     
 
@@ -61,6 +59,16 @@
                             <span>azn</span>
                         </div>
                     </div>
+
+                    <div class="form-item">
+                        <label for="">Karobka yaginin bize verenler</label>
+                        <div class="form-input">
+                            <input type="text" name="transmission_oil_suppliers" value="{{ $item->transmission_oil_suppliers}}">
+                            <span>azn</span>
+                        </div>
+                    </div>
+
+
                     <div class="form-item">
                         <label for="">Status</label>
                         <select name="status" id="">
@@ -116,4 +124,4 @@
 
     <button class="submit" type="submit">Əlavə et</button>
 </form>
-@endif
+

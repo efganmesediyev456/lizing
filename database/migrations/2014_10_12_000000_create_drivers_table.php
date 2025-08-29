@@ -13,10 +13,10 @@ return new class extends Migration
             $table->string('name');
             $table->string('surname');
             $table->string('email')->unique();
-            $table->string('phone');
-            $table->string('tableId');
-            $table->string('fin')->unique();
-            $table->string('id_card_serial_code')->unique();
+            $table->string('phone')->nullable();
+            $table->string('tableId')->nullable();
+            $table->string('fin')->unique()->nullable();
+            $table->string('id_card_serial_code')->unique()->nullable();
             $table->string('current_address')->nullable();
             $table->string('registered_address')->nullable();
             $table->date('date')->nullable();

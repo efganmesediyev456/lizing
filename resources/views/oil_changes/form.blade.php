@@ -11,6 +11,15 @@
                             <input type="text" name="tableId" value="{{ $item->tableId }}">
                         </div>
                     </div>
+                     <div class="form-item">
+                        <label for="">Dövlət qeydiyyat nişanı</label>
+                        <select id="id_card_serial_code" name="vehicle_id" id="">
+                                <option value="">Secin</option>
+                            @foreach($vehicles as $vehicle)
+                                <option @selected($vehicle->id==$item->vehicle_id) value="{{ $vehicle->id }}">{{ $vehicle->state_registration_number }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                     <div class="form-item">
                         <label for="">Sürücünün adı</label>
                         <select name="driver_id" id="">
@@ -20,15 +29,7 @@
                             @endforeach
                         </select>
                     </div>
-                    <div class="form-item">
-                        <label for="">Dövlət qeydiyyat nişanı</label>
-                        <select id="id_card_serial_code" name="vehicle_id" id="">
-                                <option value="">Secin</option>
-                            @foreach($vehicles as $vehicle)
-                                <option @selected($vehicle->id==$item->vehicle_id) value="{{ $vehicle->id }}">{{ $vehicle->state_registration_number }}</option>
-                            @endforeach
-                        </select>
-                    </div>
+                   
                     <div class="form-item">
                         <label for="">Marka</label>
                         <select name="brand_id" id="">
@@ -76,7 +77,7 @@
                     <div class="form-item">
                         <label for="">Yağ dəyişmə km</label>
                         <div class="form-input">
-                            <input type="number" name="change_interval" value="{{ $item->change_interval }}">
+                            <input type="number" id="change_interval" name="change_interval" value="{{ $item->change_interval }}">
                         </div>
                     </div>
                     <div class="form-item">
@@ -118,7 +119,7 @@
                 <div class="form-item">
                     <label for="">Qeyd</label>
                     <div class="form-input">
-                        <textarea name="note" id="">{{ $item->note }}</textarea>
+                        <textarea name="note" class="note" id="">{{ $item->note }}</textarea>
                     </div>
                 </div>
 

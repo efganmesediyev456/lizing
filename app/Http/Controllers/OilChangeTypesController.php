@@ -33,9 +33,11 @@ class OilChangeTypesController extends Controller
         $permissionService->checkPermission($action, 'oil_change_types');
 
         $view = view('oil_change_types.form', compact('item'))->render();
+        $formTitle = $item->id ? 'Yağın dəyişilmə növü redaktə et' : 'Yağın dəyişilmə növü əlavə et';
 
         return response()->json([
-            "view" => $view
+            "view" => $view,
+            "formTitle" => $formTitle
         ]);
     }
 
@@ -49,7 +51,6 @@ class OilChangeTypesController extends Controller
             'title' => 'required|string|max:255',
             'km' => 'required'
         ]);
-
 
 
         try {

@@ -58,13 +58,13 @@
                         <div class="form-item">
                             <label for="">Başlama tarixi</label>
                             <div class="form-input">
-                                <input type="date" value="{{ $item->start_date->format('Y-m-d') }}">
+                                <input type="date" value="{{ $item->start_date?->format('Y-m-d') }}">
                             </div>
                         </div>
                         <div class="form-item">
                             <label for="">Bitmə tarixi</label>
                             <div class="form-input">
-                                <input type="date" value="{{ $item->end_date->format('Y-m-d') }}">
+                                <input type="date" value="{{ $item->end_date?->format('Y-m-d') }}">
                             </div>
                         </div>
                     </div>

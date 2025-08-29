@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\DataTables\ModelDatatable;
 use App\DataTables\TechnicalReviewDatatable;
+use App\Exports\TechnicalReviewExport;
 use App\Models\BanType;
 use App\Models\Brand;
 use App\Models\Driver;
@@ -18,6 +19,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use App\DataTables\BrandsDataTable;
+use Maatwebsite\Excel\Facades\Excel;
 
 
 class TechnicalReviewController extends Controller
@@ -32,6 +34,7 @@ class TechnicalReviewController extends Controller
     {
         $action = $item->id ? 'edit' : 'create';
         $permissionService->checkPermission($action, 'technical-reviews');
+        $formTitle = $item->id ? 'Texniki baxış redaktə et' : 'Texniki baxış əlavə et';
 
         $brands=Brand::get();
         $banTypes=BanType::get();
@@ -41,7 +44,8 @@ class TechnicalReviewController extends Controller
         $view = view('technical_reviews.form', compact('item','brands','banTypes', 'drivers','vehicles', 'models'))->render();
 
         return response()->json([
-            "view" => $view
+            "view" => $view,
+            "formTitle" => $formTitle
         ]);
     }
 
@@ -61,7 +65,7 @@ class TechnicalReviewController extends Controller
             'status' => 'required',
             'start_date' => 'required',
             'end_date' => 'required',
-            'file'=>$item?->id ? 'nullable':'required',
+            // 'file'=>$item?->id ? 'nullable':'required',
         ]);
         try {
             DB::beginTransaction();
@@ -105,5 +109,9 @@ class TechnicalReviewController extends Controller
     public function show(TechnicalReview $item){
       
         return view('technical_reviews.show',compact('item'));
+    }
+
+    public function export(){
+        return Excel::download(new TechnicalReviewExport, 'technical_review_exports.xlsx');
     }
 }

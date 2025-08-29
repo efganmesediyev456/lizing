@@ -41,6 +41,12 @@ class OilChangeDatatable extends DataTable
              ->editColumn('model_id', function ($driver) {
                 return $driver->model?->title;
             })
+
+             ->filterColumn('vehicle_id', function ($q,$s) {
+                $q->whereHas('vehicle', function($qq) use($s){
+                    $qq->where('state_registration_number','like',"%$s%");
+                });
+            })
             ->editColumn('status', function ($driver) {
                 $status = $driver->status;
                 $html = '';
@@ -77,7 +83,14 @@ class OilChangeDatatable extends DataTable
                 'info' => false,
                 'searching' => true,
                 'ordering' => false,
-                'buttons'  => []
+                'responsive' => true,
+                'autoWidth' => false,
+                'scrollX' => true,
+                'scrollY' => '',
+                'pageLength' => 100,
+                'buttons' => [
+                    ['extend' => 'colvis', 'text' => 'Sütunları Göstər/Gizlə']
+                ]
             ])
             ->dom('Bfrtip')
             ->orderBy(0);

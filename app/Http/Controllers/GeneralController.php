@@ -26,13 +26,47 @@ class GeneralController extends Controller
             throw new \Exception("Vehicle doesnt find");
         }
 
+        $driver = $vehicle?->leasing?->driver;
+        // dd($driver);
+        $data = [
+            'brand_id'=>$vehicle->brand_id,
+            'model_id'=>$vehicle->model_id,
+            'production_year'=>$vehicle->production_year,
+            'vehicle_id' => $vehicle->id
+        ];
+
+        if($request->type != "leasing"){
+            $data['driver_id'] = $vehicle?->leasing?->driver?->id;
+        }
+
+        return response()->json($data,200);
+
+       }catch(\Exception $e){
+        return response()->json([
+            "error"=> $e->getMessage()
+            ], 500);
+        }
+    }
+
+
+    public function getLeasingElements(Request $request){
+         try{
+
+        $vehicle = Vehicle::find( $request->value );
+        if(is_null($vehicle)){
+            throw new \Exception("Vehicle doesnt find");
+        }
+
         return response()->json([
             'brand_id'=>$vehicle->brand_id,
             'model_id'=>$vehicle->model_id,
             'production_year'=>$vehicle->production_year,
+            'name'=>$vehicle->leasing?->driver?->fullName,
+            'tableId'=>$vehicle->leasing?->tableId,
+            'deposit_debt'=>$vehicle->leasing?->deposit_payment+$vehicle->leasing?->deposit_debt,
+            'leasing_id'=>$vehicle->leasing?->id,
+            'driver_id'=>$vehicle->leasing?->driver_id,
         ] ,200);
-
-
 
        }catch(\Exception $e){
         return response()->json([

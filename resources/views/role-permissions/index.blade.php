@@ -14,9 +14,8 @@
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M23.1626 6.83765C23.3381 7.01343 23.4367 7.25171 23.4367 7.50015C23.4367 7.74859 23.3381 7.98687 23.1626 8.16265L8.16255 23.1627C7.98483 23.3283 7.74978 23.4184 7.5069 23.4141C7.26402 23.4098 7.03229 23.3114 6.86052 23.1397C6.68876 22.9679 6.59037 22.7362 6.58608 22.4933C6.5818 22.2504 6.67195 22.0154 6.83755 21.8377L21.8376 6.83765C22.0133 6.66209 22.2516 6.56348 22.5001 6.56348C22.7485 6.56348 22.9868 6.66209 23.1626 6.83765Z" fill="#2C2D33"/>
                     </svg>
                 </button>
-                <img src="./assets/images/success.svg" alt="">
+                <img src="{{ asset('assets/images/success.svg') }}" alt="">
                 <h2>Uğurla əlavə olundu !</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam in lacinia orci, non porttitor.</p>
                 <a href="" class="goBack">
                 Geri qayit
                 </a>
@@ -38,7 +37,7 @@
                         <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M18.5 12.998H13.5V17.998C13.5 18.2632 13.3946 18.5176 13.2071 18.7051C13.0196 18.8926 12.7652 18.998 12.5 18.998C12.2348 18.998 11.9804 18.8926 11.7929 18.7051C11.6054 18.5176 11.5 18.2632 11.5 17.998V12.998H6.5C6.23478 12.998 5.98043 12.8926 5.79289 12.7051C5.60536 12.5176 5.5 12.2632 5.5 11.998C5.5 11.7328 5.60536 11.4784 5.79289 11.2909C5.98043 11.1033 6.23478 10.998 6.5 10.998H11.5V5.99799C11.5 5.73277 11.6054 5.47842 11.7929 5.29088C11.9804 5.10334 12.2348 4.99799 12.5 4.99799C12.7652 4.99799 13.0196 5.10334 13.2071 5.29088C13.3946 5.47842 13.5 5.73277 13.5 5.99799V10.998H18.5C18.7652 10.998 19.0196 11.1033 19.2071 11.2909C19.3946 11.4784 19.5 11.7328 19.5 11.998C19.5 12.2632 19.3946 12.5176 19.2071 12.7051C19.0196 12.8926 18.7652 12.998 18.5 12.998Z" fill="white"></path>
                         </svg>
-                        Əlavə et
+                        Yeni Rol İcazəsi Əlavə et
                     </a>
                 </div>
             </div>
@@ -56,7 +55,7 @@
     <div class="pagination-result-right">
         <div class="show_count">
             <span>Display</span>
-            <input type="number">
+                     <input type="number" id="perPageInput" min="1" value="100">
         </div>
         <div class="pagination">
             <a href="" class="prev">
@@ -246,6 +245,16 @@
 
         initFileInputUploadStyle('.id_card_front');
         initFileInputUploadStyle('.id_card_back');
+
+        $('#perPageInput').on('input', function () {
+            let val = parseInt($(this).val());
+            if (!isNaN(val) && val > 0) {
+                table.page.len(val).draw();
+            }
+        });
+
+
+        
     });
 </script>
 

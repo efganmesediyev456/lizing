@@ -24,4 +24,35 @@ class Vehicle extends LaravelModel
      public function model(){
         return $this->belongsTo(Model::class);
     }
+
+    public function oilType(){
+        return $this->belongsTo(OilType::class);
+    }
+
+    public function leasing(){
+        return $this->hasOne(Leasing::class);
+    }
+
+    
+
+
+    public function vehicleStatus(){
+        return $this->belongsTo(VehicleStatus::class);
+    }
+
+
+    public function technicalReview()
+    {
+        return $this->hasOne(TechnicalReview::class)->latest();
+    }
+
+    public function insurance()
+    {
+        return $this->hasOne(Insurance::class)->latest();
+    }
+
+
+    public function color(){
+        return $this->belongsTo(Color::class);
+    }
 }

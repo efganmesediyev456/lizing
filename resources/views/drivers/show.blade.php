@@ -43,6 +43,24 @@
                                 <input type="text" value="{{ $item->phone }}">
                             </div>
                         </div>
+                         <div class="form-item">
+                            <label for="">Əlaqə nömrəsi 2</label>
+                            <div class="form-input">
+                                <input type="text" value="{{ $item->phone2 }}">
+                            </div>
+                        </div>
+                        <div class="form-item">
+                            <label for="">Əlaqə nömrəsi 3</label>
+                            <div class="form-input">
+                                <input type="text" value="{{ $item->phone3 }}">
+                            </div>
+                        </div>
+                        <div class="form-item">
+                            <label for="">Əlaqə nömrəsi 4</label>
+                            <div class="form-input">
+                                <input type="text" value="{{ $item->phone4 }}">
+                            </div>
+                        </div>
                         <div class="form-item">
                             <label for="">Şəxsiyyət FİN</label>
                             <div class="form-input">
@@ -58,7 +76,7 @@
                         <div class="form-item">
                             <label for="">Doğum tarixi</label>
                             <div class="form-input">
-                                <input type="text" value="{{ $item->date->format('d/m/Y') }}">
+                                <input type="text" value="{{ $item->date?->format('d/m/Y') }}">
                             </div>
                         </div>
                         <div class="form-item">
@@ -73,6 +91,38 @@
                                 <input type="text" value="{{ $item->city?->title }}">
                             </div>
                         </div>
+
+                        <div class="form-item">
+                                <label for="">Günlük ödəniş</label>
+                                        <div class="form-input">
+                                            <input type="text" value="{{ $item->daily_payment===0 ? 'Deaktiv' :($item->daily_payment===1 ? 'Aktiv': '') }}">
+                                        </div>
+                        </div>
+
+
+                         <div class="form-item">
+                                <label for="">Aylıq ödəniş</label>
+                                        <div class="form-input">
+                                            <input type="text" value="{{ $item->monthy_payment===0 ? 'Deaktiv' :($item->monthy_payment===1 ? 'Aktiv': '') }}">
+                                        </div>
+                        </div>
+
+
+                        <div class="form-item">
+                                <label for="">Depozit ödəniş</label>
+                                        <div class="form-input">
+                                            <input type="text" value="{{ $item->deposit_payment===0 ? 'Deaktiv' :($item->deposit_payment===1 ? 'Aktiv': '') }}">
+                                        </div>
+                        </div>
+
+                        <div class="form-item">
+                                <label for="">Ilkin Depozit ödəniş</label>
+                                        <div class="form-input">
+                                            <input type="text" value="{{ $item->first_deposit_payment===0 ? 'Deaktiv' :($item->first_deposit_payment===1 ? 'Aktiv': '') }}">
+                                        </div>
+                        </div>
+
+
                         <div class="form-item">
                             <label for="">Şifrə</label>
                             <div class="form-input">

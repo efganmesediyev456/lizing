@@ -26,6 +26,7 @@ class ModelDatatable extends DataTable
                 ])->render();
                 return $view;
             })
+            ->addIndexColumn() 
             ->editColumn('created_at', function ($driver) {
                 return $driver->created_at->format('Y-m-d');
             })
@@ -51,13 +52,23 @@ class ModelDatatable extends DataTable
                             </p>';
                 }
                 return $html;
+            })->filterColumn("ban_type_id", function($query, $search){
+                $query->whereHas('banType', function($q) use($search){
+                    $q->where('title','like','%'.$search.'%');
+                });
+            })
+            ->filterColumn("brand_id", function($q, $search){
+                $q->whereHas('brand', function($qq) use($search){
+                    $qq->where('title','like',"%$search%");
+                });
             })
             ->rawColumns(['action', 'status']);
     }
 
     public function query(Model $model)
     {
-        $query = $model->newQuery()->orderBy('id', 'desc');
+        $query = $model->newQuery();
+        $query=$query->orderBy('id', 'desc');
         return $query;
     }
 
@@ -72,7 +83,14 @@ class ModelDatatable extends DataTable
                 'info' => false,
                 'searching' => true,
                 'ordering' => false,
-                'buttons'  => []
+                'responsive' => true,
+                'autoWidth' => false,
+                'scrollX' => true,
+                'scrollY' => '',
+                'pageLength' => 100,
+                'buttons' => [
+                    ['extend' => 'colvis', 'text' => 'Sütunları Göstər/Gizlə']
+                ]
             ])
             ->dom('Bfrtip')
             ->orderBy(0);
@@ -81,7 +99,7 @@ class ModelDatatable extends DataTable
     protected function getColumns()
     {
         return [
-            ['data' => 'id', 'title' => 'NO:'],
+            ['data' => 'DT_RowIndex', 'title' => 'No:', 'orderable' => false, 'searchable' => false],
             ['data' => 'brand_id', 'title' => 'Marka'],
             ['data' => 'title', 'title' => 'Model'],
             ['data' => 'ban_type_id', 'title' => 'Ban növü'],

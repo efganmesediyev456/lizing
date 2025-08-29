@@ -20,6 +20,7 @@ class OilChangeTypeDatatable extends DataTable
     public function dataTable($query)
     {
         return datatables()
+        
             ->eloquent($query)
             ->addColumn('action', function ($item) {
                 $view = view('oil_change_types.action', [
@@ -27,6 +28,7 @@ class OilChangeTypeDatatable extends DataTable
                 ])->render();
                 return $view;
             })
+             ->addIndexColumn()
             ->editColumn('status', function ($driver) {
                 $status = $driver->status;
                 $html = '';
@@ -59,11 +61,18 @@ class OilChangeTypeDatatable extends DataTable
             ->columns($this->getColumns())
             ->minifiedAjax()
             ->parameters([
-                'paging' => true,
+                 'paging' => true,
                 'info' => false,
                 'searching' => true,
                 'ordering' => false,
-                'buttons'  => []
+                'responsive' => true,
+                'autoWidth' => false,
+                'scrollX' => true,
+                'scrollY' => '',
+                'pageLength' => 100,
+                'buttons' => [
+                    ['extend' => 'colvis', 'text' => 'Sütunları Göstər/Gizlə']
+                ]
             ])
             ->dom('Bfrtip')
             ->orderBy(0);
@@ -72,7 +81,7 @@ class OilChangeTypeDatatable extends DataTable
     protected function getColumns()
     {
         return [
-            ['data' => 'id', 'title' => 'NO:'],
+            ['data' => 'DT_RowIndex', 'title' => 'No:', 'orderable' => false, 'searchable' => false],
             ['data' => 'title', 'title' => 'Y.D.N.'],
             ['data' => 'km', 'title' => 'KM'],
             ['data' => 'status', 'title' => 'Status'],

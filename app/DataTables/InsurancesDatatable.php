@@ -7,6 +7,7 @@ use App\Models\Driver;
 use App\Models\Insurance;
 use App\Models\Model;
 use App\Models\TechnicalReview;
+use Carbon\Carbon;
 use Yajra\DataTables\Services\DataTable;
 
 class InsurancesDatatable extends DataTable
@@ -28,12 +29,29 @@ class InsurancesDatatable extends DataTable
                 ])->render();
                 return $view;
             })
+            ->addIndexColumn() 
+
             ->editColumn('created_at', function ($driver) {
                 return $driver->created_at->format('Y-m-d');
             })
 
             ->editColumn('brand_id', function ($driver) {
                 return $driver->brand?->title;
+            })
+             ->filterColumn('brand_id', function ($q,$s) {
+                $q->whereHas('brand', function($qq) use($s){
+                    $qq->where('title','like',"%$s%");
+                });
+            })
+            ->filterColumn('model_id', function ($q,$s) {
+                $q->whereHas('model', function($qq) use($s){
+                    $qq->where('title','like',"%$s%");
+                });
+            })
+             ->filterColumn('vehicle_id', function ($q,$s) {
+                $q->whereHas('vehicle', function($qq) use($s){
+                    $qq->where('state_registration_number','like',"%$s%");
+                });
             })
              ->editColumn('vehicle_id', function ($driver) {
                 return $driver->vehicle?->state_registration_number;
@@ -56,13 +74,32 @@ class InsurancesDatatable extends DataTable
                             </p>';
                 }
                 return $html;
+            })->setRowClass(function($item){
+                if(!$item->end_date) return '';
+                $now = now();
+                $date = Carbon::parse($item->end_date);
+                $diffMonths = $now->diffInMonths($date, false);
+                if($diffMonths <= 12){
+                    $color = 'tr-red';
+                }elseif($diffMonths <= 36){
+                    $color = 'tr-green';
+                }elseif($diffMonths <= 60){
+                    $color = 'tr-yellow';
+                }
+                return $color;
             })
             ->rawColumns(['action', 'status']);
     }
 
     public function query(Insurance $model)
     {
-        $query = $model->newQuery()->orderBy('id', 'desc');
+        $query = $model->newQuery();
+        if(request()->vehicle){
+            $query=$query->where('vehicle_id', request()->vehicle);
+        }
+
+        $query =$query->orderByRaw('CAST(tableId AS UNSIGNED) ASC');
+
         return $query;
     }
 
@@ -73,11 +110,18 @@ class InsurancesDatatable extends DataTable
             ->columns($this->getColumns())
             ->minifiedAjax()
             ->parameters([
-                'paging' => true,
+                 'paging' => true,
                 'info' => false,
                 'searching' => true,
                 'ordering' => false,
-                'buttons'  => []
+                'responsive' => true,
+                'autoWidth' => false,
+                'scrollX' => true,
+                'scrollY' => '',
+                'pageLength' => 100,
+                'buttons' => [
+                    ['extend' => 'colvis', 'text' => 'Sütunları Göstər/Gizlə']
+                ]
             ])
             ->dom('Bfrtip')
             ->orderBy(0);
@@ -86,7 +130,7 @@ class InsurancesDatatable extends DataTable
     protected function getColumns()
     {
         return [
-            ['data' => 'id', 'title' => 'No:'],
+            ['data' => 'DT_RowIndex', 'title' => 'No:', 'orderable' => false, 'searchable' => false],
             ['data' => 'tableId', 'title' => 'Table İD'],
             ['data' => 'brand_id', 'title' => 'Marka'],
             ['data' => 'model_id', 'title' => 'Model'],
