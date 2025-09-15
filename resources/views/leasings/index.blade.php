@@ -20,7 +20,7 @@
         <div class="leasing-container-head">
             <h1>Lizinglər</h1>
             <div class="head-buttons">
-                <a href="" class="export_excel">
+                <a href="{{ route('leasing.export') }}" class="export_excel">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M6.75022 16.5C0.000222408 17.25 0.750222 9 6.75022 9.75C4.50022 1.5 17.2502 1.5 16.5002 7.5C24.0002 5.25 24.0002 17.25 17.2502 16.5M8.25022 19.5L12.0002 22.5M12.0002 22.5L15.7502 19.5M12.0002 22.5V12"
@@ -72,6 +72,119 @@
                     <input type="text" placeholder="Search" class="datatable-search">
                 </form>
             </div>
+
+            {{-- FILTER --}}
+            <div class="filter-container">
+                <form id="vehicleFilter" class="generalSearch">
+                    <div class="form_inner">
+                        <div class="form_item">
+                            <label>Marka</label>
+                            <select class="filter-input select2" name="brand_id">
+                                <option value="">Seçin</option>
+                                @foreach ($filterOptions['brands'] as $brand)
+                                    <option value="{{ $brand->id }}">{{ $brand->title }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="form_item">
+                            <label>Model</label>
+                            <select class="filter-input select2" name="model_id">
+                                <option value="">Seçin</option>
+                                @foreach ($filterOptions['models'] as $model)
+                                    <option value="{{ $model->id }}">{{ $model->title }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="form_item">
+                            <label>Status</label>
+                            <select class="filter-input select2" name="status_id">
+                                <option value="">Seçin</option>
+                                @foreach ($filterOptions['statuses'] as $status)
+                                    <option value="{{ $status->id }}">{{ $status->title }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+
+                        <div class="form_item">
+                            <label>Sürücü</label>
+                            <select class="filter-input select2" name="driver_id">
+                                <option value="">Seçin</option>
+                                @foreach ($filterOptions['drivers'] as $driver)
+                                    <option value="{{ $driver->id }}">{{ $driver->fullName }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="form_item">
+                            <label>Sürücü fini</label>
+                            <select class="filter-input select2" name="driver_id">
+                                <option value="">Seçin</option>
+                                @foreach ($filterOptions['driverFins'] as $driver)
+                                    <option value="{{ $driver->id }}">{{ $driver->fin }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+
+                        <div class="form_item">
+                            <label>Avtomobil D.Q.N</label>
+                            <select class="filter-input select2" name="state_registration_number">
+                                <option value="">Seçin</option>
+                                @foreach ($filterOptions['vehicles'] as $vehicle)
+                                    <option value="{{ $vehicle->id }}">{{ $vehicle->state_registration_number }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+
+                        <div class="form_item">
+                            <label>Table Id</label>
+                            <select class="filter-input select2" name="table_id_number">
+                                <option value="">Seçin</option>
+                                @foreach ($filterOptions['tableIds'] as $status)
+                                    <option value="{{ $status->table_id_number }}">{{ $status->table_id_number }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="form_item">
+                            <label>Reklam</label>
+                            <select class="filter-input select2" name="has_advertisement">
+                                <option value="">Seçin</option>
+                                <option value="0">Yoxdur</option>
+                                <option value="1">Var</option>
+                            </select>
+                        </div>
+
+                        <div class="form_item">
+                            <label>Ödəniş tipi</label>
+                            <select class="filter-input select2" name="payment_type">
+                                <option value="">Seçin</option>
+                                <option value="daily">Gündəlik</option>
+                                <option value="monthly">Aylıq</option>
+                            </select>
+                        </div>
+
+                        <div class="form_item">
+                            <label>Leasing başlama tarixi</label>
+                            <input type="date" name="start_date" class="filter-input">
+                        </div>
+
+
+                        <div class="form_item">
+                            <label>Leasing bitmə tarixi</label>
+                            <input type="date" name="end_date" class="filter-input">
+                        </div>
+
+                        
+
+                    </div>
+                </form>
+            </div>
+
             <div class="leasing-table">
 
                 {!! $dataTable->table(['class' => 'table table-bordered']) !!}
@@ -115,7 +228,8 @@
         <div class="add-driver">
             <h2>Ödəniş əlavə et</h2>
             <button class="closeAddDriver" type="button">
-                <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" clip-rule="evenodd"
                         d="M6.83765 6.83765C7.01343 6.66209 7.25171 6.56348 7.50015 6.56348C7.74859 6.56348 7.98687 6.66209 8.16265 6.83765L23.1627 21.8377C23.2548 21.9235 23.3286 22.027 23.3799 22.142C23.4311 22.257 23.4587 22.3811 23.4609 22.507C23.4631 22.6329 23.44 22.7579 23.3928 22.8746C23.3457 22.9914 23.2755 23.0974 23.1865 23.1865C23.0974 23.2755 22.9914 23.3457 22.8746 23.3928C22.7579 23.44 22.6329 23.4631 22.507 23.4609C22.3811 23.4587 22.257 23.4311 22.142 23.3799C22.027 23.3286 21.9235 23.2548 21.8377 23.1627L6.83765 8.16265C6.66209 7.98687 6.56348 7.74859 6.56348 7.50015C6.56348 7.25171 6.66209 7.01343 6.83765 6.83765Z"
                         fill="#2C2D33" />
@@ -532,7 +646,7 @@
                 if (depositPrice < depositPayment) {
                     $("[name='deposit_payment']").parent().after(
                         '<p class="removeErr" style="color:red">Depozit ödənişi Depozit qiymətindən böyük ola bilməz</p>'
-                        );
+                    );
                 }
             })
 
@@ -634,6 +748,22 @@
                 e.preventDefault();
                 $(".error-modal-container").hide();
             });
+
+
+            $(".filter-input").on('change', function() {
+                table.ajax.reload(null, false);
+            });
+
+
+            table.on('preXhr.dt', function(e, settings, data) {
+                $(".filter-input").each(function() {
+                    let name = $(this).attr('name');
+                    let value = $(this).val();
+                    if (value) data[name] = value;
+                });
+            });
+
+            $(".select2").select2()
 
         });
     </script>

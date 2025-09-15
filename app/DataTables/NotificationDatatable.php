@@ -3,12 +3,17 @@
 namespace App\DataTables;
 
 use App\Models\Brand;
+use App\Models\City;
 use App\Models\Driver;
 use App\Models\DriverNotification;
+use App\Models\DriverNotificationTopic;
+use App\Models\DriverStatus;
+use App\Models\LeasingStatus;
 use App\Models\Model;
 use App\Models\OilType;
 use App\Models\Payment;
 use App\Models\TechnicalReview;
+use App\Models\Vehicle;
 use Yajra\DataTables\Services\DataTable;
 
 class NotificationDatatable extends DataTable
@@ -53,6 +58,14 @@ class NotificationDatatable extends DataTable
     public function query(DriverNotification $model)
     {
         $query = $model->newQuery()->orderBy('id','desc');
+        if (request()->filled('driver_notification_topic_id')) {
+            $query = $query->where('driver_notification_topic_id', request()->driver_notification_topic_id);
+        }
+        if (request()->filled('status_id')) {
+            $query = $query->where('type', request()->status_id);
+        }
+
+        
         return $query;
     }
 
@@ -89,6 +102,21 @@ class NotificationDatatable extends DataTable
             ['data' => 'note', 'title' => 'Qeyd'],
             ['data' => 'created_at', 'title' => 'Tarix'],
             ['data' => 'action', 'title' => 'Action', 'exportable' => false, 'printable' => false, 'orderable' => false, 'searchable' => false],
+        ];
+    }
+
+
+      public function getFilterOptions()
+    {
+        return [
+            'driver_notification_topics' => DriverNotificationTopic::all(),
+            'statuses' => DriverStatus::all(),
+            'brands'=>Brand::all(),
+            'models' => Model::get(),
+            'tableIds' => Vehicle::get(),
+            'drivers'=>Driver::get(),
+            'driverFins'=>Driver::get(),
+            'vehicles'=>Vehicle::get()
         ];
     }
 

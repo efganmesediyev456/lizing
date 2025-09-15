@@ -21,6 +21,7 @@ use App\Http\Controllers\OilChangeTypesController;
 use App\Http\Controllers\CitiesController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\VehicleStatusesController;
+use App\Models\CashExpense;
 use App\Models\SuccessPage;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
@@ -79,6 +80,7 @@ use App\Http\Controllers\ColorController;
 
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'attempt']);
+Route::get('/drivers/debts', [DebtController::class,'debtNotification']);
 
 
 Route::middleware(['auth'])->group(function () {
@@ -211,9 +213,10 @@ Route::middleware(['auth'])->group(function () {
     Route::post('oil-changes/save/{item?}', [OilChangeController::class, 'save'])->name('oil_changes.save');
     Route::get('oil-changes/show/{item}', [OilChangeController::class, 'show'])->name("oil_changes.show");
     Route::post('oil-changes/changeOil', [OilChangeController::class, 'changeOil'])->name("oil_changes.changeOil");
+    Route::post('/oil-changes/preview', [OilChangeController::class, 'preview']);
 
 
-    Route::post('general/id-card-serial-number',[GeneralController::class,'getSeri  alCard'])->name('getSerialCard');
+    Route::post('general/id-card-serial-number',[GeneralController::class,'getSerialCard'])->name('getSerialCard');
     Route::post('general/leasing-elements',[GeneralController::class,'getLeasingElements'])->name('getLeasingElements');
     Route::post('general/brands',[GeneralController::class,'getBrand'])->name('getBrand');
     Route::post('general/driver/fin',[GeneralController::class,'getDriverFin'])->name('getDriverFin');
@@ -236,12 +239,12 @@ Route::middleware(['auth'])->group(function () {
 
      //leasing
     Route::get('leasing', [LeasingController::class, 'index'])->name('leasing.index')->middleware('permission:leasing.index');
-
+    Route::get('leasing/export', [LeasingController::class, 'export'])->name("leasing.export");
     Route::post('leasing/form/{item?}', [LeasingController::class, 'form'])->name('leasing.form');
     Route::post('leasing/save/{item?}', [LeasingController::class, 'save'])->name('leasing.save');
     Route::get('leasing/{item?}', [LeasingController::class, 'show'])->name('leasing.show');
     Route::post('leasing/payment', [LeasingController::class, 'payment'])->name('leasing.payment');
-    
+
 
 
 
@@ -257,8 +260,8 @@ Route::middleware(['auth'])->group(function () {
 
     //leasing details
 
-    Route::get('leasing-details', [LeasingDetailController::class, 'index'])->name('leasing-details.index')->middleware('permission:success-page.index');
-    Route::post('leasing-details', [LeasingDetailController::class, 'save'])->name('leasing-details.save')->middleware("permission:success-page.edit");
+    Route::get('leasing-details', [LeasingDetailController::class, 'index'])->name('leasing-details.index')->middleware('permission:leasing-details.index');
+    Route::post('leasing-details', [LeasingDetailController::class, 'save'])->name('leasing-details.save')->middleware("permission:leasing-details.edit");
 
 
 
@@ -280,6 +283,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('deposits/form/{item?}', [DepositController::class, 'form'])->name('deposits.form');
     Route::post('deposits/save/{item?}', [DepositController::class, 'save'])->name('deposits.save');
     Route::get('deposits/show/{item}', [DepositController::class, 'show'])->name("deposits.show");
+    Route::get('deposits/export', [DepositController::class, 'export'])->name("deposits.export");
 
     Route::get('app-store-assets', [AppStoreAssetController::class, 'index'])->name('app-store-assets.index');
     Route::put('app-store-assets/save', [AppStoreAssetController::class, 'save'])->name('app-store-assets.save');
@@ -292,6 +296,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('expenses/save/{item?}', [ExpenseController::class, 'save'])->name('expenses.save');
     Route::get('expenses/export', [ExpenseController::class, 'export'])->name("expenses.export");
     Route::get('expenses/show/{item}', [ExpenseController::class, 'show'])->name("expenses.show");
+
+    Route::post('/expenses/update-order', [ExpenseController::class, 'updateOrder'])->name('expenses.updateOrder');
 
 
     //revenues
@@ -373,6 +379,7 @@ Route::middleware(['auth'])->group(function () {
 
 
 });
+
 
 
 

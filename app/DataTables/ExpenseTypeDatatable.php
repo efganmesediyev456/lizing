@@ -57,7 +57,7 @@ class ExpenseTypeDatatable extends DataTable
 
     public function query(ExpenseType $model)
     {
-        $query = $model->newQuery()->orderBy('id', 'desc');
+        $query = $model->newQuery()->orderBy('position', 'asc');
        
         return $query;
     }

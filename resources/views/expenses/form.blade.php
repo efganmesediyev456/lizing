@@ -8,11 +8,25 @@
                     </div>
                     <div class="form-item">
                         <label for="">Table ID</label>
-                        <div class="form-input">
-                            <input type="text" value="{{ $item->tableId }}" name="tableId">
-                        </div>
+                        <select name="tableId" id="id_card_serial_code">
+                            <option value="">Seçin</option>
+                            @foreach($tableIds as $id=>$value)
+                                <option @selected($id==$item->tableId) value="{{ $id }}">{{ $value }}</option>
+                            @endforeach
+                        </select>
                     </div>
+
                     <div class="form-item">
+                        <label for="">D.Q.N</label>
+                        <select name="vehicle_id" id="">
+                            <option value="">Seçin</option>
+                            @foreach($dqns as $id=>$value)
+                                <option @selected($id==$item->vehicle_id) value="{{ $id }}">{{ $value }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    {{-- <div class="form-item">
                         <label for="">D.Q.N</label>
                         <select name="vehicle_id" id="">
                             <option value="">Seçin</option>
@@ -20,7 +34,7 @@
                             <option @selected($vehicle->id == $item->vehicle_id) value="{{ $vehicle->id }}">{{ $vehicle->state_registration_number }}</option>
                             @endforeach
                         </select>
-                    </div>
+                    </div> --}}
                     <div class="form-item">
                         <label for="">Ümümi xərc</label>
                         <div class="form-input">

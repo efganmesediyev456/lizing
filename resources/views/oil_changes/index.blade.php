@@ -21,7 +21,7 @@
                             d="M18.5 12.998H13.5V17.998C13.5 18.2632 13.3946 18.5176 13.2071 18.7051C13.0196 18.8926 12.7652 18.998 12.5 18.998C12.2348 18.998 11.9804 18.8926 11.7929 18.7051C11.6054 18.5176 11.5 18.2632 11.5 17.998V12.998H6.5C6.23478 12.998 5.98043 12.8926 5.79289 12.7051C5.60536 12.5176 5.5 12.2632 5.5 11.998C5.5 11.7328 5.60536 11.4784 5.79289 11.2909C5.98043 11.1033 6.23478 10.998 6.5 10.998H11.5V5.99799C11.5 5.73277 11.6054 5.47842 11.7929 5.29088C11.9804 5.10334 12.2348 4.99799 12.5 4.99799C12.7652 4.99799 13.0196 5.10334 13.2071 5.29088C13.3946 5.47842 13.5 5.73277 13.5 5.99799V10.998H18.5C18.7652 10.998 19.0196 11.1033 19.2071 11.2909C19.3946 11.4784 19.5 11.7328 19.5 11.998C19.5 12.2632 19.3946 12.5176 19.2071 12.7051C19.0196 12.8926 18.7652 12.998 18.5 12.998Z"
                             fill="white" />
                     </svg>
-                   Yeni Yağın dəyişilməsi Əlavə et
+                    Yeni Yağın dəyişilməsi Əlavə et
                 </button>
             </div>
         </div>
@@ -135,7 +135,7 @@
             function updatePagination() {
                 let info = table.page.info();
                 let totalPages = info.pages;
-                let currentPage = info.page + 1; 
+                let currentPage = info.page + 1;
 
                 let pagination = $('.pagination');
 
@@ -159,8 +159,7 @@
 
                         $('<a href="#" class="pagination-item">' + totalPages + '</a>')
                             .insertBefore(pagination.find('.next'));
-                    }
-                    else if (currentPage > (totalPages - 4)) {
+                    } else if (currentPage > (totalPages - 4)) {
                         $('<span class="pagination-dots">...</span>')
                             .insertBefore(pagination.find('.next'));
 
@@ -173,8 +172,7 @@
                         $('<a href="#" class="pagination-item ' + (currentPage === totalPages ? 'active' : '') +
                                 '">' + totalPages + '</a>')
                             .insertBefore(pagination.find('.next'));
-                    }
-                    else {
+                    } else {
                         $('<span class="pagination-dots">...</span>')
                             .insertBefore(pagination.find('.next'));
 
@@ -213,32 +211,27 @@
 
 
 
-            // Pagination itemlarına click event əlavə et
             $('.pagination').on('click', '.pagination-item', function(e) {
                 e.preventDefault();
-                let page = parseInt($(this).text()) - 1; // 0-based index
+                let page = parseInt($(this).text()) - 1;
                 table.page(page).draw('page');
             });
 
-            // prev link
             $('.pagination').on('click', '.prev:not(.disabled)', function(e) {
                 e.preventDefault();
                 table.page('previous').draw('page');
             });
 
-            // next link
             $('.pagination').on('click', '.next:not(.disabled)', function(e) {
                 e.preventDefault();
                 table.page('next').draw('page');
             });
 
-            // DataTable draw eventində info və paginationu yenilə
             table.on('draw', function() {
                 updateCustomInfo(table.settings()[0]);
                 updatePagination();
             });
 
-            // İlk çağırışlar
             updateCustomInfo(table.settings()[0]);
             updatePagination();
 
@@ -369,30 +362,58 @@
             });
 
 
-            $("body").on('keyup', '#change_interval', function(e) {
-                var change_interval = $(this).val();
-                var driver_id = $("[name='driver_id']").val();
-                var oil_change_type_id = $("[name='oil_change_type_id']").val();
-                $.ajax({
-                    url: "/oil-changes/changeOil",
-                    type: "post",
-                    data: {
-                        change_interval,
-                        driver_id,
-                        oil_change_type_id,
-                        _token:"{{ csrf_token() }}"
-                    },
-                    success:function(e){
-                        for (a in e) {
-                            $(".saveForm").find("[name='" + a + "']").val(e[a])
-                        }
-                    },
-                    error:function(e){
-                        console.log(e)
-                    }
-                })
-            });
+            // $("body").on('keyup', '#change_interval', function(e) {
+            //     var change_interval = $(this).val();
+            //     var driver_id = $("[name='driver_id']").val();
+            //     var oil_change_type_id = $("[name='oil_change_type_id']").val();
+            //     $.ajax({
+            //         url: "/oil-changes/changeOil",
+            //         type: "post",
+            //         data: {
+            //             change_interval,
+            //             driver_id,
+            //             oil_change_type_id,
+            //             _token:"{{ csrf_token() }}"
+            //         },
+            //         success:function(e){
+            //             for (a in e) {
+            //                 $(".saveForm").find("[name='" + a + "']").val(e[a])
+            //             }
+            //         },
+            //         error:function(e){
+            //             console.log(e)
+            //         }
+            //     })
+            // });
 
+            $("body").on('keyup', '#change_interval', function(e) {
+                let changeInterval = $(this).val();
+                let vehicleId = $('#id_card_serial_code').val();
+                let oilChangeTypeId = $('#oil_change_type_id').val();
+
+                console.log(changeInterval, vehicleId, oilChangeTypeId)
+                if (changeInterval && vehicleId && oilChangeTypeId) {
+                    $.ajax({
+                        url: '/oil-changes/preview',
+                        type: 'POST',
+                        data: {
+                            _token: $('meta[name="csrf-token"]').attr('content'),
+                            vehicle_id: vehicleId,
+                            oil_change_type_id: oilChangeTypeId,
+                            change_interval: changeInterval,
+                            _token:'{{ csrf_token() }}'
+                        },
+                        success: function(res) {
+                            $('#next_change_interval').val(res.next_change_interval);
+                            $('#difference_interval').val(res.difference_interval);
+                            $('#oil_price').val(res.oil_price);
+                            $('#penalty').val(res.penalty);
+                            $('#total_price').val(res.total_price);
+                        }
+                    });
+                }
+
+            });
         });
     </script>
 @endpush

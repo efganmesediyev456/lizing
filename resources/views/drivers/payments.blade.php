@@ -41,17 +41,21 @@
                             <div>
                                 <h2>Müqavilə Məlumatları</h2>
                                 <table class="table table-bordered">
-                                    <tr>
+                                    {{-- <tr>
                                         <th>Table ID</th>
                                         <td>{{ $leasingData['leasing']->tableId }}</td>
-                                    </tr>
+                                    </tr> --}}
                                     <tr>
                                         <th>Müqavilə qiyməti</th>
                                         <td>{{ $leasingData['leasing']->leasing_price }}</td>
                                     </tr>
                                     <tr>
                                         <th>Aylıq ödəniş</th>
-                                        <td>{{ $leasingData['leasing']->monthly_payment }}</td>
+                                        <td>{{ $leasingData['leasing']->monthly_payment }} </td>
+                                    </tr>
+                                     <tr>
+                                        <th>Günlük ödəniş</th>
+                                        <td>{{ $leasingData['leasing']->daily_payment }} </td>
                                     </tr>
                                     <tr>
                                         <th>Müddət</th>
@@ -136,20 +140,19 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Tarix</th>
                                         <th>Status</th>
                                         <th>Məbləğ</th>
                                         <th>Ödənilib</th>
                                         <th>Qalıq</th>
-                                        <th>Ay</th>
-                                        <th>Həftə günü</th>
+                                        <th style="text-align: center">Ay</th>
+                                        <th style="text-align: center">Tarix</th>
+                                        {{-- <th>Həftə günü</th> --}}
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($leasingData['records'] as $record)
                                         <tr>
                                             <td>{{ $record['id'] }}</td>
-                                            <td>{{ $record['payment_date'] }}</td>
                                             <td>
                                                 @if ($record['status'] == 'completed')
                                                     <span style="color: green;">Tam ödənilib</span>
@@ -162,8 +165,9 @@
                                             <td>{{ $record['price'] }}</td>
                                             <td>{{ $record['paid'] }}</td>
                                             <td>{{ $record['remaining_amount'] }}</td>
-                                            <td>{{ $record['month_name'] }}</td>
-                                            <td>{{ $record['week_day_name'] }}</td>
+                                            <td style="text-align: center">{{ $record['month_name'] }}</td>
+                                            <td style="text-align: center">{{ $record['payment_date'] }}</td>
+                                            {{-- <td>{{ $record['week_day_name'] }}</td> --}}
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -179,7 +183,7 @@
                                         <th>Tarix</th>
                                         <th>Status</th>
 
-                                        <th>Nağd/Ofis</th>
+                                        <th>Nağd/Onlayn</th>
                                         <th>Məbləğ</th>
                                         <th style="text-align: center">Ödəniş tipi</th>
 
@@ -199,9 +203,9 @@
                                             </td>
                                             <td>
                                                 @if ($record['payment_back_or_app'] == 0)
-                                                    <span>Nağd(Onlayn)</span>
+                                                    <span>Onlayn</span>
                                                 @elseif($record['payment_back_or_app'] == 1)
-                                                    <span>Ofis</span>
+                                                    <span>Nağd</span>
                                                 @endif
                                             </td>
 

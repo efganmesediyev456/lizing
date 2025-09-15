@@ -13,6 +13,8 @@ class DriverExport implements FromCollection, WithHeadings, WithMapping
     /**
     * @return \Illuminate\Support\Collection
     */
+    private int $index = 0;
+
     public function collection()
     {
         $query =  Driver::orderBy('id','desc');
@@ -30,24 +32,55 @@ class DriverExport implements FromCollection, WithHeadings, WithMapping
     public function headings(): array
     {
         return [
-            'No',
+            'No:',
             'Table İD',
             'Ad Soyad',
+            'Ata adı',
+            'Leasing Borcu',
+            'Ilkin Deposit Borcu',
+            'Deposit Borcu',
             'Mail',
-            'FİN',
-            'Əlaqə nömrəsi'
+            'Fin',
+            'Şəxsiyyətin seriya nömrəsi',
+            'Faktiki yaşadığı ünvan',
+            'Qeydiyyatda olduğu ünvan',
+            'Doğum Tarixi',
+            'Cinsi',
+            'Şəhər',
+            'Əlaqə nömrəsi',
+            'Əlaqə nömrəsi2',
+            'Əlaqə nömrəsi3',
+            'Əlaqə nömrəsi4'
         ];
     }
 
     public function map($driver): array
     {
         return [
-            $driver->id,
+            ++$this->index, 
             $driver->tableId,
+            $driver->name . ' ' . $driver->surname,
+            $driver->father_name,
+            $driver->debt > 0 ?  $driver->debt  : 0,
+            $driver->leasing?->deposit_payment > 0 ?   $driver->leasing?->deposit_payment : 0,
+            $driver->leasing?->deposit_debt > 0 ?   $driver->leasing?->deposit_debt  : 0,
             $driver->email,
-            $driver->fullName,
             $driver->fin,
-            $driver->phone
+            $driver->id_card_serial_code,
+            $driver->current_address,
+            $driver->registered_address,
+            $driver->date?->format('Y-m-d'),
+            match ($driver->gender) {
+                    0 => 'Kişi',
+                    1 => 'Qadın',
+                    default => 'Naməlum',
+            },
+            $driver->city?->title,
+            $driver->phone,
+            ($driver->phone2_label.'-' ?? '') .  $driver->phone2,
+            ($driver->phone3_label.'-' ?? '') .  $driver->phone3,
+            ($driver->phone4_label.'-' ?? '') .  $driver->phone4,
+            // $driver->created_at->format('Y-m-d'),
         ];
     }
 }

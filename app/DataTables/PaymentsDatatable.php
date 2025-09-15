@@ -53,6 +53,9 @@ class PaymentsDatatable extends DataTable
             ->editColumn('price', function ($item) {
                 return $item->price . ' AZN';
             })
+             ->editColumn('payment_type', function ($item) {
+                return $item->payment_back_or_app==0 ? 'Onlayn' : ($item->payment_back_or_app==1 ? 'Nağd' : '');
+            })
             ->addColumn('paymentTypeView', function ($item) {
                 return match ($item->payment_type) {
                     'deposit_debt' => 'depozit',
@@ -91,6 +94,17 @@ class PaymentsDatatable extends DataTable
 
             } else {
                 $query = $query->where('payment_type', $paymentType);
+
+            }
+        }
+
+        if (request()->has('payment_online_or_back')) {
+            $paymentType = request('payment_online_or_back');
+            if ($paymentType == 'deposit_admin') {
+                $query = $query->where('payment_back_or_app', 1);
+
+            } else if ($paymentType == 'deposit_driver') {
+                $query = $query->where('payment_back_or_app', 0);
 
             }
         }
@@ -208,8 +222,9 @@ class PaymentsDatatable extends DataTable
             ['data' => 'model', 'title' => 'Model'],
             ['data' => 'state_registration_number', 'title' => 'DQN'],
             ['data' => 'price', 'title' => 'Ödəniş'],
-            ['data' => 'paymentTypeView', 'title' => 'Ödəniş'],
-            ['data' => 'created_at', 'title' => 'Tarix'],
+            ['data' => 'paymentTypeView', 'title' => 'Ödəniş növü'],
+            ['data' => 'created_at', 'title' => 'Tarix','visible'=>false],
+            ['data' => 'payment_type', 'title' => 'Ödəniş tipi'],
             ['data' => 'action', 'title' => 'Action', 'exportable' => false, 'printable' => false, 'orderable' => false, 'searchable' => false],
         ];
     }
@@ -229,7 +244,10 @@ class PaymentsDatatable extends DataTable
                 'deposit_payment' => 'İlkin Depozit',
                 'monthly' => 'Aylıq',
                 'daily' => 'Günlük',
-                'deposit_admin' => 'Admin'
+            ],
+            'payment_online_or_back' => [
+                'deposit_admin' => 'Nağd',
+                'deposit_driver' => 'Onlayn',
             ],
             'brands' => Brand::all(),
             'models' => Model::all(),

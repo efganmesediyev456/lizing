@@ -9,6 +9,7 @@ use App\Models\Brand;
 use App\Models\CashExpense;
 use App\Models\Driver;
 use App\Models\Expense;
+use App\Models\ExpenseType;
 use App\Models\Vehicle;
 use App\Services\PermissionService;
 use Illuminate\Http\Request;
@@ -35,13 +36,15 @@ class ExpenseController extends Controller
         $formTitle = $item->id ? 'Xərc redaktə et' : 'Xərc əlavə et';
         $permissionService->checkPermission($action, 'brands');
         $vehicles = Vehicle::select(['id','state_registration_number'])->get();
-        
-        $view = view('expenses.form', compact('item','vehicles'))->render();
+        $dqns = Vehicle::get()->pluck('state_registration_number', 'id');
+        $tableIds = Vehicle::get()->pluck('table_id_number', 'id');
+
+        $view = view('expenses.form', compact('item','vehicles','dqns','tableIds'))->render();
 
         return response()->json([
             "view" => $view,
             "formTitle"=>$formTitle,
-            
+           
         ]);
     }
 
@@ -159,6 +162,22 @@ class ExpenseController extends Controller
                         return redirect()->back()->withErrors($e->getMessage());
 
         }
+    }
+
+
+    public function updateOrder(Request $request)
+    {
+        $order = $request->input('order'); 
+
+        foreach ($order as $index => $id) {
+            if (is_numeric($id)) { 
+                ExpenseType::where('id', $id)->update([
+                    'position' => $index + 1
+                ]);
+            }
+        }
+
+        return response()->json(['message' => 'Sıralama yadda saxlanıldı']);
     }
 
 

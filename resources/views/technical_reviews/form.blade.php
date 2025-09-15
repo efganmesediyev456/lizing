@@ -12,7 +12,7 @@
                     <div class="form-item">
                         <label for="">Sürücünün adı</label>
                         <select name="driver_id" id="">
-                                <option>Secin</option>
+                                <option value="">Secin</option>
                             @foreach($drivers as $driver)
                                 <option @selected($driver->id==$item->driver_id) value="{{ $driver->id }}">{{ $driver->name.' '.$driver->surname }}</option>
                             @endforeach

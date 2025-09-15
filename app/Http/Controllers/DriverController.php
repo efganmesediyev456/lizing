@@ -236,9 +236,6 @@ class DriverController extends Controller
 
         $response = $this->leasingPayments($driver);
 
-        
-
-
         return view('drivers.payments', compact('response','driver'));
     }
 
@@ -257,7 +254,10 @@ class DriverController extends Controller
             }
             $start = Carbon::parse($leasing->start_date);
             $end = Carbon::parse($leasing->end_date);
-            $today = Carbon::today()->lt($end) ? Carbon::today() : $end;
+            $today = Carbon::today()->lt($end) ? Carbon::today()->endOfDay() : $end->endOfDay();
+
+           
+            
 
 
             $totalPaid = $leasing->leasingPayments->where('status', 'completed')->sum('price');
@@ -267,6 +267,8 @@ class DriverController extends Controller
 
             $records = [];
             $id = 1;
+            $totalRequired=0;
+
 
             // ===== DAILY PAYMENT =====
             if ($leasing->payment_type === 'daily') {
@@ -303,7 +305,10 @@ class DriverController extends Controller
                     $current->addDay();
                 }
 
-                $totalRequired = (Carbon::parse($leasing->start_date)->diffInDays($today) + 1) * $leasing->daily_payment;
+                if (!Carbon::today()->lt($leasing->start_date)) {
+                    $totalRequired = (Carbon::parse($leasing->start_date)->diffInDays($today) + 1) * $leasing->daily_payment;
+                }
+
             }
 
             // ===== MONTHLY PAYMENT =====
@@ -342,7 +347,9 @@ class DriverController extends Controller
                     $current->addMonth();
                 }
 
-                $totalRequired = (Carbon::parse($leasing->start_date)->diffInMonths($today) + 1) * $leasing->monthly_payment;
+                if (!Carbon::today()->lt($leasing->start_date)) {
+                    $totalRequired = (Carbon::parse($leasing->start_date)->diffInMonths($today) + 1) * $leasing->monthly_payment;
+                }
             }
 
             // ümumi borc

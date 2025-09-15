@@ -21,7 +21,7 @@ class ExpenseType extends Model
          $date = request()->date
             ? Carbon::parse(request()->date)->toDateString()
             : Carbon::today()->toDateString();
-        return $this->hasMany(CashExpense::class,'expense_type_id')->whereDate('date',$date)->first();
+        return $this->hasMany(CashExpense::class,'expense_type_id')->whereDate('date',$date)->latest()->first();
     }
 
     public function getTypeShowAttribute(){

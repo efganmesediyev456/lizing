@@ -133,6 +133,8 @@ class ExpenseDatatable extends DataTable
             ['data' => 'total_expense', 'title' => 'Ümumi xərc'],
             ['data' => 'note', 'title' => 'Məlumat'],
             ['data' => 'date', 'title' => 'Tarix'],
+            ['data' => 'spare_part_payment', 'title' => 'Ehtiyyat hissesi odənişi','visible'=>false],
+            ['data' => 'master_payment', 'title' => 'Usta odənişi','visible'=>false],
             ['data' => 'action', 'title' => 'Action', 'exportable' => false, 'printable' => false, 'orderable' => false, 'searchable' => false],
         ];
     }

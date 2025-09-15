@@ -55,12 +55,12 @@ class TechnicalReviewController extends Controller
         $permissionService->checkPermission($action, 'technical-reviews');
         // dd($request->all());
         $validator = Validator::make($request->all(), [
-            'tableId' => 'required',
-            'driver_id' => 'required|exists:drivers,id',
-            'brand_id' => 'required|exists:brands,id',
-            'model_id' => 'required|exists:models,id',
+            // 'tableId' => 'required',
+            // 'driver_id' => 'required|exists:drivers,id',
+            // 'brand_id' => 'required|exists:brands,id',
+            // 'model_id' => 'required|exists:models,id',
             'vehicle_id' => 'required|exists:vehicles,id',
-            'production_year' => 'required',
+            // 'production_year' => 'required',
             'technical_review_fee' => 'required',
             'status' => 'required',
             'start_date' => 'required',

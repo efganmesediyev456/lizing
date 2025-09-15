@@ -28,7 +28,8 @@ class LeasingPassivController extends Controller
     public function index()
     {
         $dataTable = new LeasingPassivDatatable(); 
-        return $dataTable->render('passiv_leasing.index');
+        $filterOptions = $dataTable->getFilterOptions();
+        return $dataTable->render('passiv_leasing.index',['filterOptions'=>$filterOptions]);
     }
 
     public function show(Leasing $item){

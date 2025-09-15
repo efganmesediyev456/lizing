@@ -44,6 +44,8 @@ class ExpenseExport implements FromCollection, WithHeadings, WithMapping
             "D.Q.N.",
             "Ümumi xərc",
             "Məlumat",
+            "Ehtiyyat hissesi odənişi",
+            "Usta odənişi"
         ];
     }
 
@@ -55,7 +57,9 @@ class ExpenseExport implements FromCollection, WithHeadings, WithMapping
             $item->tableId,
             $item->vehicle?->state_registration_number,
             $item->total_expense,
-            $item->note
+            $item->note,
+            $item->spare_part_payment,
+            $item->master_payment
         ];
     }
 }

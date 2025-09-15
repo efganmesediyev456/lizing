@@ -30,6 +30,12 @@ class RevenueDatatable extends DataTable
             })
             ->addIndexColumn() 
 
+            ->addColumn('brand', function ($item) {
+                return $item->leasing?->vehicle?->brand?->title;
+            })
+            ->addColumn('model', function ($item) {
+                return $item->leasing?->vehicle?->model?->title;
+            })
             ->addColumn('fullName', function ($item) {
                 return $item->leasing?->driver?->fullName;
             })
@@ -100,6 +106,8 @@ class RevenueDatatable extends DataTable
         return [
             ['data' => 'DT_RowIndex', 'title' => 'No:', 'orderable' => false, 'searchable' => false],
             ['data' => 'fullName', 'title' => 'Ad soyad'],
+            ['data' => 'brand', 'title' => 'Marka'],
+            ['data' => 'model', 'title' => 'Model'],
             ['data' => 'state_registration_number', 'title' => 'D.Q.N.'],
             ['data' => 'price', 'title' => 'Gəlir'],
             ['data' => 'updated_at', 'title' => 'Tarix'],

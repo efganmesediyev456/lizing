@@ -67,9 +67,8 @@ class PaymentExport implements FromCollection, WithHeadings, WithMapping
             'Model',
             'D.Q.N.', 
             'Qiymət',
-
             'Ödəniş Tipi',
-            
+            'Nağd/Onlayn',
         ];
     }
 
@@ -91,6 +90,7 @@ class PaymentExport implements FromCollection, WithHeadings, WithMapping
                 "deposit_admin" => "Admin",
                 default => "Bilinməyən status"
             },
+            $payment->payment_back_or_app==0 ? 'Onlayn' : ($payment->payment_back_or_app==1 ? 'Nağd' : '')
         ];
     }
 }

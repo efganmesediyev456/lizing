@@ -220,32 +220,27 @@
             }
 
            
-            // Pagination itemlarına click event əlavə et
             $('.pagination').on('click', '.pagination-item', function(e) {
                 e.preventDefault();
-                let page = parseInt($(this).text()) - 1; // 0-based index
+                let page = parseInt($(this).text()) - 1; 
                 table.page(page).draw('page');
             });
 
-            // prev link
             $('.pagination').on('click', '.prev:not(.disabled)', function(e) {
                 e.preventDefault();
                 table.page('previous').draw('page');
             });
 
-            // next link
             $('.pagination').on('click', '.next:not(.disabled)', function(e) {
                 e.preventDefault();
                 table.page('next').draw('page');
             });
 
-            // DataTable draw eventində info və paginationu yenilə
             table.on('draw', function() {
                 updateCustomInfo(table.settings()[0]);
                 updatePagination();
             });
 
-            // İlk çağırışlar
             updateCustomInfo(table.settings()[0]);
             updatePagination();
 
@@ -361,6 +356,28 @@
                     table.page.len(val).draw();
                 }
             });
+
+
+
+             $("body").on("change", '#id_card_serial_code', function() {
+                var value = $(this).val();
+                $.ajax({
+                    url: "{{ route('getSerialCard') }}",
+                    type: "post",
+                    data: {
+                        value,
+                        _token: '{{ csrf_token() }}',
+                        type: "leasing"
+                    },
+                    success: function(e) {
+                        for (a in e) {
+                            $(".saveForm").find("[name='" + a + "']").val(e[a])
+                        }
+                    },
+                    error: function(e) {}
+                })
+            })
+
 
 
            

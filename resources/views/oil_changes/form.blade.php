@@ -13,7 +13,7 @@
                     </div>
                      <div class="form-item">
                         <label for="">Dövlət qeydiyyat nişanı</label>
-                        <select id="id_card_serial_code" name="vehicle_id" id="">
+                        <select id="id_card_serial_code" name="vehicle_id" id="vehicle_id">
                                 <option value="">Secin</option>
                             @foreach($vehicles as $vehicle)
                                 <option @selected($vehicle->id==$item->vehicle_id) value="{{ $vehicle->id }}">{{ $vehicle->state_registration_number }}</option>
@@ -23,7 +23,7 @@
                     <div class="form-item">
                         <label for="">Sürücünün adı</label>
                         <select name="driver_id" id="">
-                                <option>Secin</option>
+                                <option value="">Secin</option>
                             @foreach($drivers as $driver)
                                 <option @selected($driver->id==$item->driver_id) value="{{ $driver->id }}">{{ $driver->name.' '.$driver->surname }}</option>
                             @endforeach
@@ -61,7 +61,7 @@
 
                 <div class="form-item">
                     <label for="">Yağ dəyişmə növü</label>
-                    <select name="oil_change_type_id" id="">
+                    <select name="oil_change_type_id" id="oil_change_type_id">
                         <option value="">Secin</option>
                        @foreach($oilChangeTypes as $oilChangeType)
                         <option value="{{ $oilChangeType->id }}" @selected($oilChangeType->id==$item->oil_change_type_id)>{{ $oilChangeType->title }}</option>
@@ -83,33 +83,33 @@
                     <div class="form-item">
                         <label for="">Növbəti yağ dəyişmə km</label>
                         <div class="form-input">
-                            <input type="number" value="{{ $item->next_change_interval }}" name="next_change_interval">
+                            <input type="number" value="{{ $item->next_change_interval }}" name="next_change_interval" id="next_change_interval">
                         </div>
                     </div>
                     <div class="form-item">
                         <label for="">Fərq</label>
                         <div class="form-input">
-                            <input type="number" value="{{ $item->difference_interval }}" name="difference_interval">
+                            <input type="number" value="{{ $item->difference_interval }}" name="difference_interval" id="difference_interval">
                         </div>
                     </div>
                     <div class="form-item">
                         <label for="">Status</label>
                         <select name="status" id="">
-                                <option @selected($item!==null and $item->status==1) value="1">Active</option>
-                                <option @selected($item!==null and $item->status==0) value="0">Deactive</option>
+                                <option @selected($item!==null and $item->status===1) value="1">Active</option>
+                                <option @selected($item!==null and $item->status===0) value="0">Deactive</option>
                         </select>
                     </div>
                     <div class="form-item">
                         <label for="">Ümumi qiymət</label>
                         <div class="form-input">
-                            <input type="number" value="{{ $item->total_price }}" name="total_price">
+                            <input type="number" value="{{ $item->total_price }}" name="total_price" id="total_price">
                             <span>azn</span>
                         </div>
                     </div>
                     <div class="form-item">
                         <label for="">Yağın qiyməti</label>
                         <div class="form-input">
-                            <input type="number" value="{{ $item->oil_price }}" name="oil_price">
+                            <input type="number" value="{{ $item->oil_price }}" name="oil_price" id="oil_price">
                             <span>azn</span>
                         </div>
                     </div>

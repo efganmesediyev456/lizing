@@ -44,7 +44,7 @@
                             </select>
                         </div>
                         <div class="form-item">
-                        <label for="">Ümümi xərc</label>
+                        <label for="">Ümümi qiymət</label>
                         <div class="form-input">
                             <input type="text" value="{{ $item->price ?? $item->technical_review_fee ?? $item->insurance_fee }}">
                             <span>azn</span>

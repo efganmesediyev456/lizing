@@ -153,12 +153,17 @@ class KapitalPaymentController extends Controller
 
             $orderStatus = $this->paymentService->getOrderDetail($orderId);
 
+            
+
             Log::info('Order status response', ['headers' => $request->header(), 'order_id' => $orderId, 'orderStatus' => json_encode($orderStatus)]);
 
+            
 
-            if (is_array($orderStatus) && array_key_exists('errorCode', $orderStatus)) {
+            if (is_array($orderStatus) && array_key_exists('errorCode', $orderStatus) || $orderStatus['order']['status']=='Refused') {
                 return response()->json(['message' => 'Order not found'], 404);
             }
+
+
 
             $payment = Payment::where('kapital_order_id', $orderId)->where('status','Preparing')->first();
             if (!$payment) {

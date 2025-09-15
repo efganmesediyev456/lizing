@@ -28,6 +28,8 @@ class LeasingActiveController extends Controller
     {
         //salam
         $dataTable = new LeasingActiveDatatable(); 
-        return $dataTable->render('active_leasing.index');
+        $filterOptions = $dataTable->getFilterOptions();
+
+        return $dataTable->render('active_leasing.index',['filterOptions'=>$filterOptions]);
     }
 }

@@ -5,7 +5,7 @@
     <style>
         .cashbox-table {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 5fr 1fr;
             gap: 30px;
         }
 
@@ -56,17 +56,16 @@
         <div class="cashbox-container-head">
             <h1>Kassa</h1>
             <div class="head-buttons">
-                <a href="{{ route('cashbox.export') }}" class="export_excel">
+                {{-- <a href="{{ route('cashbox.export') }}" class="export_excel">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M6.75022 16.5C0.000222408 17.25 0.750222 9 6.75022 9.75C4.50022 1.5 17.2502 1.5 16.5002 7.5C24.0002 5.25 24.0002 17.25 17.2502 16.5M8.25022 19.5L12.0002 22.5M12.0002 22.5L15.7502 19.5M12.0002 22.5V12"
                             stroke="#7B7676" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
                     Export
-                </a>
+                </a> --}}
                 <button class="addNewExpenses addNewUsers addItem addNewCashbox" type="button">
-                    <svg width="25" height="24" viewBox="0 0 25 24" fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
+                    <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M18.5 12.998H13.5V17.998C13.5 18.2632 13.3946 18.5176 13.2071 18.7051C13.0196 18.8926 12.7652 18.998 12.5 18.998C12.2348 18.998 11.9804 18.8926 11.7929 18.7051C11.6054 18.5176 11.5 18.2632 11.5 17.998V12.998H6.5C6.23478 12.998 5.98043 12.8926 5.79289 12.7051C5.60536 12.5176 5.5 12.2632 5.5 11.998C5.5 11.7328 5.60536 11.4784 5.79289 11.2909C5.98043 11.1033 6.23478 10.998 6.5 10.998H11.5V5.99799C11.5 5.73277 11.6054 5.47842 11.7929 5.29088C11.9804 5.10334 12.2348 4.99799 12.5 4.99799C12.7652 4.99799 13.0196 5.10334 13.2071 5.29088C13.3946 5.47842 13.5 5.73277 13.5 5.99799V10.998H18.5C18.7652 10.998 19.0196 11.1033 19.2071 11.2909C19.3946 11.4784 19.5 11.7328 19.5 11.998C19.5 12.2632 19.3946 12.5176 19.2071 12.7051C19.0196 12.8926 18.7652 12.998 18.5 12.998Z"
                             fill="white" />
@@ -78,7 +77,7 @@
         <div class="cashbox-body technical-body">
             <div class="cashbox-body-head">
                 <h2>Ümumi Məlumatlar</h2>
-                <form class="modul-search">
+                {{-- <form class="modul-search">
                     <button class="search_btn" type="submit">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
@@ -88,44 +87,55 @@
                         </svg>
                     </button>
                     <input type="text" placeholder="Search" class="datatable-search">
-                </form>
+                </form> --}}
             </div>
             <form id="vehicleFilter" class="generalSearch">
                 <div class="form_inner">
 
                     <div class="form_item">
-                        <label>Status</label>
+                        <label>Tarix</label>
                         <input type="date" name="date" value="{{ request('date') ?? now()->format('Y-m-d') }}">
                     </div>
                 </div>
             </form>
             <div class="cashbox-table">
                 {!! $dataTable->table(['class' => 'table table-bordered']) !!}
-
-                <ul class="expense-list">
-                    <li>
+                <ul class="expense-list" id="sortable">
+                    <li id="item-general">
                         <span class="title">Tam</span>
                         <span class="amount">
-                            <span class="plus">+ {{ $generalPaymentPrice ?? 0 }}  </span>
+                            <span class="plus">+ {{ $tam ?? 0 }}</span>
+                        </span>
+                    </li>
+                    <li id="item-auto">
+                        <span class="title">Avto xərclər</span>
+                        <span class="amount">
+                            <span class="minus">- {{ (int) $autoExpenses ?? 0 }}</span>
                         </span>
                     </li>
 
-                    <li>
-                        <span class="title">Avto xərclər</span>
-                        <span class="amount">
-                            <span class="minus">- {{ (int) $autoExpenses ?? 0 }} </span>
-                        </span>
-                    </li>
+                    
                     @foreach ($expenseTypes as $expense)
-                        <li>
+                        <li id="item-{{ $expense->id }}">
                             <span class="title">{{ $expense->title }}</span>
-                            <span class="amount {{ $expense->type_show === '+' ? 'plus' : 'minus' }}">
-                                {{ $expense->type_show }} {{ $expense->todayValue()?->price ?? 0 }}
-                            </span>
+                            @if ($expense->is_online)
+                                <span class="amount {{ $expense->type_show === '+' ? 'plus' : 'minus' }}">
+                                    {{ $expense->type_show }} {{ $generalPaymentPriceOnlayn }}
+                                </span>
+                            @elseif($expense->is_offline_payment)
+                                <span class="amount {{ $expense->type_show === '+' ? 'plus' : 'minus' }}">
+                                    {{ $expense->type_show }} {{ $generalPaymentPriceOffline }}
+                                </span>
+                            @else
+                                <span class="amount {{ $expense->type_show === '+' ? 'plus' : 'minus' }}">
+                                    {{ $expense->type_show }} {{ $expense->todayValue()?->price ?? 0 }}
+                                </span>
+                            @endif
+
+
                         </li>
                     @endforeach
                 </ul>
-
             </div>
 
 
@@ -177,8 +187,7 @@
     <div class="success-modal-container" style="display: none;">
         <div class="success-modal">
             <button class="closeSuccess" type="button">
-                <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
+                <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" clip-rule="evenodd"
                         d="M6.83765 6.83765C7.01343 6.66209 7.25171 6.56348 7.50015 6.56348C7.74859 6.56348 7.98687 6.66209 8.16265 6.83765L23.1627 21.8377C23.2548 21.9235 23.3286 22.027 23.3799 22.142C23.4311 22.257 23.4587 22.3811 23.4609 22.507C23.4631 22.6329 23.44 22.7579 23.3928 22.8746C23.3457 22.9914 23.2755 23.0974 23.1865 23.1865C23.0974 23.2755 22.9914 23.3457 22.8746 23.3928C22.7579 23.44 22.6329 23.4631 22.507 23.4609C22.3811 23.4587 22.257 23.4311 22.142 23.3799C22.027 23.3286 21.9235 23.2548 21.8377 23.1627L6.83765 8.16265C6.66209 7.98687 6.56348 7.74859 6.56348 7.50015C6.56348 7.25171 6.66209 7.01343 6.83765 6.83765Z"
                         fill="#2C2D33" />
@@ -402,7 +411,7 @@
                             title: "Uğurlu!",
                             text: e.message,
                             icon: "success",
-                            timer: 2000, 
+                            timer: 2000,
                             timerProgressBar: false,
                             showConfirmButton: false,
                         });
@@ -455,6 +464,48 @@
                 var url = new URL(window.location.href);
                 url.searchParams.set('date', value);
                 window.location.href = url.toString();
+            });
+        });
+    </script>
+
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        $(function() {
+            $("#sortable").sortable({
+                update: function(event, ui) {
+                    let order = [];
+                    $("#sortable li").each(function(index, element) {
+                        order.push($(element).attr("id").replace("item-", ""));
+                    });
+
+                    $.ajax({
+                        url: "{{ route('expenses.updateOrder') }}",
+                        type: "POST",
+                        data: {
+                            _token: "{{ csrf_token() }}",
+                            order: order
+                        },
+                        success: function(response) {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Uğurlu!',
+                                text: response.message ||
+                                    'Sıralama yadda saxlanıldı',
+                                timer: 1500,
+                                showConfirmButton: false
+                            });
+                        },
+                        error: function(xhr) {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Xəta!',
+                                text: 'Sıralama yadda saxlanılmadı, yenidən cəhd edin.'
+                            });
+                        }
+                    });
+                }
             });
         });
     </script>

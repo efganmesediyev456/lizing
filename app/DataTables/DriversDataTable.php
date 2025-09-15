@@ -11,6 +11,7 @@ class DriversDataTable extends DataTable
 {
     protected $tableId;
 
+
     public function __construct($tableId = 'drivers-table')
     {
         $this->tableId = $tableId;
@@ -30,7 +31,7 @@ class DriversDataTable extends DataTable
             ->editColumn('created_at', function ($driver) {
                 return $driver->created_at->format('Y-m-d');
             })
-             ->addColumn('city', function ($driver) {
+            ->addColumn('city', function ($driver) {
                 return $driver->city?->title;
             })
             ->editColumn('name', function ($driver) {
@@ -47,7 +48,7 @@ class DriversDataTable extends DataTable
                 return $driver->leasing?->deposit_payment > 0 ? '<span style="color:red;">' . $driver->leasing?->deposit_payment . '</span>' : 0;
             })
 
-             ->addColumn('deposit_debt', function ($driver) {
+            ->addColumn('deposit_debt', function ($driver) {
                 return $driver->leasing?->deposit_debt > 0 ? '<span style="color:red;">' . $driver->leasing?->deposit_debt . '</span>' : 0;
             })
 
@@ -59,26 +60,46 @@ class DriversDataTable extends DataTable
                 };
             })
 
+            ->editColumn('phone2', function ($driver) {
+                if($driver->phone2){
+                    return '<strong>' . ($driver->phone2_label ?? 'Əlaqə nömrəsi 2') . ':</strong> ' . $driver->phone2;
+                }
+                return null;
+            })
+            ->editColumn('phone3', function ($driver) {
+                if($driver->phone3){
+                    return '<strong>' . ($driver->phone3_label ?? 'Əlaqə nömrəsi 3') . ':</strong> ' . $driver->phone3;
+                }
+                return null;
+            })
+            ->editColumn('phone4', function ($driver) {
+                if($driver->phone4){
+                    return '<strong>' . ($driver->phone4_label ?? 'Əlaqə nömrəsi 4') . ':</strong> ' . $driver->phone4;
+                }
+                return null;
+            })
+
+
             ->editColumn('phone', function ($driver) {
                 $phones = [];
 
                 if ($driver->phone) {
-                    // $phones[] = '<strong>Əsas nömrə:</strong> ' . $driver->phone;
-                    $phones[] = $driver->phone;
+                    $phones[] = '<strong>Əsas nömrə:</strong> ' . $driver->phone;
+                    // $phones[] = $driver->phone;
                 }
 
                 // if ($driver->phone2) {
                 //     $phones[] = '<strong>' . ($driver->phone2_label ?? 'Əlaqə nömrəsi 2') . ':</strong> ' . $driver->phone2;
                 // }
-
+    
                 // if ($driver->phone3) {
                 //     $phones[] = '<strong>' . ($driver->phone3_label ?? 'Əlaqə nömrəsi 3') . ':</strong> ' . $driver->phone3;
                 // }
-
+    
                 // if ($driver->phone4) {
                 //     $phones[] = '<strong>' . ($driver->phone4_label ?? 'Əlaqə nömrəsi 4') . ':</strong> ' . $driver->phone4;
                 // }
-
+    
                 return implode('<br>', $phones);
             })
 
@@ -98,7 +119,7 @@ class DriversDataTable extends DataTable
                 }
                 return $html;
             })
-            ->rawColumns(['action', 'status', 'phone','debt','deposit_payment','deposit_debt']);
+            ->rawColumns(['action', 'status', 'phone','phone2','phone3','phone4', 'debt', 'deposit_payment', 'deposit_debt']);
     }
 
     public function query(Driver $model)
@@ -119,7 +140,7 @@ class DriversDataTable extends DataTable
             $query = $query->where('gender', $gender);
         }
 
-        
+
         if (request()->has('status_id') and request()->filled('status_id')) {
             if (request()->status_id == 'all') {
 
@@ -168,8 +189,6 @@ class DriversDataTable extends DataTable
             ['data' => 'debt', 'title' => 'Leasing Borcu'],
             ['data' => 'deposit_payment', 'title' => 'Ilkin Deposit Borcu'],
             ['data' => 'deposit_debt', 'title' => 'Deposit Borcu'],
-            
-            // ['data' => 'email', 'title' => 'Mail'],
             ['data' => 'fin', 'title' => 'FİN', 'visible' => false],
             ['data' => 'email', 'title' => 'Email', 'visible' => false],
             ['data' => 'id_card_serial_code', 'title' => 'Şəxsiyyətin seriya nömrəsi', 'visible' => false],
@@ -179,13 +198,16 @@ class DriversDataTable extends DataTable
             ['data' => 'gender', 'title' => 'Cinsiyyət', 'visible' => false],
             ['data' => 'city', 'title' => 'Şəhər', 'visible' => false],
             ['data' => 'phone', 'title' => 'Əlaqə nömrəsi'],
+            ['data' => 'phone2', 'title' => 'Əlaqə nömrəsi2', 'visible'=>false],
+            ['data' => 'phone3', 'title' => 'Əlaqə nömrəsi3','visible'=>false],
+            ['data' => 'phone4', 'title' => 'Əlaqə nömrəsi4','visible'=>false],
 
             ['data' => 'action', 'title' => 'Action', 'exportable' => false, 'printable' => false, 'orderable' => false, 'searchable' => false],
         ];
     }
 
 
-     public function getFilterOptions()
+    public function getFilterOptions()
     {
         return [
             'statuses' => DriverStatus::all(),

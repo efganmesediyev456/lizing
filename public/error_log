@@ -23,3 +23,5 @@ Stack trace:
 [29-Jul-2025 06:45:33 UTC] PHP Fatal error:  Cannot use [] for reading in /home/e128212/public_html/carleasing.166tech.com/app/Http/Controllers/ExcelController.php on line 231
 [01-Aug-2025 06:42:48 UTC] PHP Fatal error:  Cannot redeclare App\DataTables\ExpenseDatatable::dataTable() in /home/e128212/public_html/carleasing.166tech.com/app/DataTables/ExpenseDatatable.php on line 62
 [13-Aug-2025 00:15:39 UTC] PHP Fatal error:  Cannot use DB as DB because the name is already in use in /home/e128212/public_html/carleasing.166tech.com/app/Http/Controllers/LeasingController.php on line 24
+[10-Sep-2025 11:05:30 Asia/Baku] PHP Fatal error:  Cannot use variable $offlineExpense twice in /home/e128212/public_html/carleasing.166tech.com/app/Http/Controllers/CashboxController.php on line 94
+[10-Sep-2025 11:05:41 Asia/Baku] PHP Fatal error:  Cannot use variable $offlineExpense twice in /home/e128212/public_html/carleasing.166tech.com/app/Http/Controllers/CashboxController.php on line 94

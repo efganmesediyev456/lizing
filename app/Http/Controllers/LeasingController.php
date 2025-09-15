@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\LeasingDatatable;
+use App\Exports\LeasingExport;
 use App\Models\Brand;
 use App\Models\Driver;
 use App\Models\Leasing;
@@ -22,6 +23,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use App\DataTables\VehiclesDataTable;
 use App\Services\ContractService;
+use Maatwebsite\Excel\Facades\Excel;
 
 
 
@@ -30,7 +32,9 @@ class LeasingController extends Controller
     public function index()
     {
         $dataTable = new LeasingDatatable();
-        return $dataTable->render('leasings.index');
+        $filterOptions = $dataTable->getFilterOptions();
+
+        return $dataTable->render('leasings.index', ['filterOptions'=>$filterOptions]);
     }
 
 
@@ -432,5 +436,10 @@ class LeasingController extends Controller
     }
 
 
+
+    public function export()
+    {
+        return Excel::download(new LeasingExport(), 'leasing.xlsx');
+    }
 
 }

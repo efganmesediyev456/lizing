@@ -11,6 +11,7 @@ class CashExpense extends Model
 
     public $guarded = [];
 
+    
 
 
     public function expenseType(){

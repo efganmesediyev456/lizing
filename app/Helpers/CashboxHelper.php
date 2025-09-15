@@ -4,6 +4,7 @@ namespace App\Helpers;
 
 use App\Models\CashExpense;
 use App\Models\Expense;
+use App\Models\ExpenseType;
 use App\Models\Insurance;
 use App\Models\Payment;
 use App\Models\TechnicalReview;
@@ -21,6 +22,7 @@ class CashboxHelper
 
         $payments = Payment::with('leasing')
             ->whereDate('created_at', $date)
+            ->whereStatus('completed')
             ->get()
             ->map(function ($payment) {
                 $clone = clone $payment;
@@ -74,6 +76,7 @@ class CashboxHelper
 
         $payments = Payment::with('leasing')
             ->whereDate('created_at', $date)
+            ->whereStatus('completed')
             ->get()
             ->map(function ($payment) {
                 $clone = clone $payment;
@@ -86,10 +89,15 @@ class CashboxHelper
                 ]);
             });
 
+        $offlineExpense = ExpenseType::where('is_offline_payment',1)->first();
+        $onlineExpense = ExpenseType::where('is_online',1)->first();
 
-        $casboxses = CashExpense::whereDate('date', $date)
+
+        $casboxses = CashExpense::whereDate('date', $date)->whereNotIn('expense_type_id',[$offlineExpense->id,$onlineExpense->id])
             ->get()
+            
             ->map(function ($payment) {
+                
                 $clone = clone $payment;
                 return $clone->forceFill([
                     'tableId' => '',

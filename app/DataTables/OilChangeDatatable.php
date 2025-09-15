@@ -103,7 +103,7 @@ class OilChangeDatatable extends DataTable
             ['data' => 'tableId', 'title' => 'Table İD'],
             ['data' => 'vehicle_id', 'title' => 'D.Q.N.'],
             ['data' => 'change_interval', 'title' => 'Y.D. km'],
-            ['data' => 'change_interval', 'title' => 'N.Y.D.'],
+            ['data' => 'next_change_interval', 'title' => 'N.Y.D.'],
             ['data' => 'status', 'title' => 'Status'],
             ['data' => 'action', 'title' => 'Action', 'exportable' => false, 'printable' => false, 'orderable' => false, 'searchable' => false],
         ];

@@ -122,9 +122,16 @@ class Driver extends Authenticatable
             if($leasing->is_completed){
                 continue;
             }
+            
             $start = Carbon::parse($leasing->start_date);
             $end = Carbon::parse($leasing->end_date);
             $today = Carbon::today()->lt($end) ? Carbon::today() : $end;
+
+            
+
+            if (Carbon::today()->lt($start)) {
+                continue;
+            }
 
             $totalPaid = $leasing->leasingPayments->where('status', 'completed')->sum('price');
            

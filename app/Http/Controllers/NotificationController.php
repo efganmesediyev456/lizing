@@ -32,7 +32,9 @@ class NotificationController extends Controller
         $statuses = DriverStatus::get();
         $drivers= Driver::get();
         $notificationTopics = DriverNotificationTopic::get();
-        return $dataTable->render('notification_all.index', compact('statuses', 'drivers','notificationTopics'));
+        $filterOptions = $dataTable->getFilterOptions();
+
+        return $dataTable->render('notification_all.index', compact('statuses', 'drivers','notificationTopics','filterOptions'));
     }
 
  

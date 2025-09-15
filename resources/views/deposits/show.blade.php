@@ -74,13 +74,13 @@
                                 <span>azn</span>
                             </div>
                         </div>
-                        <div class="form-item">
+                        {{-- <div class="form-item">
                             <label for="">Cərimə ödənişi</label>
                             <div class="form-input">
                                 <input type="text" value="">
                                 <span>azn</span>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="form-item">
                             <label for="">Ödəniş növü</label>
                             <div class="form-input">
@@ -98,20 +98,20 @@
 
                         
 
-                        <div class="form-item">
+                        {{-- <div class="form-item">
                             <label for="">Qalıq borcu</label>
                             <div class="form-input">
                                 <input type="text" value="{{ $item->leasingPayment?->remaining_amount }}">
                                 <span>azn</span>
                             </div>
-                        </div>
-                        <div class="form-item">
+                        </div> --}}
+                        {{-- <div class="form-item">
                             <label for="">Qalan lizinq müddəti</label>
                             <div class="form-input">
                                 <input type="text" value="{{ $item->leasingPayment?->getCompletedPendingMonthDiffAttribute() }}">
                                 <span>ay</span>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>

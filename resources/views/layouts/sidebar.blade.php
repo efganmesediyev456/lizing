@@ -303,6 +303,8 @@
                        <a href="{{ route('insurances.index') }}" class="dropdown-link">Sığorta</a>
                        <a href="{{ route('technical_reviews.index') }}" class="dropdown-link">Texniki baxış</a>
                        <a href="{{ route('credits.index') }}" class="dropdown-link">Kreditlər</a>
+                       <a href="{{ route('oil_changes.index') }}" class="dropdown-link">Yağ dəyişilməsi</a>
+
 
 
 
@@ -328,6 +330,9 @@
                            <a href="{{ route('insurances.index') }}" class="dropdown-link">Sığorta</a>
                            <a href="{{ route('technical_reviews.index') }}" class="dropdown-link">Texniki baxış</a>
                            <a href="{{ route('credits.index') }}" class="dropdown-link">Kreditlər</a>
+                           <a href="{{ route('oil_changes.index') }}" class="dropdown-link">Yağ dəyişilməsi</a>
+
+                           
 
                        </div>
                    </div>

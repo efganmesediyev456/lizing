@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\DataTables\CreditDatatable;
 use App\DataTables\DepositDatatable;
 use App\Events\DriverNotified;
+use App\Exports\DepositExport;
 use App\Http\Requests\DriverNotificationRequest;
 use App\Models\Brand;
 use App\Models\City;
@@ -13,6 +14,7 @@ use App\Models\Driver;
 use App\Models\DriverNotification;
 use App\Models\DriverNotificationTopic;
 use App\Models\Leasing;
+use App\Models\LeasingStatus;
 use App\Models\Model;
 use App\Models\Payment;
 use App\Models\Vehicle;
@@ -25,6 +27,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use App\DataTables\DriversDataTable;
+use Maatwebsite\Excel\Facades\Excel;
 
 class DepositController extends Controller
 {
@@ -35,7 +38,8 @@ class DepositController extends Controller
     public function index()
     {
         $dataTable = new DepositDatatable(); 
-        return $dataTable->render('deposits.index');
+        $filterOptions = $dataTable->getFilterOptions();
+        return $dataTable->render('deposits.index',['filterOptions'=>$filterOptions]);
     }
 
     public function form(Credit $item, PermissionService $permissionService)
@@ -132,7 +136,13 @@ class DepositController extends Controller
     }
 
 
-    
+
+    public function export()
+    {
+        return Excel::download(new DepositExport(), 'deposits.xlsx');
+    }
+
+
 
    
 }

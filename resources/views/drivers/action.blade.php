@@ -9,10 +9,10 @@
         </button> -->
 
 
-        <a class="view_link action-link" href="{{ route('drivers.notifications.show',['driver'=>$item->id]) }}"  type="button">
+        {{-- <a class="view_link action-link" href="{{ route('drivers.notifications.show',['driver'=>$item->id]) }}"  type="button">
             <img src="../assets/icons/notification_orange.svg" alt="">
             Bildiriş göndər
-        </a>
+        </a> --}}
 
         <a href="{{ route('drivers.payments',['driver'=>$item->id]) }}"   class="createPaymentButton action-link" type="button">
                                                 <img src="/assets/images/payment.png" alt="">
